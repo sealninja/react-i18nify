@@ -25,6 +25,7 @@ var _Base2 = _interopRequireDefault(_Base);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var handleMissingTranslation = _formatMissingTranslation2.default; /* eslint no-underscore-dangle: "off" */
+var KEY_DELIMETER = '⁂';
 
 exports.default = {
   _localeKey: 'en',
@@ -120,7 +121,7 @@ exports.default = {
     var translation = '';
     try {
       var translationLocale = this._translations[this._locale] ? this._locale : this._locale.split('-')[0];
-      translation = this._fetchTranslation(this._translations, translationLocale + '.' + key, replacements.count);
+      translation = this._fetchTranslation(this._translations, translationLocale + KEY_DELIMETER + key, replacements.count);
     } catch (err) {
       return this._handleMissingTranslation(key, replacements);
     }
@@ -148,7 +149,7 @@ exports.default = {
   _fetchTranslation: function _fetchTranslation(translations, key) {
     var count = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
 
-    var _index = key.indexOf('.');
+    var _index = key.indexOf(KEY_DELIMETER);
     if (typeof translations === 'undefined') {
       throw new Error('not found');
     }
