@@ -7,6 +7,7 @@ import formatMissingTranslation from './formatMissingTranslation';
 import BaseComponent from './Base';
 
 const handleMissingTranslation = formatMissingTranslation;
+const KEY_DELIMETER = '⁂';
 
 export default {
   _localeKey: 'en',
@@ -101,7 +102,7 @@ export default {
         this._locale.split('-')[0];
       translation = this._fetchTranslation(
         this._translations,
-        `${translationLocale}.${key}`,
+        `${translationLocale}${KEY_DELIMETER}${key}`,
         replacements.count
       );
     } catch (err) {
@@ -130,7 +131,7 @@ export default {
   },
 
   _fetchTranslation(translations, key, count = null) {
-    const _index = key.indexOf('.');
+    const _index = key.indexOf(KEY_DELIMETER);
     if (typeof translations === 'undefined') {
       throw new Error('not found');
     }
