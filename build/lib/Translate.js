@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -31,32 +33,35 @@ var Translate = function (_BaseComponent) {
   _inherits(Translate, _BaseComponent);
 
   function Translate() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
     _classCallCheck(this, Translate);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
+    return _possibleConstructorReturn(this, (Translate.__proto__ || Object.getPrototypeOf(Translate)).apply(this, arguments));
+  }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Translate.__proto__ || Object.getPrototypeOf(Translate)).call.apply(_ref, [this].concat(args))), _this), _this.otherProps = function () {
-      var result = _extends({}, _this.props);
+  _createClass(Translate, [{
+    key: 'otherProps',
+    value: function otherProps() {
+      var result = _extends({}, this.props);
       delete result.value;
       return result;
-    }, _this.render = function () {
-      var translation = _I18n2.default._translate(_this.props.value, _this.otherProps());
-      if (_this.props.dangerousHTML) {
-        return _react2.default.createElement('span', { style: _this.props.style, dangerouslySetInnerHTML: { __html: translation } });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var translation = _I18n2.default._translate(this.props.value, this.otherProps());
+      if (this.props.dangerousHTML) {
+        return _react2.default.createElement('span', { style: this.props.style,
+          className: this.props.className,
+          dangerouslySetInnerHTML: { __html: translation } });
       }
       return _react2.default.createElement(
         'span',
-        { style: _this.props.style },
+        { style: this.props.style,
+          className: this.props.className },
         translation
       );
-    }, _temp), _possibleConstructorReturn(_this, _ret);
-  }
+    }
+  }]);
 
   return Translate;
 }(_Base2.default);
@@ -64,6 +69,7 @@ var Translate = function (_BaseComponent) {
 Translate.propTypes = {
   value: _react2.default.PropTypes.string.isRequired,
   dangerousHTML: _react2.default.PropTypes.bool,
+  className: _react2.default.PropTypes.string,
   /**
    * Optional styling
    */
