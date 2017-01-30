@@ -42,11 +42,14 @@ var Localize = function (_BaseComponent) {
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Localize.__proto__ || Object.getPrototypeOf(Localize)).call.apply(_ref, [this].concat(args))), _this), _this.render = function () {
       var localization = _I18n2.default._localize(_this.props.value, _this.props.dateFormat ? { dateFormat: _this.props.dateFormat } : _this.props.options);
       if (_this.props.dangerousHTML) {
-        return _react2.default.createElement('span', { style: _this.props.style, dangerouslySetInnerHTML: { __html: localization } });
+        return _react2.default.createElement('span', { style: _this.props.style,
+          className: _this.props.className,
+          dangerouslySetInnerHTML: { __html: localization } });
       }
       return _react2.default.createElement(
         'span',
-        { style: _this.props.style },
+        { style: _this.props.style,
+          className: _this.props.className },
         localization
       );
     }, _temp), _possibleConstructorReturn(_this, _ret);
@@ -59,6 +62,7 @@ Localize.propTypes = {
   value: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.number, _react2.default.PropTypes.object]).isRequired,
   options: _react2.default.PropTypes.object,
   dateFormat: _react2.default.PropTypes.string,
+  className: _react2.default.PropTypes.string,
   dangerousHTML: _react2.default.PropTypes.bool,
   /**
    * Optional styling

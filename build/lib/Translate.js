@@ -48,11 +48,14 @@ var Translate = function (_BaseComponent) {
     }, _this.render = function () {
       var translation = _I18n2.default._translate(_this.props.value, _this.otherProps());
       if (_this.props.dangerousHTML) {
-        return _react2.default.createElement('span', { style: _this.props.style, dangerouslySetInnerHTML: { __html: translation } });
+        return _react2.default.createElement('span', { style: _this.props.style,
+          className: _this.props.className,
+          dangerouslySetInnerHTML: { __html: translation } });
       }
       return _react2.default.createElement(
         'span',
-        { style: _this.props.style },
+        { style: _this.props.style,
+          className: _this.props.className },
         translation
       );
     }, _temp), _possibleConstructorReturn(_this, _ret);
@@ -64,6 +67,7 @@ var Translate = function (_BaseComponent) {
 Translate.propTypes = {
   value: _react2.default.PropTypes.string.isRequired,
   dangerousHTML: _react2.default.PropTypes.bool,
+  className: _react2.default.PropTypes.string,
   /**
    * Optional styling
    */
