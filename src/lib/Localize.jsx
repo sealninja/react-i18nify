@@ -27,7 +27,7 @@ export default class Localize extends BaseComponent {
     ),
   };
 
-  render = () => {
+  render() {
     const localization = I18n._localize(
       this.props.value,
       this.props.dateFormat

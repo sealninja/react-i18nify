@@ -4,6 +4,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -29,31 +31,28 @@ var Localize = function (_BaseComponent) {
   _inherits(Localize, _BaseComponent);
 
   function Localize() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
     _classCallCheck(this, Localize);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
+    return _possibleConstructorReturn(this, (Localize.__proto__ || Object.getPrototypeOf(Localize)).apply(this, arguments));
+  }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Localize.__proto__ || Object.getPrototypeOf(Localize)).call.apply(_ref, [this].concat(args))), _this), _this.render = function () {
-      var localization = _I18n2.default._localize(_this.props.value, _this.props.dateFormat ? { dateFormat: _this.props.dateFormat } : _this.props.options);
-      if (_this.props.dangerousHTML) {
-        return _react2.default.createElement('span', { style: _this.props.style,
-          className: _this.props.className,
+  _createClass(Localize, [{
+    key: 'render',
+    value: function render() {
+      var localization = _I18n2.default._localize(this.props.value, this.props.dateFormat ? { dateFormat: this.props.dateFormat } : this.props.options);
+      if (this.props.dangerousHTML) {
+        return _react2.default.createElement('span', { style: this.props.style,
+          className: this.props.className,
           dangerouslySetInnerHTML: { __html: localization } });
       }
       return _react2.default.createElement(
         'span',
-        { style: _this.props.style,
-          className: _this.props.className },
+        { style: this.props.style,
+          className: this.props.className },
         localization
       );
-    }, _temp), _possibleConstructorReturn(_this, _ret);
-  }
+    }
+  }]);
 
   return Localize;
 }(_Base2.default);
