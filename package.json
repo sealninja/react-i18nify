@@ -38,7 +38,7 @@
   ],
   "runkitExampleFilename": "example/example.js",
   "peerDependencies": {
-    "react": "^16.2.0"
+    "react": "^16.0.0"
   },
   "dependencies": {
     "intl": "^1.2",
