@@ -1,3 +1,5 @@
+/* global describe, test, expect */
+
 import Base from '../../src/lib/Base';
 
 describe('Base.jsx', () => {

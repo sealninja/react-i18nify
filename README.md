@@ -5,8 +5,6 @@ Simple i18n translation and localization components and helpers for React applic
 
 A working example of this package can be found [here at RunKit](https://runkit.com/npm/react-i18nify).
 
-If you're using Redux or Fluxible, feel free to use [react-redux-i18n](https://github.com/zoover/react-redux-i18n) or [react-fluxible-i18n](https://github.com/zoover/react-fluxible-i18n) instead.
-
 ## Table of contents
 
 * [Installation](#installation)

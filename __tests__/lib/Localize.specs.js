@@ -1,7 +1,10 @@
-import React      from 'react';
-import { mount }  from 'enzyme';
-import { I18n }   from '../../src';
-import Localize   from '../../src/lib/Localize';
+/* global describe, test, expect, beforeAll, beforeEach */
+
+import React from 'react';
+import { mount, configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import { I18n } from '../../src';
+import Localize from '../../src/lib/Localize';
 
 describe('Localize.jsx', () => {
   test('should export <Localize/> component', () => {
@@ -9,17 +12,19 @@ describe('Localize.jsx', () => {
   });
 
   beforeAll(() => {
+    configure({ adapter: new Adapter() });
     I18n.setTranslations({
-      en : {
-        date : 'MMMM Do, YYYY'
-      }
+      en: {
+        date: 'MMMM Do, YYYY',
+      },
     });
 
     I18n.setLocale('en');
   });
 
   describe('<Localize/> component', () => {
-    let attrs = { value : '2016-07-04', dateFormat : 'date' }, wrapper = null;
+    const attrs = { value: '2016-07-04', dateFormat: 'date' };
+    let wrapper = null;
 
     beforeEach(() => {
       wrapper = mount(<Localize {...attrs} />);
@@ -53,13 +58,13 @@ describe('Localize.jsx', () => {
 
     test('should handle localization options', () => {
       const props = {
-        value   : 10/3,
-        options : {
-          style                 : 'currency',
-          currency              : 'USD',
-          minimumFractionDigits : 2,
-          maximumFractionDigits : 2
-        }
+        value: 10 / 3,
+        options: {
+          style: 'currency',
+          currency: 'USD',
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        },
       };
 
       const span = mount(<Localize {...props} />).find('span');

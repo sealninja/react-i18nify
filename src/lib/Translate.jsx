@@ -8,12 +8,10 @@ export default class Translate extends BaseComponent {
     value: PropTypes.string.isRequired,
     dangerousHTML: PropTypes.bool,
     className: PropTypes.string,
-    style: PropTypes.objectOf(
-      PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.string,
-      ]),
-    ),
+    style: PropTypes.objectOf(PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+    ])),
   };
 
   otherProps() {
@@ -23,7 +21,9 @@ export default class Translate extends BaseComponent {
   }
 
   render() {
-    const { value, dangerousHTML, style, className } = this.props;
+    const {
+      value, dangerousHTML, style, className,
+    } = this.props;
     const translation = I18n._translate(value, this.otherProps());
 
     if (dangerousHTML) {

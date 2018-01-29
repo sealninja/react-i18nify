@@ -13,16 +13,16 @@ export default class Localize extends BaseComponent {
     dateFormat: PropTypes.string,
     dangerousHTML: PropTypes.bool,
     className: PropTypes.string,
-    style: PropTypes.objectOf(
-      PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.string,
-      ]),
-    ),
+    style: PropTypes.objectOf(PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+    ])),
   };
 
   render() {
-    const { value, dateFormat, options = {}, dangerousHTML, style, className } = this.props;
+    const {
+      value, dateFormat, options = {}, dangerousHTML, style, className,
+    } = this.props;
     const localization = I18n._localize(value, { ...options, dateFormat });
 
     if (dangerousHTML) {

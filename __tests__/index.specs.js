@@ -1,3 +1,5 @@
+/* global describe, test, expect */
+
 import { I18n, Translate, Localize } from '../src';
 
 describe('index.js', () => {
