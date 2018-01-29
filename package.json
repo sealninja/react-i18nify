@@ -1,6 +1,6 @@
 {
   "name": "react-i18nify",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "description": "Simple i18n translation and localization components and helpers for React applications.",
   "main": "./build/index.js",
   "scripts": {
