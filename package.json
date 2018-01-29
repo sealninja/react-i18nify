@@ -17,7 +17,9 @@
     "verbose": true
   },
   "files": [
-    "build"
+    "build",
+    "src",
+    "example"
   ],
   "author": "JSxMachina",
   "repository": {
