@@ -72,7 +72,7 @@ const { Translate, Localize } = require('react-i18nify');
 <Translate value="application.title" />
   // => returns '<span>Toffe app met i18n!</span>' for locale 'nl'
 <Translate value="application.title" style={{ fontWeight: 'bold', fontSize: '14px' }} />
-// => returns '<span style="font-weight:bold;font-size:14px;">Toffe app met i18n!</span>' for locale 'nl'
+  // => returns '<span style="font-weight:bold;font-size:14px;">Toffe app met i18n!</span>' for locale 'nl'
 <Translate value="application.hello" name="Aad"/>
   // => returns '<span>Hallo, Aad!</span>' for locale 'nl'
 <Translate value="export" count={1} />
