@@ -47,6 +47,13 @@ describe('Translate.jsx', () => {
       expect(span.html().match(/style="([^"]*)"/i)[1]).toBe('font-weight: bold; font-size: 14px;');
     });
 
+    test('should render a <div/>', () => {
+      wrapper.setProps({ tag: 'div' });
+      const span = wrapper.find('div');
+
+      expect(span.type()).toBe('div');
+    });
+
     test('should render a <span/> with class attribute', () => {
       const className = 'nice';
       wrapper.setProps({ className });

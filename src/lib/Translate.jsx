@@ -5,6 +5,10 @@ import BaseComponent from './Base';
 
 export default class Translate extends BaseComponent {
   static propTypes = {
+    tag: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.string,
+    ]),
     value: PropTypes.string.isRequired,
     dangerousHTML: PropTypes.bool,
     className: PropTypes.string,
@@ -12,6 +16,10 @@ export default class Translate extends BaseComponent {
       PropTypes.number,
       PropTypes.string,
     ])),
+  };
+
+  static defaultProps = {
+    tag: 'span'
   };
 
   otherProps() {
@@ -22,19 +30,19 @@ export default class Translate extends BaseComponent {
 
   render() {
     const {
-      value, dangerousHTML, style, className,
+      tag: Tag, value, dangerousHTML, style, className,
     } = this.props;
     const translation = I18n._translate(value, this.otherProps());
 
     if (dangerousHTML) {
       return (
-        <span
+        <Tag
           style={style}
           className={className}
           dangerouslySetInnerHTML={{ __html: translation }}
         />
       );
     }
-    return <span style={style} className={className}>{translation}</span>;
+    return <Tag style={style} className={className}>{translation}</Tag>;
   }
 }

@@ -5,6 +5,10 @@ import BaseComponent from './Base';
 
 export default class Localize extends BaseComponent {
   static propTypes = {
+    tag: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.string
+    ]),
     value: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number,
@@ -19,21 +23,25 @@ export default class Localize extends BaseComponent {
     ])),
   };
 
+  static defaultProps = {
+    tag: 'span'
+  };
+
   render() {
     const {
-      value, dateFormat, options = {}, dangerousHTML, style, className,
+      tag: Tag, value, dateFormat, options = {}, dangerousHTML, style, className,
     } = this.props;
     const localization = I18n._localize(value, { ...options, dateFormat });
 
     if (dangerousHTML) {
       return (
-        <span
+        <Tag
           style={style}
           className={className}
           dangerouslySetInnerHTML={{ __html: localization }}
         />
       );
     }
-    return <span style={style} className={className}>{localization}</span>;
+    return <Tag style={style} className={className}>{localization}</Tag>;
   }
 }
