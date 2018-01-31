@@ -73,7 +73,7 @@ const { Translate, Localize } = require('react-i18nify');
   // => <span>Toffe app met i18n!</span>
 <Translate value="application.title" style={{ fontWeight: 'bold', fontSize: '14px' }} />
   // => <span style="font-weight:bold;font-size:14px;">Toffe app met i18n!</span>
-<Translate value="application.hello" name="Aad"/>
+<Translate value="application.hello" name="Aad" />
   // => <span>Hallo, Aad!</span>
 <Translate value="export" count={1} />
   // => <span>Exporteer 1 ding</span>
@@ -88,7 +88,7 @@ const { Translate, Localize } = require('react-i18nify');
   // => <span>3 september 2015</span>
 <Localize value="2015-09-03" dateFormat="date.long" tag="div" />
   // => <div>3 september 2015</div>
-<Localize value={10/3} options={{style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2}}/>
+<Localize value={10/3} options={{style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2}} />
   // => <span>€ 3,33</span>
 ```
 
@@ -138,7 +138,7 @@ This behavior can be prevented by providing `false` as a second argument.
 Alternatively to using `setLocale`, you can provide a callback to return the locale with `setLocaleGetter`:
 
 ```javascript
-const I18n = require('react-i18nify').I18n;
+const { I18n } = require('react-i18nify');
 
 const locale = () => 'nl';
 
@@ -150,7 +150,7 @@ I18n.setLocaleGetter(locale);
 Alternatively to using `setTranslations`, you can provide a callback to return the translations with `setTranslationsGetter`:
 
 ```javascript
-const I18n = require('react-i18nify').I18n;
+const { I18n } = require('react-i18nify');
 
 const translation = () => ({
   en: { ... },
