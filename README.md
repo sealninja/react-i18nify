@@ -207,11 +207,15 @@ The translation key to translate.
 
 #### `dangerousHTML` (bool)
 
-If `true`, HTML is allowed in the translation.
+If `true`, HTML is allowed in the translation. Defaults to `false`.
 
 #### `className` (string)
 
 Optional CSS classname.
+
+#### `tag` (string|func)
+
+HTML element to render the translation in. Defaults to `span`.
 
 #### `style` (object)
 
@@ -225,7 +229,7 @@ All other provided props will be used as replacements for the translation.
 
 React localize component, with the following props:
 
-#### `value` (number/string/object)
+#### `value` (number|string|object)
 
 The number or date to localize.
 
@@ -243,11 +247,15 @@ For the full list of options, see https://developer.mozilla.org/en/docs/Web/Java
 
 #### `dangerousHTML` (bool)
 
-If `true`, HTML is allowed in the translation.
+If `true`, HTML is allowed in the localization. Defaults to `false`.
 
 #### `className` (string)
 
 Optional CSS classname.
+
+#### `tag` (string|func)
+
+HTML element to render the localization in. Defaults to `span`.
 
 #### `style` (object)
 
