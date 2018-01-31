@@ -167,7 +167,7 @@ as can be seen in the `I18n.t('application.unknown_translation');` example above
 You can however overwrite this behavior by setting a function to handle missing translations.
 
 ```javascript
-const I18n = require('react-i18nify').I18n;
+const { I18n } = require('react-i18nify');
 
 const myHandleMissingTranslation = (key, replacements) => `Missing translation: ${key}`;
 
