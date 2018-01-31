@@ -68,20 +68,24 @@ function AwesomeComponent() {
       <br />
       <Translate value="application.hello" name="Aad" />
       <br />
-      <Localize value="2015-09-03" dateFormat="date.long" />
-      <br />
-      <Localize
-        value={10 / 3}
-        options={{
- style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2,
-}}
-      />
-      <br />
       <Translate value="export" count={1} />
       <br />
       <Translate value="export" count={2} />
       <br />
+      <Translate value="application.title" tag="h1" />
+      <br />
       <Translate value="two_lines" dangerousHTML />
+      <br />
+      <Localize value="2015-09-03" dateFormat="date.long" />
+      <br />
+      <Localize value="2015-09-03" dateFormat="date.long" tag="div" />
+      <br />
+      <Localize
+        value={10 / 3}
+        options={{
+          style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2,
+        }}
+      />
     </div>
   );
 }

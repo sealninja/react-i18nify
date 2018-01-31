@@ -67,30 +67,28 @@ Now you're all set up to start unleashing the power of `react-i18nify`!
 The easiest way to translate or localize in your React components is by using the `Translate` and `Localize` components:
 
 ```javascript
-const React = require('react');
-const Translate = require('react-i18nify').Translate;
-const Localize = require('react-i18nify').Localize;
+const { Translate, Localize } = require('react-i18nify');
 
-const AwesomeComponent = () => (
-  <div>
-    <Translate value="application.title"/>
-      // => returns '<span>Toffe app met i18n!</span>' for locale 'nl'
-    <Translate value="application.title" style={{ fontWeight: 'bold', fontSize: '14px' }} />
-    // => returns '<span style="font-weight:bold;font-size:14px;">Toffe app met i18n!</span>' for locale 'nl'
-    <Translate value="application.hello" name="Aad"/>
-      // => returns '<span>Hallo, Aad!</span>' for locale 'nl'
-    <Localize value="2015-09-03" dateFormat="date.long"/>
-      // => returns '<span>3 september 2015</span> for locale 'nl'
-    <Localize value={10/3} options={{style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2}}/>
-      // => returns '<span>€ 3,33</span> for locale 'nl'
-    <Translate value="export" count={1} />
-      // => returns '<span>Exporteer 1 ding</span> for locale 'nl'
-    <Translate value="export" count={2} />
-      // => returns '<span>Exporteer 2 dingen</span> for locale 'nl'
-    <Translate value="two_lines" dangerousHTML />
-      // => returns '<span>Regel 1<br />Regel 2</span>'
-  </div>
-);
+<Translate value="application.title" />
+  // => returns '<span>Toffe app met i18n!</span>' for locale 'nl'
+<Translate value="application.title" style={{ fontWeight: 'bold', fontSize: '14px' }} />
+// => returns '<span style="font-weight:bold;font-size:14px;">Toffe app met i18n!</span>' for locale 'nl'
+<Translate value="application.hello" name="Aad"/>
+  // => returns '<span>Hallo, Aad!</span>' for locale 'nl'
+<Translate value="export" count={1} />
+  // => returns '<span>Exporteer 1 ding</span> for locale 'nl'
+<Translate value="export" count={2} />
+  // => returns '<span>Exporteer 2 dingen</span> for locale 'nl'
+<Translate value="two_lines" dangerousHTML />
+  // => returns '<span>Regel 1<br />Regel 2</span>'
+<Translate value="application.title" tag="h1" />
+ // => returns '<h1>Toffe app met i18n!</h1>' for locale 'nl'
+<Localize value="2015-09-03" dateFormat="date.long" />
+  // => returns '<span>3 september 2015</span> for locale 'nl'
+<Localize value="2015-09-03" dateFormat="date.long" tag="div" />
+  // => returns '<div>3 september 2015</div> for locale 'nl'
+<Localize value={10/3} options={{style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2}}/>
+  // => returns '<span>€ 3,33</span> for locale 'nl'
 ```
 
 ## Helpers
