@@ -78,17 +78,21 @@ export default {
   },
 
   _replace(translation, replacements) {
-    let replaced = translation;
     if (typeof translation === 'string') {
+      let result = translation;
       Object.keys(replacements).forEach((replacement) => {
-        replaced = replaced.split(`%{${replacement}}`).join(replacements[replacement]);
+        result = result.split(`%{${replacement}}`).join(replacements[replacement]);
       });
-      return replaced;
+      return result;
     }
-    Object.keys(replaced).forEach((translationKey) => {
-      replaced[translationKey] = this._replace(replaced[translationKey], replacements);
-    });
-    return replaced;
+    if (typeof translation === 'object') {
+      const result = {};
+      Object.keys(translation).forEach((translationKey) => {
+        result[translationKey] = this._replace(translation[translationKey], replacements);
+      });
+      return result;
+    }
+    return null;
   },
 
   _translate(key, replacements = {}) {
