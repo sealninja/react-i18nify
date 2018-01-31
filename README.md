@@ -26,7 +26,7 @@ $ npm i --save react-i18nify
 Start by loading setting translations and locale to be used:
 
 ```javascript
-const I18n = require('react-i18nify').I18n;
+const { I18n } = require('react-i18nify');
 
 I18n.setTranslations({
   en: {
