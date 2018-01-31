@@ -10,7 +10,7 @@
     "lint:watch": "npm run lint -- --watch",
     "lint:fix": "npm run lint -- --fix",
     "clean": "rimraf build",
-    "build": "npm run lint && babel src -d build",
+    "build": "babel src -d build",
     "prepare": "npm run clean && npm run build"
   },
   "jest": {
