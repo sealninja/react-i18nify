@@ -1,5 +1,6 @@
-import moment from 'moment';
-import 'moment/min/locales';
+/* eslint global-require: "off" */
+/* eslint no-console: "off" */
+
 import IntlPolyfill from 'intl';
 import formatMissingTranslation from './formatMissingTranslation';
 import BaseComponent from './Base';
@@ -43,10 +44,8 @@ export default {
     }
   },
 
-  /**
-   * @deprecated
-   */
   loadTranslations(translations) {
+    console.error('I18n.loadTranslations is deprecated, please use I18n.setTranslations instead');
     this.setTranslations(translations);
   },
 
@@ -69,6 +68,7 @@ export default {
     }
     this._handleMissingTranslation = fn;
   },
+
   t(key, replacements = {}) {
     return this._translate(key, replacements);
   },
@@ -110,12 +110,19 @@ export default {
 
   _localize(value, options = {}) {
     if (options.dateFormat) {
-      return moment(
-        value,
-        options.parseFormat,
-        this._locale,
-        Boolean(options.strictParse),
-      ).format(this.t(options.dateFormat));
+      try {
+        const moment = require('moment');
+        require('moment/min/locales');
+        return moment(
+          value,
+          options.parseFormat,
+          this._locale,
+          Boolean(options.strictParse),
+        ).format(this.t(options.dateFormat));
+      } catch (e) {
+        console.error('moment.js error', e);
+        return '';
+      }
     }
     if (typeof value === 'number') {
       if (global.Intl) {

@@ -7,7 +7,7 @@ export default class Localize extends BaseComponent {
   static propTypes = {
     tag: PropTypes.oneOfType([
       PropTypes.func,
-      PropTypes.string
+      PropTypes.string,
     ]),
     value: PropTypes.oneOfType([
       PropTypes.string,
@@ -24,7 +24,7 @@ export default class Localize extends BaseComponent {
   };
 
   static defaultProps = {
-    tag: 'span'
+    tag: 'span',
   };
 
   render() {

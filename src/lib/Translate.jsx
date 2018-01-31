@@ -19,7 +19,7 @@ export default class Translate extends BaseComponent {
   };
 
   static defaultProps = {
-    tag: 'span'
+    tag: 'span',
   };
 
   otherProps() {
