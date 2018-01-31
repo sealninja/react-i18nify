@@ -85,8 +85,10 @@ export default {
       });
       return replaced;
     }
-    Object.keys(replaced).forEach((translationKey) => {
-      replaced[translationKey] = this._replace(replaced[translationKey], replacements);
+
+    replaced = {};
+    Object.keys(translation).forEach((translationKey) => {
+      replaced[translationKey] = this._replace(translation[translationKey], replacements);
     });
     return replaced;
   },
