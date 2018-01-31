@@ -96,7 +96,7 @@ const AwesomeComponent = () => (
 ## Helpers
 
 If for some reason, you cannot use the components, you can use the `I18n.t` and `I18n.l` helpers instead.
-These helpers however will not be re-rendered automatically in any way, so if you use those, it's up to handle state change.
+These helpers however will not be re-rendered automatically in any way, so if you use those, it's up to you to handle state change.
 
 ```javascript
 const I18n = require('react-i18nify').I18n;
