@@ -2,17 +2,14 @@
 /* eslint no-console: "off" */
 
 import IntlPolyfill from 'intl';
-import formatMissingTranslation from './formatMissingTranslation';
 import BaseComponent from './Base';
-
-const handleMissingTranslation = formatMissingTranslation;
 
 export default {
   _localeKey: 'en',
   _translationsObject: {},
   _getTranslations: null,
   _getLocale: null,
-  _handleMissingTranslation: handleMissingTranslation,
+  _handleMissingTranslation: text => text.split('.').pop(),
 
   get _translations() {
     return this._getTranslations ? this._getTranslations() : this._translationsObject;

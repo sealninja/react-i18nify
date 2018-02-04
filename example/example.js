@@ -5,7 +5,7 @@ const ReactDOM = require('react-dom/server');
 let ReactI18nfiy = null;
 
 try {
-  ReactI18nfiy = require('react-i18nify'); //
+  ReactI18nfiy = require('react-i18nify');
 } catch (e) {
   ReactI18nfiy = require('../build/index.js');
 }

@@ -107,7 +107,7 @@ I18n.t('application.hello', {name: 'Aad'});
 I18n.t('export', {count: 0});
   // => Niks te exporteren
 I18n.t('application.unknown_translation');
-  // => Unknown Translation
+  // => unknown_translation
 I18n.t('application', {name: 'Aad'});
   // => {hello: 'Hallo, Aad!', title: 'Toffe app met i18n!'}
 
