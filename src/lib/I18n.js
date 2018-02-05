@@ -122,14 +122,19 @@ export default {
 
     if (options.dateFormat) {
       if (moduleAvailable('moment')) {
-        const moment = require('moment');
-        require('moment/min/locales');
-        return moment(
-          value,
-          options.parseFormat,
-          this._locale,
-          Boolean(options.strictParse),
-        ).format(this.t(options.dateFormat));
+        try {
+          const moment = require('moment');
+          require('moment/min/locales');
+          return moment(
+            value,
+            options.parseFormat,
+            this._locale,
+            Boolean(options.strictParse),
+          ).format(this.t(options.dateFormat));
+        } catch (e) {
+          console.error('Date formatting with moment.js failed', e);
+          return '';
+        }
       }
       console.error('Date formatting failed, please install moment.js');
       return '';
