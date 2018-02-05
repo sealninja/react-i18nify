@@ -24,7 +24,7 @@ I18n.setTranslations({
     export: 'Export %{count} items',
     export_0: 'Nothing to export',
     export_1: 'Export %{count} item',
-    two_lines: 'Line 1<br />Line 2',
+    two_lines: 'Line 1< sbr />Line 2',
   },
   nl: {
     application: {
