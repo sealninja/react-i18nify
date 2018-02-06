@@ -1,5 +1,4 @@
 const React = require('react');
-require('moment');
 const ReactDOM = require('react-dom/server');
 
 let ReactI18nfiy = null;
