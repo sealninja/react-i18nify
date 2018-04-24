@@ -2,12 +2,14 @@
 /* eslint no-console: "off" */
 
 import IntlPolyfill from 'intl';
-import moment from 'moment';
-import 'moment/min/locales';
+import parse from 'date-fns/parse';
+import format from 'date-fns/format';
+import locales from 'date-fns/locale';
 import BaseComponent from './Base';
 
 export default {
   _localeKey: 'en',
+  _localeObject: locales.enUS,
   _translationsObject: {},
   _getTranslations: null,
   _getLocale: null,
@@ -27,6 +29,7 @@ export default {
 
   set _locale(locale) {
     this._localeKey = locale;
+    this._localeObject = locales[locale] || locales.enUS;
   },
 
   setLocale(locale, rerenderComponents = true) {
@@ -113,12 +116,10 @@ export default {
 
   _localize(value, options = {}) {
     if (options.dateFormat) {
-      return moment(
-        value,
-        options.parseFormat,
-        this._locale,
-        Boolean(options.strictParse),
-      ).format(this.t(options.dateFormat));
+      const parsedDate = options.parseFormat
+        ? parse(value, options.parseFormat, new Date(), { locale: this._localeObject })
+        : value;
+      return format(parsedDate, this.t(options.dateFormat), { locale: this._localeObject });
     }
     if (typeof value === 'number') {
       if (global.Intl) {
