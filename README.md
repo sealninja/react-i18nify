@@ -1,6 +1,8 @@
 # react-i18nify
 Simple i18n translation and localization components and helpers for React applications.
 
+Warning: this branch represents the v2 pre-release version of `react-i18nify`. [See v1 branch](https://github.com/JSxMachina/react-i18nify).
+
 [![NPM version][version-image]][npm-url] [![Downloads][downloads-image]][npm-url]
 
 A working example of this package can be found [here at RunKit](https://runkit.com/npm/react-i18nify).
@@ -18,7 +20,7 @@ A working example of this package can be found [here at RunKit](https://runkit.c
 Install by using npm:
 
 ```
-$ npm i --save react-i18nify
+$ npm i --save react-i18nify@next
 ```
 
 ## Getting started
