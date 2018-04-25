@@ -5,43 +5,21 @@ import BaseComponent from './Base';
 
 export default class Localize extends BaseComponent {
   static propTypes = {
-    tag: PropTypes.oneOfType([
-      PropTypes.func,
-      PropTypes.string,
-    ]),
     value: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number,
       PropTypes.object]).isRequired,
     options: PropTypes.object,
     dateFormat: PropTypes.string,
-    dangerousHTML: PropTypes.bool,
-    className: PropTypes.string,
-    style: PropTypes.objectOf(PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.string,
-    ])),
-  };
-
-  static defaultProps = {
-    tag: 'span',
+    parseFormat: PropTypes.string,
   };
 
   render() {
     const {
-      tag: Tag, value, dateFormat, options = {}, dangerousHTML, style, className,
+      value, dateFormat, parseFormat, options = {},
     } = this.props;
-    const localization = I18n._localize(value, { ...options, dateFormat });
+    const localization = I18n._localize(value, { ...options, dateFormat, parseFormat });
 
-    if (dangerousHTML) {
-      return (
-        <Tag
-          style={style}
-          className={className}
-          dangerouslySetInnerHTML={{ __html: localization }}
-        />
-      );
-    }
-    return <Tag style={style} className={className}>{localization}</Tag>;
+    return <React.Fragment>{localization}</React.Fragment>;
   }
 }

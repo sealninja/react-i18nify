@@ -2,6 +2,7 @@
 /* eslint no-console: "off" */
 
 import IntlPolyfill from 'intl';
+import React from 'react';
 import parse from 'date-fns/parse';
 import format from 'date-fns/format';
 import locales from 'date-fns/locale';
@@ -81,6 +82,9 @@ export default {
         result = result.split(`%{${replacement}}`).join(replacements[replacement]);
       });
       return result;
+    }
+    if (React.isValidElement(translation)) {
+      return translation;
     }
     if (typeof translation === 'object') {
       const result = {};

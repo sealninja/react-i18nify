@@ -23,7 +23,7 @@ I18n.setTranslations({
     export: 'Export %{count} items',
     export_0: 'Nothing to export',
     export_1: 'Export %{count} item',
-    two_lines: 'Line 1< sbr />Line 2',
+    two_lines: <div>Line 1<br />Line 2</div>,
   },
   nl: {
     application: {
@@ -36,7 +36,7 @@ I18n.setTranslations({
     export: 'Exporteer %{count} dingen',
     export_0: 'Niks te exporteren',
     export_1: 'Exporteer %{count} ding',
-    two_lines: 'Regel 1<br />Regel 2',
+    two_lines: <div>Line 1<br />Line 2</div>,
   },
 });
 
@@ -61,32 +61,25 @@ console.log(I18n.t('application.unknown_translation'));
 
 function AwesomeComponent() {
   return (
-    <div>
-      <Translate value="application.title" />
-      <br />
-      <Translate value="application.title" style={{ fontWeight: 'bold', fontSize: '14px' }} />
-      <br />
-      <Translate value="application.hello" name="Aad" />
-      <br />
-      <Translate value="export" count={1} />
-      <br />
-      <Translate value="export" count={2} />
-      <br />
-      <Translate value="application.title" tag="h1" />
-      <br />
-      <Translate value="two_lines" dangerousHTML />
-      <br />
-      <Localize value="2015-09-03" dateFormat="date.long" />
-      <br />
-      <Localize value="2015-09-03" dateFormat="date.long" tag="div" />
-      <br />
-      <Localize
-        value={10 / 3}
-        options={{
-          style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2,
-        }}
-      />
-    </div>
+    <React.Fragment>
+      <h1><Translate value="application.title" /></h1>
+      <div><Translate value="application.hello" name="Aad" /></div>
+      <ul>
+        <li><Translate value="export" count={1} /></li>
+        <li><Translate value="export" count={2} /></li>
+      </ul>
+      <Translate value="two_lines" />
+      <p><Localize value="07-2016-04" dateFormat="date.long" parseFormat="DD-YYYY-MM" /></p>
+      <p><Localize value="2015-09-03" dateFormat="date.long" /></p>
+      <p>
+        <Localize
+          value={10 / 3}
+          options={{
+            style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2,
+          }}
+        />
+      </p>
+    </React.Fragment>
   );
 }
 

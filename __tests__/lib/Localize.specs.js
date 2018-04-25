@@ -17,67 +17,57 @@ describe('Localize.jsx', () => {
       en: {
         date: 'MMMM Do, YYYY',
       },
+      nl: {
+        date: 'D MMMM YYYY',
+      },
     });
-
-    I18n.setLocale('en');
   });
 
   describe('<Localize/> component', () => {
-    const attrs = { value: '2016-07-04', dateFormat: 'date' };
-    let wrapper = null;
-
     beforeEach(() => {
-      wrapper = mount(<Localize {...attrs} />);
+      I18n.setLocale('en');
+    });
+    test('should handle date localization', () => {
+      const component = mount(<Localize
+        value="2016-07-04"
+        dateFormat="date"
+      />);
+      expect(component.type()).toBe(Localize);
+      expect(component.text()).toBe('July 4th, 2016');
     });
 
-    test('should render a <span/> with style attribute', () => {
-      const style = { fontWeight: 'bold', fontSize: '14px' };
-      wrapper.setProps({ style });
-      const span = wrapper.find('span');
-
-      expect(span.type()).toBe('span');
-      expect(span.props().style).toBe(style);
-      expect(span.html().match(/style="([^"]*)"/i)[1]).toBe('font-weight: bold; font-size: 14px;');
+    test('should handle NL date localization', () => {
+      I18n.setLocale('nl');
+      const component = mount(<Localize
+        value="2016-07-04"
+        dateFormat="date"
+      />);
+      expect(component.type()).toBe(Localize);
+      expect(component.text()).toBe('4 juli 2016');
     });
 
-    test('should render a <div/>', () => {
-      wrapper.setProps({ tag: 'div' });
-      const span = wrapper.find('div');
-
-      expect(span.type()).toBe('div');
+    test('should handle date localization with parseFormat', () => {
+      const component = mount(<Localize
+        value="2016-04-07"
+        parseFormat="YYYY-DD-MM"
+        dateFormat="date"
+      />);
+      expect(component.type()).toBe(Localize);
+      expect(component.text()).toBe('July 4th, 2016');
     });
 
-    test('should render a <span/> with class attribute', () => {
-      const className = 'nice';
-      wrapper.setProps({ className });
-      const span = wrapper.find('span');
-
-      expect(span.type()).toBe('span');
-      expect(span.hasClass(className)).toBeTruthy();
-    });
-
-    test('should handle localization', () => {
-      const span = wrapper.find('span');
-
-      expect(span.type()).toBe('span');
-      expect(span.text()).toBe('July 4th, 2016');
-    });
-
-    test('should handle localization options', () => {
-      const props = {
-        value: 10 / 3,
-        options: {
+    test('should handle number localization', () => {
+      const component = mount(<Localize
+        value={10 / 3}
+        options={{
           style: 'currency',
           currency: 'USD',
           minimumFractionDigits: 2,
           maximumFractionDigits: 2,
-        },
-      };
-
-      const span = mount(<Localize {...props} />).find('span');
-
-      expect(span.type()).toBe('span');
-      expect(span.text()).toBe('$3.33');
+        }}
+      />);
+      expect(component.type()).toBe(Localize);
+      expect(component.text()).toBe('$3.33');
     });
   });
 });

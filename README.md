@@ -42,7 +42,7 @@ I18n.setTranslations({
     export: 'Export %{count} items',
     export_0: 'Nothing to export',
     export_1: 'Export %{count} item',
-    two_lines: 'Line 1<br />Line 2'
+    two_lines: <div>Line 1<br />Line 2<div>
   },
   nl: {
     application: {
@@ -55,7 +55,7 @@ I18n.setTranslations({
     export: 'Exporteer %{count} dingen',
     export_0: 'Niks te exporteren',
     export_1: 'Exporteer %{count} ding',
-    two_lines: 'Regel 1<br />Regel 2'
+    two_lines: <div>Regel 1<br />Regel 2</div>
   }
 });
 
@@ -72,26 +72,22 @@ The easiest way to translate or localize in your React application is by using t
 const { Translate, Localize } = require('react-i18nify');
 
 <Translate value="application.title" />
-  // => <span>Toffe app met i18n!</span>
-<Translate value="application.title" style={{ fontWeight: 'bold', fontSize: '14px' }} />
-  // => <span style="font-weight:bold;font-size:14px;">Toffe app met i18n!</span>
+  // => Toffe app met i18n!
 <Translate value="application.hello" name="Aad" />
-  // => <span>Hallo, Aad!</span>
+  // => Hallo, Aad!
 <Translate value="export" count={1} />
-  // => <span>Exporteer 1 ding</span>
+  // => Exporteer 1 ding
 <Translate value="export" count={2} />
-  // => <span>Exporteer 2 dingen</span>
-<Translate value="two_lines" dangerousHTML />
-  // => <span>Regel 1<br />Regel 2</span>
-<Translate value="application.title" tag="h1" />
- // => <h1>Toffe app met i18n!</h1>
+  // => Exporteer 2 dingen
+<Translate value="two_lines" />
+  // => <div>Regel 1<br />Regel 2</div>
 
+<Localize value="07-2016-04" dateFormat="date.long" parseFormat="DD-YYYY-MM" />
+  // => 7 april 2016
 <Localize value="2015-09-03" dateFormat="date.long" />
-  // => <span>3 september 2015</span>
-<Localize value="2015-09-03" dateFormat="date.long" tag="div" />
-  // => <div>3 september 2015</div>
+  // => 3 september 2015
 <Localize value={10/3} options={{style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2}} />
-  // => <span>€ 3,33</span>
+  // => € 3,33
 ```
 
 ## Helpers
@@ -187,10 +183,10 @@ Helper function to translate a `key`, given an optional set of `replacements`. S
 
 Helper function to localize a `value`, given a set of `options`. See the above Helpers section for examples.
 
-For localizing dates, the `moment` library is used.
+For localizing dates, the `date-fns` library is used.
 A `dateFormat` option can be used for providing a translation key with the format string.
-For the full list of formatting tokens which can be used in the format string, see http://momentjs.com/docs/#/displaying/format/.
-Moreover, a `strictParse` option can be provided. When set to `true`, `moment`'s strict parsing will be used.
+Moreover, `parseFormat` option can be used for providing a formatting string for parsing the value.
+For the full list of formatting tokens which can be used in the format string, see the [date-fns documentation](https://date-fns.org/v2.0.0-alpha.7/docs/format).
 
 For number formatting, the localize helper supports all options as provided by the Javascript built-in `Intl.NumberFormat` object.
 For the full list of options, see https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat.
@@ -207,22 +203,6 @@ React translate component, with the following props:
 
 The translation key to translate.
 
-#### `dangerousHTML` (bool)
-
-If `true`, HTML is allowed in the translation. Defaults to `false`.
-
-#### `className` (string)
-
-Optional CSS classname.
-
-#### `tag` (string|func)
-
-HTML element to render the translation in. Defaults to `span`.
-
-#### `style` (object)
-
-Optional inline styling
-
 #### Other props
 
 All other provided props will be used as replacements for the translation.
@@ -238,30 +218,17 @@ The number or date to localize.
 #### `dateFormat` (string)
 
 The translation key for providing the format string. Only needed for localizing dates.
-For the full list of formatting tokens which can be used in the format string, see http://momentjs.com/docs/#/displaying/format/.
+For the full list of formatting tokens which can be used in the format string, see the [date-fns documentation](https://date-fns.org/v2.0.0-alpha.7/docs/format).
+
+#### `parseFormat` (string)
+
+An optional formatting string for parsing the value when localizing dates.
+For the full list of formatting tokens which can be used in the parsing string, see the [date-fns documentation](https://date-fns.org/v2.0.0-alpha.7/docs/parse).
 
 #### `options` (object)
 
-When localizing dates, a `strictParse` option can be provided. When set to `true`, `moment`'s strict parsing will be used.
-
 When localizing numbers, the localize component supports all options as provided by the Javascript built-in `Intl.NumberFormat` object.
 For the full list of options, see https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat.
-
-#### `dangerousHTML` (bool)
-
-If `true`, HTML is allowed in the localization. Defaults to `false`.
-
-#### `className` (string)
-
-Optional CSS classname.
-
-#### `tag` (string|func)
-
-HTML element to render the localization in. Defaults to `span`.
-
-#### `style` (object)
-
-Optional inline styling
 
 [version-image]: https://img.shields.io/npm/v/react-i18nify.svg
 [downloads-image]: https://img.shields.io/npm/dm/react-i18nify.svg
