@@ -46,11 +46,6 @@ export default {
     }
   },
 
-  loadTranslations(translations) {
-    console.error('I18n.loadTranslations is deprecated, please use I18n.setTranslations instead');
-    this.setTranslations(translations);
-  },
-
   setTranslationsGetter(fn) {
     if (typeof fn !== 'function') {
       throw new Error('Translations getter must be a function');
