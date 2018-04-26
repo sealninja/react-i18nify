@@ -3,17 +3,13 @@
 import React from 'react';
 import { mount, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import { I18n } from '../../src';
-import Localize from '../../src/lib/Localize';
+import { setLocale, setTranslations, Localize } from '../../src';
+
 
 describe('Localize.jsx', () => {
-  test('should export <Localize/> component', () => {
-    expect(Localize).toBeDefined();
-  });
-
   beforeAll(() => {
     configure({ adapter: new Adapter() });
-    I18n.setTranslations({
+    setTranslations({
       en: {
         date: 'MMMM Do, YYYY',
       },
@@ -25,7 +21,7 @@ describe('Localize.jsx', () => {
 
   describe('<Localize/> component', () => {
     beforeEach(() => {
-      I18n.setLocale('en');
+      setLocale('en');
     });
     test('should handle date localization', () => {
       const component = mount(<Localize
@@ -37,12 +33,22 @@ describe('Localize.jsx', () => {
     });
 
     test('should handle NL date localization', () => {
-      I18n.setLocale('nl');
+      setLocale('nl');
       const component = mount(<Localize
         value="2016-07-04"
         dateFormat="date"
       />);
       expect(component.type()).toBe(Localize);
+      expect(component.text()).toBe('4 juli 2016');
+    });
+
+    test('should handle locale switching', () => {
+      const component = mount(<Localize
+        value="2016-07-04"
+        dateFormat="date"
+      />);
+      expect(component.text()).toBe('July 4th, 2016');
+      setLocale('nl');
       expect(component.text()).toBe('4 juli 2016');
     });
 

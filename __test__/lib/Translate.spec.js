@@ -3,17 +3,12 @@
 import React from 'react';
 import { mount, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import { I18n } from '../../src';
-import Translate from '../../src/lib/Translate';
+import { setLocale, setTranslations, Translate } from '../../src';
 
 describe('Translate.jsx', () => {
-  test('should export <Translate/> component', () => {
-    expect(Translate).toBeDefined();
-  });
-
   beforeAll(() => {
     configure({ adapter: new Adapter() });
-    I18n.setTranslations({
+    setTranslations({
       en: {
         application: {
           title: 'Awesome app with i18n!',
@@ -24,12 +19,17 @@ describe('Translate.jsx', () => {
         export_1: 'Export %{count} item',
         two_lines: <div>Line 1<br />Line 2</div>,
       },
+      nl: {
+        application: {
+          title: 'Toffe app met i18n!',
+        },
+      },
     });
   });
 
   describe('<Translate/> component', () => {
     beforeEach(() => {
-      I18n.setLocale('en');
+      setLocale('en');
     });
 
     test('should handle translation', () => {
@@ -39,6 +39,26 @@ describe('Translate.jsx', () => {
 
       expect(component.type()).toBe(Translate);
       expect(component.text()).toBe('Awesome app with i18n!');
+    });
+
+    test('should handle NL translation', () => {
+      setLocale('nl');
+      const component = mount(<Translate
+        value="application.title"
+      />);
+
+      expect(component.type()).toBe(Translate);
+      expect(component.text()).toBe('Toffe app met i18n!');
+    });
+
+    test('should handle locale switching', () => {
+      const component = mount(<Translate
+        value="application.title"
+      />);
+
+      expect(component.text()).toBe('Awesome app with i18n!');
+      setLocale('nl');
+      expect(component.text()).toBe('Toffe app met i18n!');
     });
 
     test('should handle dynamic placeholder', () => {

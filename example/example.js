@@ -9,9 +9,11 @@ try {
   ReactI18nfiy = require('../build/index.js');
 }
 
-const { I18n, Translate, Localize } = ReactI18nfiy;
+const {
+  setTranslations, setLocale, setHandleMissingTranslation, t, l, Translate, Localize, I18n,
+} = ReactI18nfiy;
 
-I18n.setTranslations({
+setTranslations({
   en: {
     application: {
       title: 'Awesome app with i18n!',
@@ -40,24 +42,24 @@ I18n.setTranslations({
   },
 });
 
-I18n.setLocale('nl');
+setLocale('nl');
 
-console.log(I18n.t('application.title'));
-console.log(I18n.t('application.hello', { name: 'Aad' }));
-console.log(I18n.t('export', { count: 0 }));
-console.log(I18n.t('application.unknown_translation'));
-console.log(I18n.t('application', { name: 'Aad' }));
+console.log(t('application.title'));
+console.log(t('application.hello', { name: 'Aad' }));
+console.log(t('export', { count: 0 }));
+console.log(t('application.unknown_translation'));
+console.log(t('application', { name: 'Aad' }));
 
-console.log(I18n.l(1385856000000, { dateFormat: 'date.long' }));
-console.log(I18n.l(Math.PI, { maximumFractionDigits: 2 }));
+console.log(l(1385856000000, { dateFormat: 'date.long' }));
+console.log(l(Math.PI, { maximumFractionDigits: 2 }));
 
 function myHandleMissingTranslation(key, replacements) {
   return `Missing translation: ${key}`;
 }
 
-I18n.setHandleMissingTranslation(myHandleMissingTranslation);
+setHandleMissingTranslation(myHandleMissingTranslation);
 
-console.log(I18n.t('application.unknown_translation'));
+console.log(t('application.unknown_translation'));
 
 function AwesomeComponent() {
   return (

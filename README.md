@@ -28,9 +28,9 @@ $ npm i --save react-i18nify@next
 Start by loading setting translations and locale to be used:
 
 ```javascript
-const { I18n } = require('react-i18nify');
+const { setTranslations, setLocale } = require('react-i18nify');
 
-I18n.setTranslations({
+setTranslations({
   en: {
     application: {
       title: 'Awesome app with i18n!',
@@ -59,7 +59,7 @@ I18n.setTranslations({
   }
 });
 
-I18n.setLocale('nl');
+setLocale('nl');
 ```
 
 Now you're all set up to start unleashing the power of `react-i18nify`!
@@ -92,94 +92,105 @@ const { Translate, Localize } = require('react-i18nify');
 
 ## Helpers
 
-If for some reason, you cannot use the components, you can use the `I18n.t` and `I18n.l` helpers instead.
-These helpers however will not be re-rendered automatically in any way, so if you use those, it's up to you to handle state change.
+If for some reason, you cannot use the components, you can use the `t` and `l` helpers instead.
 
 ```javascript
-const { I18n } = require('react-i18nify');
+const { t, l } = require('react-i18nify');
 
-I18n.t('application.title');
+t('application.title');
   // => Toffe app met i18n!
-I18n.t('application.hello', {name: 'Aad'});
+t('application.hello', {name: 'Aad'});
   // => Hallo, Aad!'
-I18n.t('export', {count: 0});
+t('export', {count: 0});
   // => Niks te exporteren
-I18n.t('application.unknown_translation');
+t('application.unknown_translation');
   // => unknown_translation
-I18n.t('application', {name: 'Aad'});
+t('application', {name: 'Aad'});
   // => {hello: 'Hallo, Aad!', title: 'Toffe app met i18n!'}
 
-I18n.l(1385856000000, { dateFormat: 'date.long' });
+l(1385856000000, { dateFormat: 'date.long' });
   // => 1 december 2013
-I18n.l(Math.PI, { maximumFractionDigits: 2 });
+l(Math.PI, { maximumFractionDigits: 2 });
   // => 3,14
+```
+
+If you want these helpers to be re-rendered automatically when the locale or translations change, you have to wrap them in a `<I18n>` component.
+
+```javascript
+const { I18n, t } = require('react-i18nify');
+
+<I18n><input placeholder={t("application.title")} /></I18n>
 ```
 
 ## API Reference
 
-### `I18n`
-
-Main module for handling all configurations and translations, with the following functions:
-
-#### `setLocale(locale, rerenderComponents = true)`
+### `setLocale(locale, rerenderComponents = true)`
 
 The used locale can be set with this function. By default, changing the locale will re-render all components.
 This behavior can be prevented by providing `false` as a second argument.
 
-#### `setTranslations(translations, rerenderComponents = true)`
+### `getLocale()`
+
+Get the currently used locale.
+
+### `setTranslations(translations, rerenderComponents = true)`
 
 The used translations can be set with this function. By default, changing the translations will re-render all components.
 This behavior can be prevented by providing `false` as a second argument.
 
-#### `setLocaleGetter(fn)`
+### `getTranslations()`
+
+Get the currently used translations.
+
+### `setLocaleGetter(fn)`
 
 Alternatively to using `setLocale`, you can provide a callback to return the locale with `setLocaleGetter`:
 
 ```javascript
-const { I18n } = require('react-i18nify');
+const { setLocaleGetter } = require('react-i18nify');
 
 const locale = () => 'nl';
 
-I18n.setLocaleGetter(locale);
+setLocaleGetter(locale);
 ```
 
-#### `setTranslationsGetter(fn)`
+### `setTranslationsGetter(fn)`
 
 Alternatively to using `setTranslations`, you can provide a callback to return the translations with `setTranslationsGetter`:
 
 ```javascript
-const { I18n } = require('react-i18nify');
+const { setTranslationsGetter } = require('react-i18nify');
 
 const translation = () => ({
   en: { ... },
   nl: { ... }
 });
 
-I18n.setTranslationsGetter(translation);
+setTranslationsGetter(translation);
 ```
 
-#### `setHandleMissingTranslation(fn)`
+### `setHandleMissingTranslation(fn)`
 
 By default, when a translation is missing, the translation key will be returned in a slightly formatted way,
-as can be seen in the `I18n.t('application.unknown_translation');` example above.
+as can be seen in the `t('application.unknown_translation');` example above.
 You can however overwrite this behavior by setting a function to handle missing translations.
 
 ```javascript
-const { I18n } = require('react-i18nify');
+const { setHandleMissingTranslation, t } = require('react-i18nify');
 
 const myHandleMissingTranslation = (key, replacements) => `Missing translation: ${key}`;
 
-I18n.setHandleMissingTranslation(myHandleMissingTranslation);
+setHandleMissingTranslation(myHandleMissingTranslation);
 
-I18n.t('application.unknown_translation');
+t('application.unknown_translation');
   // => Missing translation: application.unknown_translation
 ```
 
-#### `t(key, replacements = {})`
+### `t(key, replacements = {})`
 
 Helper function to translate a `key`, given an optional set of `replacements`. See the above Helpers section for examples.
 
-#### `l(value, options)`
+### `l(value, options)`
 
 Helper function to localize a `value`, given a set of `options`. See the above Helpers section for examples.
 
@@ -191,7 +202,7 @@ For the full list of formatting tokens which can be used in the format string, s
 For number formatting, the localize helper supports all options as provided by the Javascript built-in `Intl.NumberFormat` object.
 For the full list of options, see https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat.
 
-#### `forceComponentsUpdate()`
+### `forceComponentsUpdate()`
 
 This function can be called to force a re-render of all I18n components.
 
@@ -229,6 +240,15 @@ For the full list of formatting tokens which can be used in the parsing string, 
 
 When localizing numbers, the localize component supports all options as provided by the Javascript built-in `Intl.NumberFormat` object.
 For the full list of options, see https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat.
+
+### `<I18n>`
+
+React I18n wrapper component, with the following prop:
+
+#### `children` (node)
+
+The children to automatically re-render when the locale or translations change.
+
 
 [version-image]: https://img.shields.io/npm/v/react-i18nify.svg
 [downloads-image]: https://img.shields.io/npm/dm/react-i18nify.svg

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import I18n from './I18n';
+import { t } from '../';
+
 import BaseComponent from './Base';
 
 export default class Translate extends BaseComponent {
@@ -10,7 +11,7 @@ export default class Translate extends BaseComponent {
 
   render() {
     const { value, ...otherProps } = this.props;
-    const translation = I18n._translate(value, otherProps);
+    const translation = t(value, otherProps);
 
     return <React.Fragment>{translation}</React.Fragment>;
   }

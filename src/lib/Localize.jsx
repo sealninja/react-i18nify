@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import I18n from './I18n';
+import { l } from '../';
 import BaseComponent from './Base';
 
 export default class Localize extends BaseComponent {
@@ -9,16 +9,16 @@ export default class Localize extends BaseComponent {
       PropTypes.string,
       PropTypes.number,
       PropTypes.object]).isRequired,
-    options: PropTypes.object,
     dateFormat: PropTypes.string,
     parseFormat: PropTypes.string,
+    options: PropTypes.object,
   };
 
   render() {
     const {
       value, dateFormat, parseFormat, options = {},
     } = this.props;
-    const localization = I18n._localize(value, { ...options, dateFormat, parseFormat });
+    const localization = l(value, { ...options, dateFormat, parseFormat });
 
     return <React.Fragment>{localization}</React.Fragment>;
   }

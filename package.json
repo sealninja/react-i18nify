@@ -4,7 +4,7 @@
   "description": "Simple i18n translation and localization components and helpers for React applications.",
   "main": "./build/index.js",
   "scripts": {
-    "test": "jest --colors --env=jsdom",
+    "test": "jest --verbose",
     "test:watch": "npm test -- --watch",
     "lint": "eslint src/**/*.jsx src/**/*.js __tests__/**/*.js",
     "lint:fix": "npm run lint -- --fix",
@@ -12,9 +12,6 @@
     "build": "rm -rf build && babel src -d build",
     "prepare": "npm run clean && npm run build",
     "precommit": "npm run lint && npm test"
-  },
-  "jest": {
-    "verbose": true
   },
   "files": [
     "build",

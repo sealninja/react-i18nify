@@ -1,10 +1,13 @@
 /* global describe, test, expect */
 
-import { I18n, Translate, Localize } from '../src';
+import { setLocale, setTranslations, Translate, Localize } from '../src';
 
 describe('index.js', () => {
-  test('should export I18n object', () => {
-    expect(I18n).toBeDefined();
+  test('should export setLocale function', () => {
+    expect(setLocale).toBeDefined();
+  });
+  test('should export setTranslations function', () => {
+    expect(setTranslations).toBeDefined();
   });
   test('should export <Translate/> component', () => {
     expect(Translate).toBeDefined();
