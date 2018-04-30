@@ -28,7 +28,7 @@ $ npm i --save react-i18nify@next
 Start by loading setting translations and locale to be used:
 
 ```javascript
-const { setTranslations, setLocale } = require('react-i18nify');
+import { setTranslations, setLocale } from 'react-i18nify';
 
 setTranslations({
   en: {
@@ -69,7 +69,7 @@ Now you're all set up to start unleashing the power of `react-i18nify`!
 The easiest way to translate or localize in your React application is by using the `Translate` and `Localize` components:
 
 ```javascript
-const { Translate, Localize } = require('react-i18nify');
+import { Translate, Localize } from 'react-i18nify';
 
 <Translate value="application.title" />
   // => Toffe app met i18n!
@@ -92,10 +92,10 @@ const { Translate, Localize } = require('react-i18nify');
 
 ## Helpers
 
-If for some reason, you cannot use the components, you can use the `t` and `l` helpers instead.
+If for some reason, you cannot use the components, you can use the `t` and `l` helpers instead:
 
 ```javascript
-const { t, l } = require('react-i18nify');
+import { t, l } from 'react-i18nify';
 
 t('application.title');
   // => Toffe app met i18n!
@@ -114,10 +114,10 @@ l(Math.PI, { maximumFractionDigits: 2 });
   // => 3,14
 ```
 
-If you want these helpers to be re-rendered automatically when the locale or translations change, you have to wrap them in a `<I18n>` component using its `render` prop.
+If you want these helpers to be re-rendered automatically when the locale or translations change, you have to wrap them in a `<I18n>` component using its `render` prop:
 
 ```javascript
-const { I18n, t } = require('react-i18nify');
+import { I18n, t } from 'react-i18nify';
 
 <I18n render={() => <input placeholder={t("application.title")} />} />
 ```
@@ -147,11 +147,11 @@ Get the currently used translations.
 Alternatively to using `setLocale`, you can provide a callback to return the locale with `setLocaleGetter`:
 
 ```javascript
-const { setLocaleGetter } = require('react-i18nify');
+import { setLocaleGetter } from 'react-i18nify';
 
-const locale = () => 'nl';
+const localeFunction = () => 'nl';
 
-setLocaleGetter(locale);
+setLocaleGetter(localeFunction);
 ```
 
 ### `setTranslationsGetter(fn)`
@@ -159,14 +159,14 @@ setLocaleGetter(locale);
 Alternatively to using `setTranslations`, you can provide a callback to return the translations with `setTranslationsGetter`:
 
 ```javascript
-const { setTranslationsGetter } = require('react-i18nify');
+import { setTranslationsGetter } from 'react-i18nify';
 
-const translation = () => ({
+const translationsFunction = () => ({
   en: { ... },
   nl: { ... }
 });
 
-setTranslationsGetter(translation);
+setTranslationsGetter(translationsFunction);
 ```
 
 ### `setHandleMissingTranslation(fn)`
@@ -176,11 +176,11 @@ as can be seen in the `t('application.unknown_translation');` example above.
 You can however overwrite this behavior by setting a function to handle missing translations.
 
 ```javascript
-const { setHandleMissingTranslation, t } = require('react-i18nify');
+import { setHandleMissingTranslation, t } from 'react-i18nify';
 
-const myHandleMissingTranslation = (key, replacements) => `Missing translation: ${key}`;
+const handleMissingTranslationFunction = (key, replacements) => `Missing translation: ${key}`;
 
-setHandleMissingTranslation(myHandleMissingTranslation);
+setHandleMissingTranslation(handleMissingTranslationFunction);
 
 t('application.unknown_translation');
   // => Missing translation: application.unknown_translation
@@ -210,11 +210,11 @@ This function can be called to force a re-render of all I18n components.
 
 React translate component, with the following props:
 
-#### `value` (string)
+* `value` (string)
 
 The translation key to translate.
 
-#### Other props
+* Other props
 
 All other provided props will be used as replacements for the translation.
 
@@ -222,21 +222,21 @@ All other provided props will be used as replacements for the translation.
 
 React localize component, with the following props:
 
-#### `value` (number|string|object)
+* `value` (number|string|object)
 
 The number or date to localize.
 
-#### `dateFormat` (string)
+* `dateFormat` (string)
 
 The translation key for providing the format string. Only needed for localizing dates.
 For the full list of formatting tokens which can be used in the format string, see the [date-fns documentation](https://date-fns.org/v2.0.0-alpha.7/docs/format).
 
-#### `parseFormat` (string)
+* `parseFormat` (string)
 
 An optional formatting string for parsing the value when localizing dates.
 For the full list of formatting tokens which can be used in the parsing string, see the [date-fns documentation](https://date-fns.org/v2.0.0-alpha.7/docs/parse).
 
-#### `options` (object)
+* `options` (object)
 
 When localizing numbers, the localize component supports all options as provided by the Javascript built-in `Intl.NumberFormat` object.
 For the full list of options, see https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat.
@@ -245,7 +245,7 @@ For the full list of options, see https://developer.mozilla.org/en/docs/Web/Java
 
 React I18n wrapper component, with the following prop:
 
-#### `render` (func)
+* `render` (func)
 
 The return value of the provide function will be rendered and automatically re-render when the locale or translations change.
 
