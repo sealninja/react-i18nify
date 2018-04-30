@@ -114,12 +114,12 @@ l(Math.PI, { maximumFractionDigits: 2 });
   // => 3,14
 ```
 
-If you want these helpers to be re-rendered automatically when the locale or translations change, you have to wrap them in a `<I18n>` component.
+If you want these helpers to be re-rendered automatically when the locale or translations change, you have to wrap them in a `<I18n>` component using its `render` prop.
 
 ```javascript
 const { I18n, t } = require('react-i18nify');
 
-<I18n><input placeholder={t("application.title")} /></I18n>
+<I18n render={() => <input placeholder={t("application.title")} />} />
 ```
 
 ## API Reference
@@ -245,9 +245,9 @@ For the full list of options, see https://developer.mozilla.org/en/docs/Web/Java
 
 React I18n wrapper component, with the following prop:
 
-#### `children` (node)
+#### `render` (func)
 
-The children to automatically re-render when the locale or translations change.
+The return value of the provide function will be rendered and automatically re-render when the locale or translations change.
 
 
 [version-image]: https://img.shields.io/npm/v/react-i18nify.svg

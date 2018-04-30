@@ -29,8 +29,7 @@ describe('I18n.jsx', () => {
     });
 
     test('should handle locale switching for attributes', async () => {
-      const Input = () => <input placeholder={t('application.title')} />;
-      const component = mount(<I18n><Input /></I18n>);
+      const component = mount(<I18n render={() => <input placeholder={t('application.title')} />} />);
 
       expect(component.html()).toBe('<input placeholder="Awesome app with i18n!">');
       setLocale('nl');
@@ -38,8 +37,7 @@ describe('I18n.jsx', () => {
     });
 
     test('should handle locale switching for children', async () => {
-      const Span = () => <span>{t('application.title')}</span>;
-      const component = mount(<I18n><Span /></I18n>);
+      const component = mount(<I18n render={() => <span>{t('application.title')}</span>} />);
 
       expect(component.html()).toBe('<span>Awesome app with i18n!</span>');
       setLocale('nl');
