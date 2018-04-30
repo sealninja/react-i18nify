@@ -1,5 +1,5 @@
-const React = require('react');
-const ReactDOM = require('react-dom/server');
+import React from 'react';
+import ReactDOM from 'react-dom/server';
 
 let ReactI18nfiy = null;
 
@@ -53,11 +53,7 @@ console.log(t('application', { name: 'Aad' }));
 console.log(l(1385856000000, { dateFormat: 'date.long' }));
 console.log(l(Math.PI, { maximumFractionDigits: 2 }));
 
-function myHandleMissingTranslation(key, replacements) {
-  return `Missing translation: ${key}`;
-}
-
-setHandleMissingTranslation(myHandleMissingTranslation);
+setHandleMissingTranslation((key, replacements) => `Missing translation: ${key}`);
 
 console.log(t('application.unknown_translation'));
 
@@ -81,6 +77,7 @@ function AwesomeComponent() {
           }}
         />
       </p>
+      <I18n render={() => <input placeholder={t('application.title')} />} />
     </React.Fragment>
   );
 }

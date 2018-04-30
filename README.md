@@ -178,9 +178,7 @@ You can however overwrite this behavior by setting a function to handle missing 
 ```javascript
 import { setHandleMissingTranslation, t } from 'react-i18nify';
 
-const handleMissingTranslationFunction = (key, replacements) => `Missing translation: ${key}`;
-
-setHandleMissingTranslation(handleMissingTranslationFunction);
+setHandleMissingTranslation((key, replacements) => `Missing translation: ${key}`);
 
 t('application.unknown_translation');
   // => Missing translation: application.unknown_translation
