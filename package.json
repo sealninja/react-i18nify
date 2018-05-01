@@ -17,12 +17,16 @@
     "src",
     "example"
   ],
-  "author": "JSxMachina",
   "repository": {
     "type": "git",
-    "url": "git://github.com/JSxMachina/react-i18nify.git"
+    "url": "git+https://github.com/JSxMachina/react-i18nify.git"
   },
-  "license": "ISC",
+  "author": "JSxMachina",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JSxMachina/react-i18nify/issues"
+  },
+  "homepage": "https://github.com/JSxMachina/react-i18nify#readme",
   "keywords": [
     "react",
     "i18n",
@@ -31,7 +35,6 @@
     "components",
     "helpers",
     "flux",
-    "fluxible",
     "redux"
   ],
   "runkitExampleFilename": "example/example.js",
