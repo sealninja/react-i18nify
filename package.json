@@ -35,13 +35,11 @@
     "redux"
   ],
   "runkitExampleFilename": "example/example.js",
-  "peerDependencies": {
-    "react": "^16.0.0"
-  },
   "dependencies": {
     "date-fns": "^2.0.0-alpha.7",
     "intl": "^1.2",
-    "prop-types": "^15.6.1"
+    "prop-types": "^15.6.1",
+    "react": "^16.0.0"
   },
   "devDependencies": {
     "babel-cli": "6.26.0",
