@@ -9,44 +9,46 @@ import BaseComponent from './Base';
 import { fetchTranslation, replace } from './utils';
 
 const settings = {
-  _localeKey: 'en',
-  _localeObject: locales.enUS,
-  _translationsObject: {},
-  _getTranslations: null,
-  _getLocale: null,
-  _handleMissingTranslation: text => text.split('.').pop(),
+  localeKey: 'en',
+  localeObject: locales.enUS,
+  translationsObject: {},
+  getTranslations: null,
+  getLocale: null,
+  handleMissingTranslation: text => text.split('.').pop(),
 
-  get _translations() {
-    return this._getTranslations ? this._getTranslations() : this._translationsObject;
+  get translations() {
+    return this.getTranslations ? this.getTranslations() : this.translationsObject;
   },
 
-  set _translations(translations) {
-    this._translationsObject = translations;
+  set translations(translations) {
+    this.translationsObject = translations;
   },
 
-  get _locale() {
-    return this._getLocale ? this._getLocale() : this._localeKey;
+  get locale() {
+    return this.getLocale ? this.getLocale() : this.localeKey;
   },
 
-  set _locale(locale) {
-    this._localeKey = locale;
-    this._localeObject = locales[locale] || locales.enUS;
+  set locale(locale) {
+    this.localeKey = locale;
+    this.localeObject = locales[locale] || locales[locale.split('-')[0]] || locales.enUS;
   },
 };
 
-export const getLocale = () => settings._locale;
+export const getLocale = () => settings.locale;
 
 export const setLocale = (locale, rerenderComponents = true) => {
-  settings._locale = locale;
-  settings._getLocale = null;
+  settings.locale = locale;
+  settings.getLocale = null;
   if (rerenderComponents) {
     BaseComponent.rerenderAll();
   }
 };
 
+export const getTranslations = () => settings.translations;
+
 export const setTranslations = (translations, rerenderComponents = true) => {
-  settings._translations = translations;
-  settings._getTranslations = null;
+  settings.translations = translations;
+  settings.getTranslations = null;
   if (rerenderComponents) {
     BaseComponent.rerenderAll();
   }
@@ -56,36 +58,32 @@ export const setLocaleGetter = (fn) => {
   if (typeof fn !== 'function') {
     throw new Error('Locale getter must be a function');
   }
-  settings._getLocale = fn;
+  settings.getLocale = fn;
 };
 
 export const setTranslationsGetter = (fn) => {
   if (typeof fn !== 'function') {
     throw new Error('Translations getter must be a function');
   }
-  settings._getTranslations = fn;
+  settings.getTranslations = fn;
 };
 
 export const setHandleMissingTranslation = (fn) => {
   if (typeof fn !== 'function') {
     throw new Error('Handle missing translation must be a function');
   }
-  settings._handleMissingTranslation = fn;
+  settings.handleMissingTranslation = fn;
 };
 
 export const t = (key, replacements = {}) => {
   let translation = '';
   try {
-    const translationLocale = settings._translations[settings._locale] ?
-      settings._locale :
-      settings._locale.split('-')[0];
-    translation = fetchTranslation(
-      settings._translations,
-      `${translationLocale}.${key}`,
-      replacements.count,
-    );
+    const translationLocale = settings.translations[settings.locale]
+      ? settings.locale
+      : settings.locale.split('-')[0];
+    translation = fetchTranslation(settings.translations, `${translationLocale}.${key}`, replacements.count);
   } catch (err) {
-    return settings._handleMissingTranslation(key, replacements);
+    return settings.handleMissingTranslation(key, replacements);
   }
   return replace(translation, replacements);
 };
@@ -93,20 +91,20 @@ export const t = (key, replacements = {}) => {
 export const l = (value, options) => {
   if (options.dateFormat) {
     const parsedDate = options.parseFormat
-      ? parse(value, options.parseFormat, new Date(), { locale: settings._localeObject })
+      ? parse(value, options.parseFormat, new Date(), { locale: settings.localeObject })
       : value;
-    return format(parsedDate, t(options.dateFormat), { locale: settings._localeObject });
+    return format(parsedDate, t(options.dateFormat), { locale: settings.localeObject });
   }
   if (typeof value === 'number') {
     if (global.Intl) {
       if (!(Intl.NumberFormat &&
-        Intl.NumberFormat.supportedLocalesOf(settings._locale).length === 1)) {
+        Intl.NumberFormat.supportedLocalesOf(settings.locale).length === 1)) {
         Intl.NumberFormat = IntlPolyfill.NumberFormat;
       }
     } else {
       global.Intl = IntlPolyfill;
     }
-    return new Intl.NumberFormat(settings._locale, options).format(value);
+    return new Intl.NumberFormat(settings.locale, options).format(value);
   }
   return value;
 };
