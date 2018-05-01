@@ -25,7 +25,7 @@ npm i --save react-i18nify@next
 
 ## Getting started
 
-Start by loading setting translations and locale to be used:
+Start by setting the translations and locale to be used:
 
 ```javascript
 import { setTranslations, setLocale } from 'react-i18nify';
@@ -62,7 +62,7 @@ setTranslations({
 setLocale('nl');
 ```
 
-Now you're all set up to start unleashing the power of `react-i18nify`!
+Now you're all set up to unleash the power of `react-i18nify`!
 
 ## Components
 
@@ -123,6 +123,49 @@ import { I18n, t } from 'react-i18nify';
 ```
 
 ## API Reference
+
+### `<Translate>`
+
+React translate component, with the following props:
+
+* `value` (string)
+
+The translation key to translate.
+
+* Other props
+
+All other provided props will be used as replacements for the translation.
+
+### `<Localize>`
+
+React localize component, with the following props:
+
+* `value` (number|string|object)
+
+The number or date to localize.
+
+* `dateFormat` (string)
+
+The translation key for providing the format string. Only needed for localizing dates.
+For the full list of formatting tokens which can be used in the format string, see the [date-fns documentation](https://date-fns.org/v2.0.0-alpha.7/docs/format).
+
+* `parseFormat` (string)
+
+An optional formatting string for parsing the value when localizing dates.
+For the full list of formatting tokens which can be used in the parsing string, see the [date-fns documentation](https://date-fns.org/v2.0.0-alpha.7/docs/parse).
+
+* `options` (object)
+
+When localizing numbers, the localize component supports all options as provided by the Javascript built-in `Intl.NumberFormat` object.
+For the full list of options, see https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat.
+
+### `<I18n>`
+
+React I18n wrapper component, with the following prop:
+
+* `render` (func)
+
+The return value of the provide function will be rendered and automatically re-render when the locale or translations change.
 
 ### `setLocale(locale, rerenderComponents = true)`
 
@@ -203,50 +246,6 @@ For the full list of options, see https://developer.mozilla.org/en/docs/Web/Java
 ### `forceComponentsUpdate()`
 
 This function can be called to force a re-render of all I18n components.
-
-### `<Translate>`
-
-React translate component, with the following props:
-
-* `value` (string)
-
-The translation key to translate.
-
-* Other props
-
-All other provided props will be used as replacements for the translation.
-
-### `<Localize>`
-
-React localize component, with the following props:
-
-* `value` (number|string|object)
-
-The number or date to localize.
-
-* `dateFormat` (string)
-
-The translation key for providing the format string. Only needed for localizing dates.
-For the full list of formatting tokens which can be used in the format string, see the [date-fns documentation](https://date-fns.org/v2.0.0-alpha.7/docs/format).
-
-* `parseFormat` (string)
-
-An optional formatting string for parsing the value when localizing dates.
-For the full list of formatting tokens which can be used in the parsing string, see the [date-fns documentation](https://date-fns.org/v2.0.0-alpha.7/docs/parse).
-
-* `options` (object)
-
-When localizing numbers, the localize component supports all options as provided by the Javascript built-in `Intl.NumberFormat` object.
-For the full list of options, see https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat.
-
-### `<I18n>`
-
-React I18n wrapper component, with the following prop:
-
-* `render` (func)
-
-The return value of the provide function will be rendered and automatically re-render when the locale or translations change.
-
 
 [version-image]: https://img.shields.io/npm/v/react-i18nify.svg
 [downloads-image]: https://img.shields.io/npm/dm/react-i18nify.svg
