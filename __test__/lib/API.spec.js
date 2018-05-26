@@ -95,13 +95,13 @@ describe('API', () => {
         en: {
           dates: {
             lts: 'LTS',
-            short: 'MM-DD-YYYY',
-            long: 'MMMM Do, YYYY',
+            short: 'MM-dd-YYYY',
+            long: 'MMMM do, YYYY',
           },
         },
         nl: {
           dates: {
-            long: 'D MMMM YYYY',
+            long: 'd MMMM YYYY',
           },
         },
       });
@@ -115,7 +115,7 @@ describe('API', () => {
     });
 
     test('should support parseFormat', () => {
-      const result = l('2014-30-12', { parseFormat: 'YYYY-DD-MM', dateFormat: 'dates.short' });
+      const result = l('2014-30-12', { parseFormat: 'YYYY-dd-MM', dateFormat: 'dates.short' });
       expect(result).toEqual('12-30-2014');
     });
 
