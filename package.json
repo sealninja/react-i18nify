@@ -40,7 +40,7 @@
   ],
   "runkitExampleFilename": "example/example.js",
   "dependencies": {
-    "date-fns": "^2.0.0-alpha.9",
+    "date-fns": "^2.0.0-alpha.10",
     "intl": "^1.2",
     "prop-types": "^15.6.1",
     "react": "^16.0.0"
@@ -58,9 +58,9 @@
     "eslint-config-airbnb": "16.1.0",
     "eslint-plugin-import": "2.12.0",
     "eslint-plugin-jsx-a11y": "6.0.3",
-    "eslint-plugin-react": "7.8.2",
+    "eslint-plugin-react": "7.9.1",
     "husky": "^0.14.3",
-    "jest": "23.0.0",
+    "jest": "23.1.0",
     "react": "^16.4.0",
     "react-dom": "16.4.0"
   }
