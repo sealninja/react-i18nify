@@ -15,6 +15,7 @@ export default class Localize extends BaseComponent {
       PropTypes.object]).isRequired,
     options: PropTypes.object,
     dateFormat: PropTypes.string,
+    calendarFormat: PropTypes.string,
     dangerousHTML: PropTypes.bool,
     className: PropTypes.string,
     style: PropTypes.objectOf(PropTypes.oneOfType([
@@ -29,9 +30,9 @@ export default class Localize extends BaseComponent {
 
   render() {
     const {
-      tag: Tag, value, dateFormat, options = {}, dangerousHTML, style, className,
+      tag: Tag, value, dateFormat, calendarFormat, options = {}, dangerousHTML, style, className,
     } = this.props;
-    const localization = I18n._localize(value, { ...options, dateFormat });
+    const localization = I18n._localize(value, { ...options, dateFormat, calendarFormat });
 
     if (dangerousHTML) {
       return (

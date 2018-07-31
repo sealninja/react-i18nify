@@ -120,6 +120,18 @@ export default {
         Boolean(options.strictParse),
       ).format(this.t(options.dateFormat));
     }
+    if (options.calendarFormat) {
+      let calendarFormat = this.t(options.calendarFormat);
+      if (typeof calendarFormat !== 'object') {
+        calendarFormat = {};
+      }
+      return moment(
+        value,
+        options.parseFormat,
+        this._locale,
+        Boolean(options.strictParse),
+      ).calendar(null, calendarFormat);
+    }
     if (typeof value === 'number') {
       if (global.Intl) {
         if (!(Intl.NumberFormat &&

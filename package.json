@@ -1,6 +1,6 @@
 {
   "name": "react-i18nify",
-  "version": "1.11.14",
+  "version": "1.12.0",
   "description": "Simple i18n translation and localization components and helpers for React applications.",
   "main": "./build/index.js",
   "scripts": {
@@ -15,7 +15,8 @@
     "precommit": "npm run lint && npm test"
   },
   "jest": {
-    "verbose": true
+    "verbose": true,
+    "testURL": "http://localhost"
   },
   "files": [
     "build",

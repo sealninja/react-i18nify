@@ -238,6 +238,10 @@ The number or date to localize.
 The translation key for providing the format string. Only needed for localizing dates.
 For the full list of formatting tokens which can be used in the format string, see http://momentjs.com/docs/#/displaying/format/.
 
+#### `calendarFormat` (string)
+The translation key for providing calendar formatting for dates.
+For the full list of details see http://momentjs.com/docs/#/displaying/calendar-time/.
+
 #### `options` (object)
 
 When localizing dates, a `strictParse` option can be provided. When set to `true`, `moment`'s strict parsing will be used.

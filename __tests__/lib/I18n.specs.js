@@ -11,6 +11,9 @@ describe('I18n.js', () => {
         },
         dates: {
           lts: 'LTS',
+          calendar: {
+            lastDay: '[Yesterday at] LT',
+          },
         },
       },
     });
@@ -42,6 +45,16 @@ describe('I18n.js', () => {
 
       const result2 = I18n.l(1517774664107, { dateFormat: 'dates.lts' });
       expect(result2).toEqual('9:04:24 PM');
+    });
+
+    test('should use correct calendar', () => {
+      const date = new Date();
+      let yesterday = new Date(date.setDate(date.getDate() - 1));
+      yesterday = new Date(yesterday.setHours(15));
+      yesterday = new Date(yesterday.setMinutes(0));
+
+      const result3 = I18n.l(yesterday.toISOString(), { calendarFormat: 'dates.calendar' });
+      expect(result3).toEqual('Yesterday at 3:00 PM');
     });
   });
 });
