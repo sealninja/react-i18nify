@@ -1,4 +1,7 @@
 # react-i18nify
+
+⚠️ **Warning**: this branch represents the v2 pre-release version of this library. [See v1 branch](https://github.com/JSxMachina/react-i18nify/tree/v1).
+
 Simple i18n translation and localization components and helpers for React applications.
 
 [![NPM version][version-image]][npm-url] [![Downloads][downloads-image]][npm-url]
