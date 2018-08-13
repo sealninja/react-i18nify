@@ -17,7 +17,13 @@ describe('Translate.jsx', () => {
         export: 'Export %{count} items',
         export_0: 'Nothing to export',
         export_1: 'Export %{count} item',
-        two_lines: <div>Line 1<br />Line 2</div>,
+        two_lines: (
+          <div>
+            Line 1
+            <br />
+            Line 2
+          </div>
+        ),
       },
       nl: {
         application: {

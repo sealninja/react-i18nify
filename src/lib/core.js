@@ -97,8 +97,8 @@ export const l = (value, options) => {
   }
   if (typeof value === 'number') {
     if (global.Intl) {
-      if (!(Intl.NumberFormat &&
-        Intl.NumberFormat.supportedLocalesOf(settings.locale).length === 1)) {
+      if (!(Intl.NumberFormat
+        && Intl.NumberFormat.supportedLocalesOf(settings.locale).length === 1)) {
         Intl.NumberFormat = IntlPolyfill.NumberFormat;
       }
     } else {

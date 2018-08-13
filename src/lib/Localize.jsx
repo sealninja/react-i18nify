@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { l } from '../';
+import { l } from '..';
 import BaseComponent from './Base';
 
 export default class Localize extends BaseComponent {
@@ -20,6 +20,10 @@ export default class Localize extends BaseComponent {
     } = this.props;
     const localization = l(value, { ...options, dateFormat, parseFormat });
 
-    return <React.Fragment>{localization}</React.Fragment>;
+    return (
+      <React.Fragment>
+        {localization}
+      </React.Fragment>
+    );
   }
 }

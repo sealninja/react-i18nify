@@ -1,6 +1,16 @@
 /* global describe, test, expect, beforeEach, */
 
-import { getLocale, getTranslations, setLocale, setTranslations, setLocaleGetter, setTranslationsGetter, setHandleMissingTranslation, t, l } from '../../src';
+import {
+  getLocale,
+  getTranslations,
+  setLocale,
+  setTranslations,
+  setLocaleGetter,
+  setTranslationsGetter,
+  setHandleMissingTranslation,
+  t,
+  l,
+} from '../../src';
 
 describe('API', () => {
   describe('setLocale', () => {

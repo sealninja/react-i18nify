@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --verbose",
     "test:watch": "npm test -- --watch",
-    "lint": "eslint src/**/*.jsx src/**/*.js __tests__/**/*.js",
+    "lint": "eslint src/**/*.jsx src/**/*.js __test__/**/*.js",
     "lint:fix": "npm run lint -- --fix",
     "build": "rm -rf build && babel src -d build",
     "prepare": "npm run build",
@@ -40,28 +40,28 @@
   ],
   "runkitExampleFilename": "example/example.js",
   "dependencies": {
-    "date-fns": "^2.0.0-alpha.10",
+    "date-fns": "^2.0.0-alpha.16",
     "intl": "^1.2",
-    "prop-types": "^15.6.1",
+    "prop-types": "^15.6.2",
     "react": "^16.0.0"
   },
   "devDependencies": {
     "babel-cli": "6.26.0",
     "babel-core": "^6.26.3",
-    "babel-eslint": "8.2.3",
+    "babel-eslint": "8.2.6",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
-    "eslint": "4.19.1",
-    "eslint-config-airbnb": "16.1.0",
-    "eslint-plugin-import": "2.12.0",
-    "eslint-plugin-jsx-a11y": "6.0.3",
-    "eslint-plugin-react": "7.9.1",
+    "enzyme": "^3.4.1",
+    "enzyme-adapter-react-16": "^1.2.0",
+    "eslint": "5.3.0",
+    "eslint-config-airbnb": "17.0.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-jsx-a11y": "6.1.1",
+    "eslint-plugin-react": "7.11.0",
     "husky": "^0.14.3",
-    "jest": "23.1.0",
-    "react": "^16.4.0",
-    "react-dom": "16.4.0"
+    "jest": "23.5.0",
+    "react": "^16.4.2",
+    "react-dom": "16.4.2"
   }
 }

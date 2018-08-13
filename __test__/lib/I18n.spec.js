@@ -3,7 +3,9 @@
 import React from 'react';
 import { mount, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import { setLocale, setTranslations, t, I18n } from '../../src';
+import {
+  setLocale, setTranslations, t, I18n,
+} from '../../src';
 
 
 describe('I18n.jsx', () => {
@@ -37,7 +39,12 @@ describe('I18n.jsx', () => {
     });
 
     test('should handle locale switching for children', async () => {
-      const component = mount(<I18n render={() => <span>{t('application.title')}</span>} />);
+      const component = mount(<I18n render={() => (
+        <span>
+          {t('application.title')}
+        </span>
+      )}
+      />);
 
       expect(component.html()).toBe('<span>Awesome app with i18n!</span>');
       setLocale('nl');

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { t } from '../';
-
+import { t } from '..';
 import BaseComponent from './Base';
 
 export default class Translate extends BaseComponent {
@@ -13,6 +12,10 @@ export default class Translate extends BaseComponent {
     const { value, ...otherProps } = this.props;
     const translation = t(value, otherProps);
 
-    return <React.Fragment>{translation}</React.Fragment>;
+    return (
+      <React.Fragment>
+        {translation}
+      </React.Fragment>
+    );
   }
 }
