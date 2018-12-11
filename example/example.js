@@ -20,7 +20,7 @@ setTranslations({
       hello: 'Hello, %{name}!',
     },
     date: {
-      long: 'MMMM do, YYYY',
+      long: 'MMMM do, yyyy',
     },
     export: 'Export %{count} items',
     export_0: 'Nothing to export',
@@ -33,7 +33,7 @@ setTranslations({
       hello: 'Hallo, %{name}!',
     },
     date: {
-      long: 'd MMMM YYYY',
+      long: 'd MMMM yyyy',
     },
     export: 'Exporteer %{count} dingen',
     export_0: 'Niks te exporteren',
@@ -67,7 +67,7 @@ function AwesomeComponent() {
         <li><Translate value="export" count={2} /></li>
       </ul>
       <Translate value="two_lines" />
-      <p><Localize value="07-2016-04" dateFormat="date.long" parseFormat="dd-YYYY-MM" /></p>
+      <p><Localize value="07-2016-04" dateFormat="date.long" parseFormat="dd-yyyy-MM" /></p>
       <p><Localize value="2015-09-03" dateFormat="date.long" /></p>
       <p>
         <Localize

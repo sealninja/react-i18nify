@@ -11,10 +11,10 @@ describe('Localize.jsx', () => {
     configure({ adapter: new Adapter() });
     setTranslations({
       en: {
-        date: 'MMMM do, YYYY',
+        date: 'MMMM do, yyyy',
       },
       nl: {
-        date: 'd MMMM YYYY',
+        date: 'd MMMM yyyy',
       },
     });
   });
@@ -55,7 +55,7 @@ describe('Localize.jsx', () => {
     test('should handle date localization with parseFormat', () => {
       const component = mount(<Localize
         value="2016-04-07"
-        parseFormat="YYYY-dd-MM"
+        parseFormat="yyyy-dd-MM"
         dateFormat="date"
       />);
       expect(component.type()).toBe(Localize);
