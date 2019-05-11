@@ -92,8 +92,8 @@ export const l = (value, options) => {
   if (options.dateFormat) {
     const parsedDate = options.parseFormat
       ? parse(value, options.parseFormat, new Date(), { locale: settings.localeObject })
-      : value;
-    return format(parsedDate, t(options.dateFormat), { locale: settings.localeObject });
+      : new Date(value);
+    return format(new Date(parsedDate), t(options.dateFormat), { locale: settings.localeObject });
   }
   if (typeof value === 'number') {
     if (global.Intl) {
