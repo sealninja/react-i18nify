@@ -10,15 +10,6 @@ Simple i18n translation and localization components and helpers for React applic
 
 A working example of this package can be found [here at RunKit](https://runkit.com/npm/react-i18nify).
 
-## Table of contents
-
-* [Installation](#installation)
-* [Getting started](#getting-started)
-* [Components](#components)
-* [Helpers](#helpers)
-* [API reference](#api-reference)
-* [Example application with SSR](#example-application-with-ssr)
-
 ## Installation
 
 Install by using npm:
@@ -254,3 +245,9 @@ This function can be called to force a re-render of all I18n components.
 ## Example application with SSR
 
 An example application with server-side rendering using features of `react-i18nify` can be found at https://github.com/sealninja/react-ssr-example.
+
+## License
+
+MIT
+
+<a href="https://sealninja.com"><img src="https://sealninja.com/assets/badge.png" alt="Sealninja" height="96"></a>
