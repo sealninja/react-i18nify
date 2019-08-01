@@ -148,12 +148,12 @@ The number or date to localize.
 * `dateFormat` (string)
 
 The translation key for providing the format string. Only needed for localizing dates.
-For the full list of formatting tokens which can be used in the format string, see the [date-fns documentation](https://date-fns.org/v2.0.0-alpha.7/docs/format).
+For the full list of formatting tokens which can be used in the format string, see the [date-fns documentation](https://date-fns.org/v2.0.0-beta.3/docs/format).
 
 * `parseFormat` (string)
 
 An optional formatting string for parsing the value when localizing dates.
-For the full list of formatting tokens which can be used in the parsing string, see the [date-fns documentation](https://date-fns.org/v2.0.0-alpha.7/docs/parse).
+For the full list of formatting tokens which can be used in the parsing string, see the [date-fns documentation](https://date-fns.org/v2.0.0-beta.3/docs/parse).
 
 * `options` (object)
 

@@ -104,7 +104,6 @@ describe('API', () => {
       setTranslations({
         en: {
           dates: {
-            lts: 'LTS',
             short: 'MM-dd-yyyy',
             long: 'MMMM do, yyyy',
           },
@@ -128,10 +127,5 @@ describe('API', () => {
       const result = l('2014-30-12', { parseFormat: 'yyyy-dd-MM', dateFormat: 'dates.short' });
       expect(result).toEqual('12-30-2014');
     });
-
-    // test('should support LTS format', () => {
-    //   const result = l(1517774664107, { dateFormat: 'dates.lts' });
-    //   expect(result).toEqual('9:04:24 p.m.');
-    // });
   });
 });

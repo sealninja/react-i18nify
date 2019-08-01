@@ -64,6 +64,7 @@ describe('Translate.jsx', () => {
 
       expect(component.text()).toBe('Awesome app with i18n!');
       setLocale('nl');
+      component.update();
       expect(component.text()).toBe('Toffe app met i18n!');
     });
 

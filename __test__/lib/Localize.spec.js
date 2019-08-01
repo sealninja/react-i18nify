@@ -5,7 +5,6 @@ import { mount, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { setLocale, setTranslations, Localize } from '../../src';
 
-
 describe('Localize.jsx', () => {
   beforeAll(() => {
     configure({ adapter: new Adapter() });
@@ -49,6 +48,7 @@ describe('Localize.jsx', () => {
       />);
       expect(component.text()).toBe('July 4th, 2016');
       setLocale('nl');
+      component.update();
       expect(component.text()).toBe('4 juli 2016');
     });
 

@@ -2,9 +2,8 @@
 /* eslint no-console: "off" */
 
 import IntlPolyfill from 'intl';
-import parse from 'date-fns/parse';
-import format from 'date-fns/format';
-import locales from 'date-fns/locale';
+import { parse, format } from 'date-fns';
+import * as locales from 'date-fns/locale';
 import BaseComponent from './Base';
 import { fetchTranslation, replace } from './utils';
 
