@@ -1,6 +1,6 @@
-# react-i18nify
+# React I18nify
 
-⚠️ **Warning**: this branch represents the v2 pre-release version of this library. [See v1 branch](https://github.com/JSxMachina/react-i18nify/tree/v1).
+⚠️ **Warning**: this branch represents the v2 pre-release version of this library. [See v1 branch](https://github.com/sealninja/react-i18nify/tree/v1).
 
 Simple i18n translation and localization components and helpers for React applications.
 
@@ -17,6 +17,7 @@ A working example of this package can be found [here at RunKit](https://runkit.c
 * [Components](#components)
 * [Helpers](#helpers)
 * [API reference](#api-reference)
+* [Example application with SSR](#example-application-with-ssr)
 
 ## Installation
 
@@ -249,3 +250,7 @@ For the full list of options, see https://developer.mozilla.org/en/docs/Web/Java
 ### `forceComponentsUpdate()`
 
 This function can be called to force a re-render of all I18n components.
+
+## Example application with SSR
+
+An example application with server-side rendering using features of `react-i18nify` can be found at https://github.com/sealninja/react-ssr-example.
