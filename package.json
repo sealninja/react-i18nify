@@ -19,14 +19,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JSxMachina/react-i18nify.git"
+    "url": "git+https://github.com/sealninja/react-i18nify.git"
   },
-  "author": "JSxMachina",
+  "author": "Sealninja",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/JSxMachina/react-i18nify/issues"
+    "url": "https://github.com/sealninja/react-i18nify/issues"
   },
-  "homepage": "https://github.com/JSxMachina/react-i18nify#readme",
+  "homepage": "https://sealninja.com",
   "keywords": [
     "react",
     "i18n",

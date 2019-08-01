@@ -4,7 +4,9 @@
 
 Simple i18n translation and localization components and helpers for React applications.
 
-[![NPM version][version-image]][npm-url] [![Downloads][downloads-image]][npm-url]
+[![NPM version](https://img.shields.io/npm/v/react-i18nify.svg?style=flat-square)](https://npmjs.org/package/react-i18nify)
+[![Downloads](https://img.shields.io/npm/dm/react-i18nify.svg?style=flat-square)](https://npmjs.org/package/react-i18nify)
+[![Dependency Status](https://img.shields.io/david/sealninja/react-i18nify?style=flat-square)](https://david-dm.org/sealninja/react-i18nify)
 
 A working example of this package can be found [here at RunKit](https://runkit.com/npm/react-i18nify).
 
@@ -247,8 +249,3 @@ For the full list of options, see https://developer.mozilla.org/en/docs/Web/Java
 ### `forceComponentsUpdate()`
 
 This function can be called to force a re-render of all I18n components.
-
-[version-image]: https://img.shields.io/npm/v/react-i18nify.svg
-[downloads-image]: https://img.shields.io/npm/dm/react-i18nify.svg
-
-[npm-url]: https://npmjs.org/package/react-i18nify
