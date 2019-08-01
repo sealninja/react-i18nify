@@ -22,12 +22,13 @@
     "src",
     "example"
   ],
-  "author": "JSxMachina",
+  "author": "Sealninja",
   "repository": {
     "type": "git",
-    "url": "git://github.com/JSxMachina/react-i18nify.git"
+    "url": "git://github.com/sealninja/react-i18nify.git"
   },
   "license": "ISC",
+  "homepage": "https://sealninja.com",
   "keywords": [
     "react",
     "i18n",
