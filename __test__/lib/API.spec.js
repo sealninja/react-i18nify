@@ -54,7 +54,7 @@ describe('API', () => {
   });
 
   describe('setHandleMissingTranslation', () => {
-    setHandleMissingTranslation(key => `Missing translation: ${key}`);
+    setHandleMissingTranslation((key) => `Missing translation: ${key}`);
     const result = t('application.unknown_translation');
     expect(result).toEqual('Missing translation: application.unknown_translation');
   });

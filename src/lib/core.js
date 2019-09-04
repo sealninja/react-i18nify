@@ -13,7 +13,7 @@ const settings = {
   translationsObject: {},
   getTranslations: null,
   getLocale: null,
-  handleMissingTranslation: text => text.split('.').pop(),
+  handleMissingTranslation: (text) => text.split('.').pop(),
 
   get translations() {
     return this.getTranslations ? this.getTranslations() : this.translationsObject;

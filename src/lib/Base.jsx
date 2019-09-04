@@ -4,7 +4,7 @@ export default class Base extends React.Component {
   static instances = [];
 
   static rerenderAll() {
-    Base.instances.forEach(instance => instance.forceUpdate());
+    Base.instances.forEach((instance) => instance.forceUpdate());
   }
 
   componentDidMount() {

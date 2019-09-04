@@ -1,13 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { t } from '..';
+import { t } from './core';
 import BaseComponent from './Base';
 
-export default class Translate extends BaseComponent {
-  static propTypes = {
-    value: PropTypes.string.isRequired,
-  };
-
+class Translate extends BaseComponent {
   render() {
     const { value, ...otherProps } = this.props;
     const translation = t(value, otherProps);
@@ -19,3 +15,9 @@ export default class Translate extends BaseComponent {
     );
   }
 }
+
+Translate.propTypes = {
+  value: PropTypes.string.isRequired,
+};
+
+export default Translate;
