@@ -142,12 +142,12 @@ The number or date to localize.
 * `dateFormat` (string)
 
 The translation key for providing the format string. Only needed for localizing dates.
-For the full list of formatting tokens which can be used in the format string, see the [date-fns documentation](https://date-fns.org/v2.0.0-beta.3/docs/format).
+For the full list of formatting tokens which can be used in the format string, see the [date-fns documentation](https://date-fns.org/v2.0.1/docs/format).
 
 * `parseFormat` (string)
 
 An optional formatting string for parsing the value when localizing dates.
-For the full list of formatting tokens which can be used in the parsing string, see the [date-fns documentation](https://date-fns.org/v2.0.0-beta.3/docs/parse).
+For the full list of formatting tokens which can be used in the parsing string, see the [date-fns documentation](https://date-fns.org/v2.0.1/docs/parse).
 
 * `options` (object)
 
@@ -232,8 +232,9 @@ Helper function to localize a `value`, given a set of `options`. See the above H
 
 For localizing dates, the `date-fns` library is used.
 A `dateFormat` option can be used for providing a translation key with the format string.
+For the full list of formatting tokens which can be used in the format string, see the [date-fns documentation](https://date-fns.org/v2.0.1/docs/format).
 Moreover, `parseFormat` option can be used for providing a formatting string for parsing the value.
-For the full list of formatting tokens which can be used in the format string, see the [date-fns documentation](https://date-fns.org/v2.0.0-alpha.7/docs/format).
+For the full list of formatting tokens which can be used in the parsing string, see the [date-fns documentation](https://date-fns.org/v2.0.1/docs/parse).
 
 For number formatting, the localize helper supports all options as provided by the Javascript built-in `Intl.NumberFormat` object.
 For the full list of options, see https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat.
