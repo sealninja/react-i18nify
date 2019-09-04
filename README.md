@@ -1,6 +1,6 @@
 # React I18nify
 
-⚠️ **Warning**: this branch represents the v2 pre-release version of this library. [See v1 branch](https://github.com/sealninja/react-i18nify/tree/v1).
+**Note**: Looking for the v1 documentation? [See v1 branch](https://github.com/sealninja/react-i18nify/tree/v1).
 
 Simple i18n translation and localization components and helpers for React applications.
 
