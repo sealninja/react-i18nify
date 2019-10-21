@@ -1,8 +1,6 @@
 import React from 'react';
 
 export default class Base extends React.Component {
-  static instances = [];
-
   static rerenderAll() {
     Base.instances.forEach((instance) => instance.forceUpdate());
   }
@@ -14,4 +12,6 @@ export default class Base extends React.Component {
   componentWillUnmount() {
     Base.instances.splice(Base.instances.indexOf(this), 1);
   }
+
+  static instances = [];
 }
