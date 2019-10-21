@@ -65,11 +65,13 @@ describe('API', () => {
         en: {
           application: {
             hello: 'Hello, %{name}!',
+            empty: '',
           },
         },
         nl: {
           application: {
             hello: 'Hallo, %{name}!',
+            empty: '',
           },
         },
       });
@@ -92,10 +94,15 @@ describe('API', () => {
 
     test('should handle nested dynamic placeholder', () => {
       const result1 = t('application', { name: 'Aad' });
-      expect(result1).toEqual({ hello: 'Hello, Aad!' });
+      expect(result1).toEqual({ hello: 'Hello, Aad!', empty: '' });
 
       const result2 = t('application', { name: 'Piet' });
-      expect(result2).toEqual({ hello: 'Hello, Piet!' });
+      expect(result2).toEqual({ hello: 'Hello, Piet!', empty: '' });
+    });
+
+    test('should handle empty translation', () => {
+      const result1 = t('application.empty');
+      expect(result1).toEqual('');
     });
   });
 

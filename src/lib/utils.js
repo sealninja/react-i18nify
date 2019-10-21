@@ -43,7 +43,7 @@ export const fetchTranslation = (translations, key, count = null) => {
       return translations[`${key}_plural`];
     }
   }
-  if (translations[key]) {
+  if (translations[key] != null) {
     return translations[key];
   }
   throw new Error('not found');
