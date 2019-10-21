@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom/server';
+const React = require('react');
+const ReactDOM = require('react-dom/server');
 
 let ReactI18nfiy = null;
 
