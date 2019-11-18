@@ -15,7 +15,7 @@ A working example of this package can be found [here at RunKit](https://runkit.c
 Install by using npm:
 
 ```
-npm i --save react-i18nify@next
+npm i --save react-i18nify
 ```
 
 ## Getting started
