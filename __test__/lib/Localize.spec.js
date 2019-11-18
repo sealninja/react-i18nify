@@ -1,9 +1,15 @@
 /* global describe, test, expect, beforeAll, beforeEach */
 
 import React from 'react';
+import nl from 'date-fns/locale/nl';
 import { mount, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import { setLocale, setTranslations, Localize } from '../../src';
+import {
+  addLocales,
+  setLocale,
+  setTranslations,
+  Localize,
+} from '../../src';
 
 describe('Localize.jsx', () => {
   beforeAll(() => {
@@ -16,6 +22,7 @@ describe('Localize.jsx', () => {
         date: 'd MMMM yyyy',
       },
     });
+    addLocales({ nl });
   });
 
   describe('<Localize/> component', () => {
