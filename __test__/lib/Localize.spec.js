@@ -25,6 +25,7 @@ describe('Localize.jsx', () => {
     test('should handle date localization', () => {
       const component = mount(<Localize
         value="2016-07-04"
+        parseFormat="yyyy-MM-dd"
         dateFormat="date"
       />);
       expect(component.type()).toBe(Localize);
@@ -35,6 +36,7 @@ describe('Localize.jsx', () => {
       setLocale('nl');
       const component = mount(<Localize
         value="2016-07-04"
+        parseFormat="yyyy-MM-dd"
         dateFormat="date"
       />);
       expect(component.type()).toBe(Localize);
@@ -44,6 +46,7 @@ describe('Localize.jsx', () => {
     test('should handle locale switching', () => {
       const component = mount(<Localize
         value="2016-07-04"
+        parseFormat="yyyy-MM-dd"
         dateFormat="date"
       />);
       expect(component.text()).toBe('July 4th, 2016');
