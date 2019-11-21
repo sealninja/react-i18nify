@@ -1,6 +1,9 @@
-/* global describe, test, expect, beforeEach, */
+/* global describe, test, expect, beforeEach, beforeAll */
 
+import nl from 'date-fns/locale/nl';
+import zh from 'date-fns/locale/zh-CN';
 import {
+  addLocales,
   getLocale,
   getTranslations,
   setLocale,
@@ -13,6 +16,10 @@ import {
 } from '../../src';
 
 describe('API', () => {
+  beforeAll(() => {
+    addLocales({ nl, zh });
+  });
+
   describe('setLocale', () => {
     setLocale('zh');
     const result = getLocale();

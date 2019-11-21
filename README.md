@@ -117,6 +117,27 @@ import { I18n, t } from 'react-i18nify';
 <I18n render={() => <input placeholder={t("application.title")} />} />
 ```
 
+## Locales
+
+react-i18nify uses [date-fns](https://github.com/date-fns/date-fns) internally to handle localization. In order to reduce the base bundle size, react-i18nify only includes the `en-US` locale by default. If you need additional locales, you can add them manually using `addLocale` or `addLocales`. For a list of available locales, refer to the [date-fns list](https://github.com/date-fns/date-fns/tree/master/src/locale).
+
+```javascript
+import { addLocale, addLocales, setLocale } from 'react-i18nify';
+import nl from 'date-fns/locale/nl';
+import it from 'date-fns/locale/it';
+
+// Add a single locale
+addLocale('nl', nl);
+setLocale('nl');
+
+// Add multiple locales
+addLocales({
+  nl: nl,
+  it: it,
+});
+setLocale('it');
+```
+
 ## API Reference
 
 ### `<Translate>`
@@ -161,6 +182,34 @@ React I18n wrapper component, with the following prop:
 * `render` (func)
 
 The return value of the provide function will be rendered and automatically re-render when the locale or translations change.
+
+### `addLocale(name, locale)`
+
+Add a [date-fns locale](https://github.com/date-fns/date-fns/tree/master/src/locale) to the available locales.
+
+```javascript
+import { addLocale, setLocale } from 'react-i18nify';
+import nl from 'date-fns/locale/nl';
+
+addLocale('nl', nl);
+setLocale('nl');
+```
+
+### `addLocales(localesObject)`
+
+Add multiple [date-fns locales](https://github.com/date-fns/date-fns/tree/master/src/locale) to the available locales at once.
+
+```javascript
+import { addLocales, setLocale } from 'react-i18nify';
+import nl from 'date-fns/locale/nl';
+import it from 'date-fns/locale/it';
+
+addLocales({
+  nl: nl,
+  it: it,
+});
+setLocale('it');
+```
 
 ### `setLocale(locale, rerenderComponents = true)`
 

@@ -4,13 +4,14 @@
 import IntlPolyfill from 'intl';
 import parse from 'date-fns/parse';
 import format from 'date-fns/format';
-import * as locales from 'date-fns/locale';
+import enUS from 'date-fns/locale/en-US';
 import BaseComponent from './Base';
 import { fetchTranslation, replace } from './utils';
 
-const settings = {
+export const settings = {
+  availableLocales: { 'en-US': enUS },
   localeKey: 'en',
-  localeObject: locales.enUS,
+  localeObject: enUS,
   translationsObject: {},
   getTranslations: null,
   getLocale: null,
@@ -30,7 +31,7 @@ const settings = {
 
   set locale(locale) {
     this.localeKey = locale;
-    this.localeObject = locales[locale] || locales[locale.split('-')[0]] || locales.enUS;
+    this.localeObject = this.availableLocales[locale] || this.availableLocales[locale.split('-')[0]] || enUS;
   },
 };
 
@@ -42,6 +43,17 @@ export const setLocale = (locale, rerenderComponents = true) => {
   if (rerenderComponents) {
     BaseComponent.rerenderAll();
   }
+};
+
+export const addLocale = (name, locale) => {
+  settings.availableLocales[name] = locale;
+};
+
+export const addLocales = (locales) => {
+  settings.availableLocales = {
+    ...settings.availableLocales,
+    ...locales,
+  };
 };
 
 export const getTranslations = () => settings.translations;
