@@ -299,5 +299,3 @@ An example application with server-side rendering using features of `react-i18ni
 ## License
 
 MIT
-
-<a href="https://sealninja.com"><img src="https://sealninja.com/assets/badge.png" alt="Sealninja" height="96"></a>
