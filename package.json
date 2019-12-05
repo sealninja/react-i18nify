@@ -3,11 +3,13 @@
   "version": "3.0.0",
   "description": "Simple i18n translation and localization components and helpers for React applications.",
   "main": "./build/index.js",
+  "types": "types",
   "scripts": {
     "test": "jest --verbose",
     "test:watch": "npm test -- --watch",
     "lint": "eslint src/**/*.jsx src/**/*.js __test__/**/*.js",
     "lint:fix": "npm run lint -- --fix",
+    "dtslint": "dtslint types",
     "build": "rm -rf build && babel src -d build",
     "prepare": "npm run build",
     "precommit": "npm run lint && npm test"
@@ -54,7 +56,9 @@
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
     "@babel/register": "^7.6.2",
+    "@types/react": "^16.9.13",
     "babel-eslint": "^10.0.3",
+    "dtslint": "^2.0.2",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "eslint": "^6.5.1",
