@@ -17,7 +17,8 @@
   "files": [
     "build",
     "src",
-    "example"
+    "example",
+    "types"
   ],
   "repository": {
     "type": "git",
