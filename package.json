@@ -3,7 +3,7 @@
   "version": "3.0.1",
   "description": "Simple i18n translation and localization components and helpers for React applications.",
   "main": "./build/index.js",
-  "types": "types",
+  "types": "./types/index.d.ts",
   "scripts": {
     "test": "jest --verbose",
     "test:watch": "npm test -- --watch",
