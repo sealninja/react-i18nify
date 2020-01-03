@@ -18,7 +18,7 @@
     "build",
     "src",
     "example",
-    "types"
+    "types/index.d.ts"
   ],
   "repository": {
     "type": "git",
