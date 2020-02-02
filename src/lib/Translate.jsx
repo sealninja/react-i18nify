@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { t } from './core';
+import { translate } from './core';
 import BaseComponent from './Base';
 
 class Translate extends BaseComponent {
   render() {
     const { value, ...otherProps } = this.props;
-    const translation = t(value, otherProps);
+    const translation = translate(value, otherProps);
 
     return (
       <React.Fragment>

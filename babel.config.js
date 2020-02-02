@@ -3,7 +3,7 @@ module.exports = {
     ['@babel/env', {
       targets: '> 0.25%, not dead',
     }],
-    '@babel/react',
+    '@babel/preset-react',
   ],
   plugins: [
     '@babel/plugin-proposal-class-properties',

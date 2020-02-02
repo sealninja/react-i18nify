@@ -11,7 +11,9 @@ export {
   setTranslations,
   setTranslationsGetter,
   setHandleMissingTranslation,
-  t,
-  l,
+  translate,
+  localize,
+  translate as t,
+  localize as l,
   forceComponentsUpdate,
 } from './lib/core';

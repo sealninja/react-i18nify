@@ -10,7 +10,7 @@ try {
 }
 
 const {
-  setTranslations, setLocale, setHandleMissingTranslation, t, l, Translate, Localize, I18n,
+  setTranslations, setLocale, setHandleMissingTranslation, translate, localize, Translate, Localize, I18n,
 } = ReactI18nfiy;
 
 setTranslations({
@@ -25,7 +25,6 @@ setTranslations({
     export: 'Export %{count} items',
     export_0: 'Nothing to export',
     export_1: 'Export %{count} item',
-    two_lines: <div>Line 1<br />Line 2</div>,
   },
   nl: {
     application: {
@@ -38,24 +37,23 @@ setTranslations({
     export: 'Exporteer %{count} dingen',
     export_0: 'Niks te exporteren',
     export_1: 'Exporteer %{count} ding',
-    two_lines: <div>Line 1<br />Line 2</div>,
   },
 });
 
 setLocale('nl');
 
-console.log(t('application.title'));
-console.log(t('application.hello', { name: 'Aad' }));
-console.log(t('export', { count: 0 }));
-console.log(t('application.unknown_translation'));
-console.log(t('application', { name: 'Aad' }));
+console.log(translate('application.title'));
+console.log(translate('application.hello', { name: 'Aad' }));
+console.log(translate('export', { count: 0 }));
+console.log(translate('application.unknown_translation'));
+console.log(translate('application', { name: 'Aad' }));
 
-console.log(l(1385856000000, { dateFormat: 'date.long' }));
-console.log(l(Math.PI, { maximumFractionDigits: 2 }));
+console.log(localize(1385856000000, { dateFormat: 'date.long' }));
+console.log(localize(Math.PI, { maximumFractionDigits: 2 }));
 
 setHandleMissingTranslation((key, replacements) => `Missing translation: ${key}`);
 
-console.log(t('application.unknown_translation'));
+console.log(translate('application.unknown_translation'));
 
 function AwesomeComponent() {
   return (
@@ -66,7 +64,6 @@ function AwesomeComponent() {
         <li><Translate value="export" count={1} /></li>
         <li><Translate value="export" count={2} /></li>
       </ul>
-      <Translate value="two_lines" />
       <p><Localize value="07-2016-04" dateFormat="date.long" parseFormat="dd-yyyy-MM" /></p>
       <p><Localize value="2015-09-03" dateFormat="date.long" /></p>
       <p>
@@ -77,7 +74,7 @@ function AwesomeComponent() {
           }}
         />
       </p>
-      <I18n render={() => <input placeholder={t('application.title')} />} />
+      <I18n render={() => <input placeholder={translate('application.title')} />} />
     </React.Fragment>
   );
 }

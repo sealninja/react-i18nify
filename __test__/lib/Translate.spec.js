@@ -17,13 +17,6 @@ describe('Translate.jsx', () => {
         export: 'Export %{count} items',
         export_0: 'Nothing to export',
         export_1: 'Export %{count} item',
-        two_lines: (
-          <div>
-            Line 1
-            <br />
-            Line 2
-          </div>
-        ),
       },
       nl: {
         application: {
@@ -96,16 +89,6 @@ describe('Translate.jsx', () => {
 
       expect(component.type()).toBe(Translate);
       expect(component.text()).toBe('Export 4 items');
-    });
-
-    test('should handle react element', () => {
-      const component = mount(<Translate
-        value="two_lines"
-      />);
-
-      expect(component.type()).toBe(Translate);
-      expect(component.text()).toBe('Line 1Line 2');
-      expect(component.html()).toBe('<div>Line 1<br>Line 2</div>');
     });
   });
 });

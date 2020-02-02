@@ -87,34 +87,34 @@ import { Translate, Localize } from 'react-i18nify';
 
 ## Helpers
 
-If for some reason, you cannot use the components, you can use the `t` and `l` helpers instead:
+If for some reason, you cannot use the components, you can use the `translate` and `localize` helpers instead:
 
 ```javascript
-import { t, l } from 'react-i18nify';
+import { translate, localize } from 'react-i18nify';
 
-t('application.title');
+translate('application.title');
   // => Toffe app met i18n!
-t('application.hello', {name: 'Aad'});
+translate('application.hello', {name: 'Aad'});
   // => Hallo, Aad!'
-t('export', {count: 0});
+translate('export', {count: 0});
   // => Niks te exporteren
-t('application.unknown_translation');
+translate('application.unknown_translation');
   // => unknown_translation
-t('application', {name: 'Aad'});
+translate('application', {name: 'Aad'});
   // => {hello: 'Hallo, Aad!', title: 'Toffe app met i18n!'}
 
-l(1385856000000, { dateFormat: 'date.long' });
+localize(1385856000000, { dateFormat: 'date.long' });
   // => 1 december 2013
-l(Math.PI, { maximumFractionDigits: 2 });
+localize(Math.PI, { maximumFractionDigits: 2 });
   // => 3,14
 ```
 
 If you want these helpers to be re-rendered automatically when the locale or translations change, you have to wrap them in a `<I18n>` component using its `render` prop:
 
 ```javascript
-import { I18n, t } from 'react-i18nify';
+import { I18n, translate } from 'react-i18nify';
 
-<I18n render={() => <input placeholder={t("application.title")} />} />
+<I18n render={() => <input placeholder={translate("application.title")} />} />
 ```
 
 ## Locales
@@ -259,23 +259,23 @@ setTranslationsGetter(translationsFunction);
 ### `setHandleMissingTranslation(fn)`
 
 By default, when a translation is missing, the translation key will be returned in a slightly formatted way,
-as can be seen in the `t('application.unknown_translation');` example above.
+as can be seen in the `translate('application.unknown_translation');` example above.
 You can however overwrite this behavior by setting a function to handle missing translations.
 
 ```javascript
-import { setHandleMissingTranslation, t } from 'react-i18nify';
+import { setHandleMissingTranslation, translate } from 'react-i18nify';
 
 setHandleMissingTranslation((key, replacements) => `Missing translation: ${key}`);
 
-t('application.unknown_translation');
+translate('application.unknown_translation');
   // => Missing translation: application.unknown_translation
 ```
 
-### `t(key, replacements = {})`
+### `translate(key, replacements = {})`
 
 Helper function to translate a `key`, given an optional set of `replacements`. See the above Helpers section for examples.
 
-### `l(value, options)`
+### `localize(value, options)`
 
 Helper function to localize a `value`, given a set of `options`. See the above Helpers section for examples.
 
@@ -287,6 +287,14 @@ For the full list of formatting tokens which can be used in the parsing string, 
 
 For number formatting, the localize helper supports all options as provided by the Javascript built-in `Intl.NumberFormat` object.
 For the full list of options, see https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat.
+
+### `t(key, replacements = {})`
+
+Alias for `translate`.
+
+### `l(value, options)`
+
+Alias for `localize`.
 
 ### `forceComponentsUpdate()`
 

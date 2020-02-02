@@ -87,7 +87,7 @@ export const setHandleMissingTranslation = (fn) => {
   settings.handleMissingTranslation = fn;
 };
 
-export const t = (key, replacements = {}) => {
+export const translate = (key, replacements = {}) => {
   let translation = '';
   try {
     const translationLocale = settings.translations[settings.locale]
@@ -100,12 +100,12 @@ export const t = (key, replacements = {}) => {
   return replace(translation, replacements);
 };
 
-export const l = (value, options) => {
+export const localize = (value, options) => {
   if (options.dateFormat) {
     const parsedDate = options.parseFormat
       ? parse(value, options.parseFormat, new Date(), { locale: settings.localeObject })
       : new Date(value);
-    return format(parsedDate, t(options.dateFormat), { locale: settings.localeObject });
+    return format(parsedDate, translate(options.dateFormat), { locale: settings.localeObject });
   }
   if (typeof value === 'number') {
     if (global.Intl) {

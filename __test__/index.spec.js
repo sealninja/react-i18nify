@@ -10,6 +10,8 @@ import {
   setTranslations,
   setTranslationsGetter,
   setHandleMissingTranslation,
+  translate,
+  localize,
   t,
   l,
   forceComponentsUpdate,
@@ -29,6 +31,8 @@ describe('index.js', () => {
     setTranslations,
     setTranslationsGetter,
     setHandleMissingTranslation,
+    translate,
+    localize,
     t,
     l,
     forceComponentsUpdate,
@@ -37,7 +41,7 @@ describe('index.js', () => {
     I18n,
   ];
 
-  exportedFunctions.forEach(exportedFunction => {
+  exportedFunctions.forEach((exportedFunction) => {
     test(`should export ${exportedFunction.name} function`, () => {
       expect(exportedFunction).toBeDefined();
     });
