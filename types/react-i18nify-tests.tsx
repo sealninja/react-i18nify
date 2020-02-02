@@ -6,6 +6,7 @@ import {
   getLocale,
   setLocale,
   setLocaleGetter,
+  localize,
   l,
   Localize,
   getTranslations,
@@ -13,6 +14,7 @@ import {
   setTranlationsGetter,
   setHandleMissingTranslation,
   Replacements,
+  translate,
   t,
   Translate,
 } from 'react-i18nify';
@@ -37,6 +39,16 @@ setLocale('en', 123); // $ExpectError
 
 setLocaleGetter(() => 'en'); // $ExpectType void
 setLocaleGetter(() => 123); // $ExpectError
+
+localize('11-11-2019'); // $ExpectType string
+localize('11-11-2019', { dateFormat: 'mm/dd/YYYY', parseFormat: 'mm-dd-YYYY' }); // $ExpectType string
+localize(1234567890, { dateFormat: 'mm/dd/YYYY', parseFormat: 'mm-dd-YYYY' }); // $ExpectType string
+localize('11-11-2019', { maximumFractionDigits: 2 }); // $ExpectError
+
+localize(1234); // $ExpectType string
+localize(1234, { maximumFractionDigits: 2 }); // $ExpectType string
+
+localize(true); // $ExpectError
 
 l('11-11-2019'); // $ExpectType string
 l('11-11-2019', { dateFormat: 'mm/dd/YYYY', parseFormat: 'mm-dd-YYYY' }); // $ExpectType string
@@ -75,6 +87,10 @@ setHandleMissingTranslation(
   (key: string, replacements: Replacements) => 'asdf'
 );
 
+translate('foo.bar'); // $ExpectType string
+translate('foo.bar', { asdf: 'baz' }); // $ExpectType string
+translate('foo.bar', { count: 1234 }); // $ExpectType string
+translate('foo.bar', { asdf: true }); // $ExpectError
 t('foo.bar'); // $ExpectType string
 t('foo.bar', { asdf: 'baz' }); // $ExpectType string
 t('foo.bar', { count: 1234 }); // $ExpectType string

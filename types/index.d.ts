@@ -17,6 +17,11 @@ export interface LocalizeDateOptions {
   dateFormat?: string;
 }
 export type LocalizeNumberOptions = Intl.NumberFormatOptions;
+export function localize(
+  value: string | number,
+  options?: LocalizeDateOptions
+): string;
+export function localize(value: number, options?: LocalizeNumberOptions): string;
 export function l(
   value: string | number,
   options?: LocalizeDateOptions
@@ -53,6 +58,7 @@ export type ReplacementsGetter = (
 ) => string;
 export function setHandleMissingTranslation(fn: ReplacementsGetter): void;
 
+export function translate(key: string, replacements?: Replacements): string;
 export function t(key: string, replacements?: Replacements): string;
 
 export type TranslateProps = {
