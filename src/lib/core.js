@@ -103,18 +103,22 @@ export const translate = (key, replacements = {}, returnKeyOnError = false) => {
 
 export const localize = (value, options) => {
   if (options.dateFormat) {
-    const parsedDate = options.parseFormat
-      ? parse(
-        value,
-        translate(options.parseFormat, {}, true),
-        new Date(), { locale: settings.localeObject },
-      )
-      : new Date(value);
-    return format(
-      parsedDate,
-      translate(options.dateFormat, {}, true),
-      { locale: settings.localeObject },
-    );
+    try {
+      const parsedDate = options.parseFormat
+        ? parse(
+          value,
+          translate(options.parseFormat, {}, true),
+          new Date(), { locale: settings.localeObject },
+        )
+        : new Date(value);
+      return format(
+        parsedDate,
+        translate(options.dateFormat, {}, true),
+        { locale: settings.localeObject },
+      );
+    } catch (e) {
+      return '';
+    }
   }
   if (typeof value === 'number') {
     if (global.Intl) {
