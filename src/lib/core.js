@@ -11,7 +11,6 @@ import { fetchTranslation, replace } from './utils';
 export const settings = {
   availableLocales: { 'en-US': enUS },
   localeKey: 'en',
-  localeObject: enUS,
   translationsObject: {},
   getTranslations: null,
   getLocale: null,
@@ -29,9 +28,13 @@ export const settings = {
     return this.getLocale ? this.getLocale() : this.localeKey;
   },
 
+  getLocaleObject(locale) {
+    const l = locale || this.locale;
+    return this.availableLocales[l] || this.availableLocales[l.split('-')[0]] || enUS;
+  },
+
   set locale(locale) {
     this.localeKey = locale;
-    this.localeObject = this.availableLocales[locale] || this.availableLocales[locale.split('-')[0]] || enUS;
   },
 };
 
@@ -87,34 +90,35 @@ export const setHandleMissingTranslation = (fn) => {
   settings.handleMissingTranslation = fn;
 };
 
-export const translate = (key, replacements = {}, returnKeyOnError = false) => {
+export const translate = (key, replacements = {}, options = {}) => {
+  const locale = options.locale || settings.locale;
   let translation = '';
   try {
-    const translationLocale = settings.translations[settings.locale]
-      ? settings.locale
-      : settings.locale.split('-')[0];
+    const translationLocale = settings.translations[locale]
+      ? locale
+      : locale.split('-')[0];
     translation = fetchTranslation(settings.translations, `${translationLocale}.${key}`, replacements.count);
   } catch (err) {
-    if (returnKeyOnError) return key;
+    if (options.returnKeyOnError) return key;
     return settings.handleMissingTranslation(key, replacements);
   }
   return replace(translation, replacements);
 };
 
-export const localize = (value, options) => {
+export const localize = (value, options = {}) => {
   if (options.dateFormat) {
     try {
       const parsedDate = options.parseFormat
         ? parse(
           value,
-          translate(options.parseFormat, {}, true),
-          new Date(), { locale: settings.localeObject },
+          translate(options.parseFormat, {}, { locale: options.locale, returnKeyOnError: true }),
+          new Date(), { locale: settings.getLocaleObject(options.locale) },
         )
         : new Date(value);
       return format(
         parsedDate,
-        translate(options.dateFormat, {}, true),
-        { locale: settings.localeObject },
+        translate(options.dateFormat, {}, { locale: options.locale, returnKeyOnError: true }),
+        { locale: settings.getLocaleObject(options.locale) },
       );
     } catch (e) {
       return '';

@@ -114,6 +114,11 @@ describe('API', () => {
         const result1 = translateFunction('application.empty');
         expect(result1).toEqual('');
       });
+
+      test('should support providing locale', () => {
+        const result1 = translateFunction('application.hello', { name: 'Aad' }, { locale: 'nl' });
+        expect(result1).toEqual('Hallo, Aad!');
+      });
     });
   });
 
@@ -145,6 +150,11 @@ describe('API', () => {
       test('should support parseFormat', () => {
         const result = localizeFunction('2014-30-12', { parseFormat: 'yyyy-dd-MM', dateFormat: 'dates.short' });
         expect(result).toEqual('12-30-2014');
+      });
+
+      test('should support providing locale', () => {
+        const result = localizeFunction(1517774664107, { locale: 'nl', dateFormat: 'dates.long' });
+        expect(result).toEqual('4 februari 2018');
       });
     });
   });

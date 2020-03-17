@@ -13,7 +13,7 @@ describe('addLocale', () => {
 
   test('adds the nl locale', () => {
     setLocale('nl');
-    expect(settings.localeObject).toEqual(nlLocale);
+    expect(settings.getLocaleObject('nl')).toEqual(nlLocale);
   });
 });
 
@@ -25,11 +25,11 @@ describe('addLocales', () => {
 
   test('can set the nl locale', () => {
     setLocale('nl');
-    expect(settings.localeObject).toEqual(nlLocale);
+    expect(settings.getLocaleObject('nl')).toEqual(nlLocale);
   });
 
   test('can set the it locale', () => {
     setLocale('it');
-    expect(settings.localeObject).toEqual(itLocale);
+    expect(settings.getLocaleObject('it')).toEqual(itLocale);
   });
 });

@@ -5,8 +5,8 @@ import BaseComponent from './Base';
 
 class Translate extends BaseComponent {
   render() {
-    const { value, ...otherProps } = this.props;
-    const translation = translate(value, otherProps);
+    const { value, locale, ...otherProps } = this.props;
+    const translation = translate(value, otherProps, { locale });
 
     return (
       <React.Fragment>
@@ -18,6 +18,7 @@ class Translate extends BaseComponent {
 
 Translate.propTypes = {
   value: PropTypes.string.isRequired,
+  locale: PropTypes.string,
 };
 
 export default Translate;
