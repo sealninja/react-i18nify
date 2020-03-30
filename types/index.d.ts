@@ -50,7 +50,7 @@ export function setTranslations(
   transations: Translations,
   rerenderComponents?: boolean
 ): void;
-export function setTranlationsGetter(fn: TranslationsGetter): void;
+export function setTranslationsGetter(fn: TranslationsGetter): void;
 
 export type ReplacementsGetter = (
   key: string,
@@ -67,4 +67,4 @@ export type TranslateProps = {
 export class Translate extends React.Component<TranslateProps> {}
 
 // Utility
-export function forceCompmonentsUpdate(): void;
+export function forceComponentsUpdate(): void;
