@@ -17,3 +17,4 @@ export {
   localize as l,
   forceComponentsUpdate,
 } from './lib/core';
+export { replace as translateReplace } from './lib/utils';
