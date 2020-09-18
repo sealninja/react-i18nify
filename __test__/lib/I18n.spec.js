@@ -7,7 +7,6 @@ import {
   setLocale, setTranslations, t, I18n,
 } from '../../src';
 
-
 describe('I18n.jsx', () => {
   beforeAll(() => {
     configure({ adapter: new Adapter() });

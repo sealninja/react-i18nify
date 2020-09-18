@@ -58,8 +58,12 @@ export type ReplacementsGetter = (
 ) => string;
 export function setHandleMissingTranslation(fn: ReplacementsGetter): void;
 
-export function translate(key: string, replacements?: Replacements): string;
-export function t(key: string, replacements?: Replacements): string;
+export interface TranslateOptions {
+  locale?: string;
+  returnKeyOnError?: boolean;
+
+export function translate(key: string, replacements?: Replacements, options?: TranslateOptions): string;
+export function t(key: string, replacements?: Replacements, options?: TranslateOptions): string;
 
 export type TranslateProps = {
   value: string;
