@@ -1,6 +1,6 @@
 // TypeScript Version: 3.7
-import { Locale } from 'date-fns';
-import React = require('react');
+import { Locale } from "date-fns";
+import React = require("react");
 
 export class I18n extends React.Component {}
 
@@ -21,7 +21,10 @@ export function localize(
   value: string | number,
   options?: LocalizeDateOptions
 ): string;
-export function localize(value: number, options?: LocalizeNumberOptions): string;
+export function localize(
+  value: number,
+  options?: LocalizeNumberOptions
+): string;
 export function l(
   value: string | number,
   options?: LocalizeDateOptions
@@ -61,9 +64,18 @@ export function setHandleMissingTranslation(fn: ReplacementsGetter): void;
 export interface TranslateOptions {
   locale?: string;
   returnKeyOnError?: boolean;
+}
 
-export function translate(key: string, replacements?: Replacements, options?: TranslateOptions): string;
-export function t(key: string, replacements?: Replacements, options?: TranslateOptions): string;
+export function translate(
+  key: string,
+  replacements?: Replacements,
+  options?: TranslateOptions
+): string;
+export function t(
+  key: string,
+  replacements?: Replacements,
+  options?: TranslateOptions
+): string;
 
 export type TranslateProps = {
   value: string;
