@@ -99,6 +99,7 @@ export const translate = (key, replacements = {}, options = {}) => {
       : locale.split('-')[0];
     translation = fetchTranslation(settings.translations, `${translationLocale}.${key}`, replacements.count);
   } catch (err) {
+    if (options.returnNullOnError) return null;
     if (options.returnKeyOnError) return key;
     return settings.handleMissingTranslation(key, replacements);
   }

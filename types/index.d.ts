@@ -63,6 +63,7 @@ export function setHandleMissingTranslation(fn: ReplacementsGetter): void;
 
 export interface TranslateOptions {
   locale?: string;
+  returnNullOnError?: boolean;
   returnKeyOnError?: boolean;
 }
 
