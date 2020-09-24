@@ -4,7 +4,7 @@ export const replace = (translation, replacements) => {
   if (typeof translation === 'string') {
     let result = translation;
     Object.keys(replacements).forEach((replacement) => {
-      result = result.split(`%{${replacement}}`).join(replacements[replacement]);
+      result = result.split(`%{${replacement}}`).join(replacements[replacement] ?? '');
     });
     return result;
   }
