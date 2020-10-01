@@ -13,6 +13,7 @@ export function setLocale(locale: string, rerenderComponents?: boolean): void;
 export function setLocaleGetter(fn: LocaleGetter): void;
 
 export interface LocalizeDateOptions {
+  locale?: string;
   parseFormat?: string;
   dateFormat?: string;
 }
