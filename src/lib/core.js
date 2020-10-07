@@ -4,6 +4,7 @@
 import IntlPolyfill from 'intl';
 import parse from 'date-fns/parse';
 import format from 'date-fns/format';
+import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import enUS from 'date-fns/locale/en-US';
 import BaseComponent from './Base';
 import { fetchTranslation, replace } from './utils';
@@ -116,6 +117,12 @@ export const localize = (value, options = {}) => {
           new Date(), { locale: settings.getLocaleObject(options.locale) },
         )
         : new Date(value);
+      if (options.dateFormat === 'distance-to-now') {
+        return formatDistanceToNow(
+          parsedDate,
+          { addSuffix: true, locale: settings.getLocaleObject(options.locale) },
+        );
+      }
       return format(
         parsedDate,
         translate(options.dateFormat, {}, { locale: options.locale, returnKeyOnError: true }),
