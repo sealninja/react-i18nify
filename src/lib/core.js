@@ -141,7 +141,11 @@ export const localize = (value, options = {}) => {
     } else {
       global.Intl = IntlPolyfill;
     }
-    return new Intl.NumberFormat(settings.locale, options).format(value);
+    try {
+      return new Intl.NumberFormat(settings.locale, options).format(value);
+    } catch (e) {
+      return e.message;
+    }
   }
   return value;
 };
