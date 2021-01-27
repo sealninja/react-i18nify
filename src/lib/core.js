@@ -1,7 +1,6 @@
 /* eslint global-require: "off" */
 /* eslint no-console: "off" */
 
-import IntlPolyfill from 'intl';
 import parse from 'date-fns/parse';
 import format from 'date-fns/format';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
@@ -134,14 +133,6 @@ export const localize = (value, options = {}) => {
     }
   }
   if (typeof value === 'number') {
-    if (global.Intl) {
-      if (!(Intl.NumberFormat
-        && Intl.NumberFormat.supportedLocalesOf(locale).length === 1)) {
-        Intl.NumberFormat = IntlPolyfill.NumberFormat;
-      }
-    } else {
-      global.Intl = IntlPolyfill;
-    }
     try {
       return new Intl.NumberFormat(locale, options).format(value);
     } catch (e) {
