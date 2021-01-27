@@ -108,25 +108,26 @@ export const translate = (key, replacements = {}, options = {}) => {
 };
 
 export const localize = (value, options = {}) => {
+  const locale = options.locale || settings.locale;
   if (options.dateFormat) {
     try {
       const parsedDate = options.parseFormat
         ? parse(
           value,
-          translate(options.parseFormat, {}, { locale: options.locale, returnKeyOnError: true }),
+          translate(options.parseFormat, {}, { locale, returnKeyOnError: true }),
           new Date(), { locale: settings.getLocaleObject(options.locale) },
         )
         : new Date(value);
       if (options.dateFormat === 'distance-to-now') {
         return formatDistanceToNow(
           parsedDate,
-          { addSuffix: true, locale: settings.getLocaleObject(options.locale) },
+          { addSuffix: true, locale: settings.getLocaleObject(locale) },
         );
       }
       return format(
         parsedDate,
-        translate(options.dateFormat, {}, { locale: options.locale, returnKeyOnError: true }),
-        { locale: settings.getLocaleObject(options.locale) },
+        translate(options.dateFormat, {}, { locale, returnKeyOnError: true }),
+        { locale: settings.getLocaleObject(locale) },
       );
     } catch (e) {
       return '';
@@ -135,14 +136,14 @@ export const localize = (value, options = {}) => {
   if (typeof value === 'number') {
     if (global.Intl) {
       if (!(Intl.NumberFormat
-        && Intl.NumberFormat.supportedLocalesOf(settings.locale).length === 1)) {
+        && Intl.NumberFormat.supportedLocalesOf(locale).length === 1)) {
         Intl.NumberFormat = IntlPolyfill.NumberFormat;
       }
     } else {
       global.Intl = IntlPolyfill;
     }
     try {
-      return new Intl.NumberFormat(settings.locale, options).format(value);
+      return new Intl.NumberFormat(locale, options).format(value);
     } catch (e) {
       return e.message;
     }
