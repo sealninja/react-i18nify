@@ -4,12 +4,11 @@
 import parse from 'date-fns/parse';
 import format from 'date-fns/format';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
-import enUS from 'date-fns/locale/en-US';
 import BaseComponent from './Base';
 import { fetchTranslation, replace } from './utils';
 
 export const settings = {
-  availableLocales: { 'en-US': enUS },
+  availableLocales: {},
   localeKey: 'en',
   translationsObject: {},
   getTranslations: null,
@@ -30,7 +29,7 @@ export const settings = {
 
   getLocaleObject(locale) {
     const l = locale || this.locale;
-    return this.availableLocales[l] || this.availableLocales[l.split('-')[0]] || enUS;
+    return this.availableLocales[l] || this.availableLocales[l.split('-')[0]];
   },
 
   set locale(locale) {
@@ -110,26 +109,28 @@ export const localize = (value, options = {}) => {
   const locale = options.locale || settings.locale;
   if (options.dateFormat) {
     try {
+      const localeObject = settings.getLocaleObject(locale);
+      if (!localeObject) throw new Error(`Locale ${locale} not added`);
       const parsedDate = options.parseFormat
         ? parse(
           value,
           translate(options.parseFormat, {}, { locale, returnKeyOnError: true }),
-          new Date(), { locale: settings.getLocaleObject(options.locale) },
+          new Date(), { locale: localeObject },
         )
         : new Date(value);
       if (options.dateFormat === 'distance-to-now') {
         return formatDistanceToNow(
           parsedDate,
-          { addSuffix: true, locale: settings.getLocaleObject(locale) },
+          { addSuffix: true, locale: localeObject },
         );
       }
       return format(
         parsedDate,
         translate(options.dateFormat, {}, { locale, returnKeyOnError: true }),
-        { locale: settings.getLocaleObject(locale) },
+        { locale: localeObject },
       );
     } catch (e) {
-      return '';
+      return e.message;
     }
   }
   if (typeof value === 'number') {

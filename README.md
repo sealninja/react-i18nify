@@ -10,12 +10,23 @@ Simple i18n translation and localization components and helpers for React.
 
 A working example of this package can be found [here at RunKit](https://runkit.com/npm/react-i18nify).
 
+### ⚠️ Upgrading to v4
+
+`react-i18nify` v4 does not include the `en-US` locale object of `date-fns` by default to reduce the package size. If you are localizing `en-US` dates, you can use this:
+
+```javascript
+import { addLocales } from 'react-i18nify';
+import en from 'date-fns/locale/en-US';
+
+addLocales({ en });
+```
+
 ## Installation
 
 Install by using npm:
 
 ```
-npm i --save react-i18nify
+npm i react-i18nify
 ```
 
 ## Getting started
@@ -117,12 +128,13 @@ import { I18n, translate } from 'react-i18nify';
 <I18n render={() => <input placeholder={translate("application.title")} />} />
 ```
 
-## Locales
+## Date localization
 
-react-i18nify uses [date-fns](https://github.com/date-fns/date-fns) internally to handle localization. In order to reduce the base bundle size, react-i18nify only includes the `en-US` locale by default. If you need additional locales, you can add them manually using `addLocale` or `addLocales`. For a list of available locales, refer to the [date-fns list](https://github.com/date-fns/date-fns/tree/master/src/locale).
+`react-i18nify` uses [date-fns](https://github.com/date-fns/date-fns) internally to handle date localization. In order to reduce the base bundle size, `date-fns` locale objects needed for date localization are not included by default. If you need date localization, you can add them manually using `addLocale` or `addLocales`. For a list of available locales, refer to the [date-fns list](https://github.com/date-fns/date-fns/tree/master/src/locale).
 
 ```javascript
 import { addLocale, addLocales, setLocale } from 'react-i18nify';
+import en from 'date-fns/locale/en-US';
 import nl from 'date-fns/locale/nl';
 import it from 'date-fns/locale/it';
 
@@ -131,10 +143,7 @@ addLocale('nl', nl);
 setLocale('nl');
 
 // Add multiple locales
-addLocales({
-  nl: nl,
-  it: it,
-});
+addLocales({ nl, it, en });
 setLocale('it');
 ```
 
@@ -185,7 +194,7 @@ The return value of the provide function will be rendered and automatically re-r
 
 ### `addLocale(name, locale)`
 
-Add a [date-fns locale](https://github.com/date-fns/date-fns/tree/master/src/locale) to the available locales.
+Add a [date-fns locale](https://github.com/date-fns/date-fns/tree/master/src/locale) to the available locales for date localization.
 
 ```javascript
 import { addLocale, setLocale } from 'react-i18nify';
@@ -197,17 +206,14 @@ setLocale('nl');
 
 ### `addLocales(localesObject)`
 
-Add multiple [date-fns locales](https://github.com/date-fns/date-fns/tree/master/src/locale) to the available locales at once.
+Add multiple [date-fns locales](https://github.com/date-fns/date-fns/tree/master/src/locale) to the available locales for date localization at once.
 
 ```javascript
 import { addLocales, setLocale } from 'react-i18nify';
 import nl from 'date-fns/locale/nl';
 import it from 'date-fns/locale/it';
 
-addLocales({
-  nl: nl,
-  it: it,
-});
+addLocales({ nl, it });
 setLocale('it');
 ```
 
