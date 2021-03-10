@@ -2,6 +2,8 @@
 
 import nl from 'date-fns/locale/nl';
 import zh from 'date-fns/locale/zh-CN';
+import en from 'date-fns/locale/en-US';
+
 import {
   addLocales,
   getLocale,
@@ -19,7 +21,7 @@ import {
 
 describe('API', () => {
   beforeAll(() => {
-    addLocales({ nl, zh });
+    addLocales({ nl, zh, en });
   });
 
   describe('setLocale', () => {
@@ -145,6 +147,12 @@ describe('API', () => {
         setLocale('nl-argh');
         const result = localizeFunction(1517774664107, { dateFormat: 'dates.long' });
         expect(result).toEqual('4 februari 2018');
+      });
+
+      test('should not format when locale is not added', () => {
+        setLocale('fr');
+        const result = localizeFunction('2014-30-12', { parseFormat: 'yyyy-dd-MM', dateFormat: 'dates.short' });
+        expect(result).toEqual('Locale fr not added');
       });
 
       test('should support parseFormat', () => {
