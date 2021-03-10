@@ -10,17 +10,6 @@ Simple i18n translation and localization components and helpers for React.
 
 A working example of this package can be found [here at RunKit](https://runkit.com/npm/react-i18nify).
 
-### ⚠️ Upgrading to v4
-
-`react-i18nify` v4 does not include the `en-US` locale object of `date-fns` by default, in order to reduce the package size. If you are localizing `en-US` dates, you can use this:
-
-```javascript
-import { addLocales } from 'react-i18nify';
-import en from 'date-fns/locale/en-US';
-
-addLocales({ en });
-```
-
 ## Installation
 
 Install by using npm:
