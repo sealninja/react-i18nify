@@ -12,7 +12,7 @@ A working example of this package can be found [here at RunKit](https://runkit.c
 
 ### ⚠️ Upgrading to v4
 
-`react-i18nify` v4 does not include the `en-US` locale object of `date-fns` by default to reduce the package size. If you are localizing `en-US` dates, you can use this:
+`react-i18nify` v4 does not include the `en-US` locale object of `date-fns` by default, in order to reduce the package size. If you are localizing `en-US` dates, you can use this:
 
 ```javascript
 import { addLocales } from 'react-i18nify';
