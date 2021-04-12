@@ -3,7 +3,7 @@
 
 import parse from 'date-fns/parse';
 import format from 'date-fns/format';
-import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import BaseComponent from './Base';
 import { fetchTranslation, replace } from './utils';
 
@@ -119,7 +119,7 @@ export const localize = (value, options = {}) => {
         )
         : new Date(value);
       if (options.dateFormat === 'distance-to-now') {
-        return formatDistanceToNow(
+        return formatDistanceToNowStrict(
           parsedDate,
           { addSuffix: true, locale: localeObject },
         );

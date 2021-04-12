@@ -164,6 +164,11 @@ describe('API', () => {
         const result = localizeFunction(1517774664107, { locale: 'nl', dateFormat: 'dates.long' });
         expect(result).toEqual('4 februari 2018');
       });
+
+      test('should support distance to now', () => {
+        const result = localizeFunction(1517774664107, { locale: 'nl', dateFormat: 'distance-to-now' });
+        expect(result).toEqual('3 jaar geleden');
+      });
     });
   });
 });
