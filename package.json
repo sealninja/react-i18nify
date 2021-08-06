@@ -10,7 +10,7 @@
     "lint": "eslint src/**/*.jsx src/**/*.js __test__/**/*.js",
     "lint:fix": "npm run lint -- --fix",
     "dtslint": "dtslint types",
-    "build": "rm -rf build && babel src -d build",
+    "build": "rimraf build && npx browserslist --update-db && babel src -d build",
     "prepare": "npm run build",
     "precommit": "npm run lint && npm run dtslint && npm test"
   },
@@ -42,6 +42,7 @@
     "redux"
   ],
   "runkitExampleFilename": "example/example.js",
+  "browserslist": "> 0.5%, last 2 versions, Firefox ESR, not dead",
   "peerDependencies": {
     "react": "^16.8.0 || ^17.x"
   },
@@ -69,6 +70,7 @@
     "jest": "^26.6.3",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "rimraf": "^3.0.2",
     "typescript": "^4.2.3"
   }
 }

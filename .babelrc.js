@@ -1,12 +1,4 @@
 module.exports = {
-  presets: [
-    [
-      "@babel/env",
-      {
-        targets: "> 0.5%, last 2 versions, Firefox ESR, not dead",
-      },
-    ],
-    "@babel/react",
-  ],
+  presets: ['@babel/preset-react', '@babel/preset-env'],
   plugins: ["@babel/plugin-proposal-class-properties"],
 };
