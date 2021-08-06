@@ -11,8 +11,7 @@
     "lint:fix": "npm run lint -- --fix",
     "dtslint": "dtslint types",
     "build": "rimraf build && npx browserslist --update-db && babel src -d build",
-    "prepare": "npm run build",
-    "precommit": "npm run lint && npm run dtslint && npm test"
+    "prepare": "npm run build"
   },
   "files": [
     "build",
