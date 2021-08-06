@@ -6,7 +6,6 @@ Simple i18n translation and localization components and helpers for React.
 
 [![NPM version](https://img.shields.io/npm/v/react-i18nify.svg?style=flat-square)](https://npmjs.org/package/react-i18nify)
 [![Downloads](https://img.shields.io/npm/dm/react-i18nify.svg?style=flat-square)](https://npmjs.org/package/react-i18nify)
-[![Dependency Status](https://img.shields.io/david/sealninja/react-i18nify?style=flat-square)](https://david-dm.org/sealninja/react-i18nify)
 
 A working example of this package can be found [here at RunKit](https://runkit.com/npm/react-i18nify).
 
