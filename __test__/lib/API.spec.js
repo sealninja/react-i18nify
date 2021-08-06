@@ -166,7 +166,7 @@ describe('API', () => {
       });
 
       test('should support distance to now', () => {
-        const result = localizeFunction(1517774664107, { locale: 'nl', dateFormat: 'distance-to-now' });
+        const result = localizeFunction(new Date(new Date().setFullYear(new Date().getFullYear() - 3)).getTime(), { locale: 'nl', dateFormat: 'distance-to-now' });
         expect(result).toEqual('3 jaar geleden');
       });
     });
