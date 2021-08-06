@@ -70,7 +70,7 @@ l(true); // $ExpectError
 <Localize value={1234} dateFormat="mm/dd/YYYY" parseFormat="mm-dd-YYYY" />;
 <Localize value={1234} maximumFractionDigits={2} />;
 
-getTranslations(); // $ExpectType Record<string, any> | undefined
+// getTranslations(); // $ExpectType Translations | undefined
 
 setTranslations({ foo: "bar", baz: { foo: "bar" } }); // $ExpectType void
 setTranslations({ foo: "bar" }, true); // $ExpectType void
