@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 /* global describe, test, expect, beforeAll, beforeEach */
 
 import React from 'react';
