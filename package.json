@@ -57,7 +57,7 @@
     "@babel/preset-react": "^7.12.13",
     "@types/react": "^17.0.18",
     "babel-eslint": "^10.1.0",
-    "dtslint": "^4.1.5",
+    "dtslint": "^4.1.6",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
     "eslint": "^7.21.0",
