@@ -50,10 +50,10 @@
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.13.10",
-    "@babel/core": "^7.13.10",
+    "@babel/cli": "^7.15.4",
+    "@babel/core": "^7.15.4",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
-    "@babel/preset-env": "^7.13.10",
+    "@babel/preset-env": "^7.15.4",
     "@babel/preset-react": "^7.12.13",
     "@types/react": "^17.0.19",
     "babel-eslint": "^10.1.0",
