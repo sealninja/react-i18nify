@@ -1,7 +1,5 @@
 # React I18nify
 
-**Note**: Looking for the v1 documentation? [See v1 branch](https://github.com/sealninja/react-i18nify/tree/v1).
-
 Simple i18n translation and localization components and helpers for React.
 
 [![NPM version](https://img.shields.io/npm/v/react-i18nify.svg?style=flat-square)](https://npmjs.org/package/react-i18nify)

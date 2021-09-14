@@ -1,5 +1,6 @@
 const React = require('react');
 const ReactDOM = require('react-dom/server');
+const dateFnsNl = require('date-fns/locale/nl')
 
 let ReactI18nfiy = null;
 
@@ -10,7 +11,7 @@ try {
 }
 
 const {
-  setTranslations, setLocale, setHandleMissingTranslation, translate, localize, Translate, Localize, I18n,
+  addLocales, setTranslations, setLocale, setHandleMissingTranslation, translate, localize, Translate, Localize, I18n,
 } = ReactI18nfiy;
 
 setTranslations({
@@ -40,12 +41,12 @@ setTranslations({
   },
 });
 
+addLocales({ nl: dateFnsNl });
 setLocale('nl');
 
 console.log(translate('application.title'));
 console.log(translate('application.hello', { name: 'Aad' }));
 console.log(translate('export', { count: 0 }));
-console.log(translate('application.unknown_translation'));
 console.log(translate('application', { name: 'Aad' }));
 
 console.log(localize(1385856000000, { dateFormat: 'date.long' }));
