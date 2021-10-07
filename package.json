@@ -46,7 +46,7 @@
     "react": "^16.8.0 || ^17.x"
   },
   "dependencies": {
-    "date-fns": "^2.24.0",
+    "date-fns": "^2.25.0",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
