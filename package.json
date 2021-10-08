@@ -51,9 +51,9 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",
-    "@babel/core": "^7.15.5",
+    "@babel/core": "^7.15.8",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
-    "@babel/preset-env": "^7.15.4",
+    "@babel/preset-env": "^7.15.8",
     "@babel/preset-react": "^7.12.13",
     "@babel/register": "^7.15.3",
     "@types/react": "^17.0.27",
