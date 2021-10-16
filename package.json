@@ -59,7 +59,7 @@
     "@types/react": "^17.0.29",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.3",
     "babel-eslint": "^10.1.0",
-    "dtslint": "^4.1.6",
+    "dtslint": "^4.2.0",
     "enzyme": "^3.11.0",
     "eslint": "^7.21.0",
     "eslint-config-airbnb": "^18.2.1",
