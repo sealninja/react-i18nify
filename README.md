@@ -105,7 +105,7 @@ localize(1385856000000, { dateFormat: 'date.long' });
 localize(Math.PI, { maximumFractionDigits: 2 });
   // => 3,14
 localize('huh', { dateFormat: 'date.long' });
-  // => 1 december 2013
+  // => null
 ```
 
 If you want these helpers to be re-rendered automatically when the locale or translations change, you have to wrap them in a `<I18n>` component using its `render` prop:
