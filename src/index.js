@@ -11,6 +11,7 @@ export {
   setTranslations,
   setTranslationsGetter,
   setHandleMissingTranslation,
+  setHandleFailedLocalization,
   translate,
   localize,
   translate as t,

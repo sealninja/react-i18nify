@@ -11,7 +11,7 @@ try {
 }
 
 const {
-  addLocales, setTranslations, setLocale, setHandleMissingTranslation, translate, localize, Translate, Localize, I18n,
+  addLocales, setTranslations, setLocale, setHandleMissingTranslation, setHandleFailedLocalization, translate, localize, Translate, Localize, I18n,
 } = ReactI18nfiy;
 
 setTranslations({
@@ -51,10 +51,15 @@ console.log(translate('application', { name: 'Aad' }));
 
 console.log(localize(1385856000000, { dateFormat: 'date.long' }));
 console.log(localize(Math.PI, { maximumFractionDigits: 2 }));
+console.log(localize('huh', { dateFormat: 'date.long' }));
 
-setHandleMissingTranslation((key, replacements) => `Missing translation: ${key}`);
+setHandleMissingTranslation((key, replacements, options, err) => `Missing translation: ${key}`);
 
 console.log(translate('application.unknown_translation'));
+
+setHandleFailedLocalization((value, options, err) => `Failed localization: ${value}`);
+
+console.log(localize('huh', { dateFormat: 'date.long' }));
 
 function AwesomeComponent() {
   return (

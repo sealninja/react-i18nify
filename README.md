@@ -104,6 +104,8 @@ localize(1385856000000, { dateFormat: 'date.long' });
   // => 1 december 2013
 localize(Math.PI, { maximumFractionDigits: 2 });
   // => 3,14
+localize('huh', { dateFormat: 'date.long' });
+  // => 1 december 2013
 ```
 
 If you want these helpers to be re-rendered automatically when the locale or translations change, you have to wrap them in a `<I18n>` component using its `render` prop:
@@ -257,10 +259,26 @@ You can however overwrite this behavior by setting a function to handle missing 
 ```javascript
 import { setHandleMissingTranslation, translate } from 'react-i18nify';
 
-setHandleMissingTranslation((key, replacements) => `Missing translation: ${key}`);
+setHandleMissingTranslation((key, replacements, options, err) => `Missing translation: ${key}`);
 
 translate('application.unknown_translation');
   // => Missing translation: application.unknown_translation
+```
+
+
+### `setHandleFailedLocalization(fn)`
+
+By default, when a localization failed, `null` will be returned,
+as can be seen in the `localize('huh', { dateFormat: 'date.long' });` example above.
+You can however overwrite this behavior by setting a function to handle failed localizations.
+
+```javascript
+import { setHandleFailedLocalization, localize } from 'react-i18nify';
+
+setHandleFailedLocalization((value, options, err) => `Failed localization: ${value}`);
+
+localize('huh', { dateFormat: 'date.long' });
+  // => Failed localization: huh
 ```
 
 ### `translate(key, replacements = {})`

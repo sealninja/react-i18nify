@@ -14,6 +14,7 @@ export const settings = {
   getTranslations: null,
   getLocale: null,
   handleMissingTranslation: (text) => text.split('.').pop(),
+  handleFailedLocalization: () => null,
 
   get translations() {
     return this.getTranslations ? this.getTranslations() : this.translationsObject;
@@ -89,6 +90,13 @@ export const setHandleMissingTranslation = (fn) => {
   settings.handleMissingTranslation = fn;
 };
 
+export const setHandleFailedLocalization = (fn) => {
+  if (typeof fn !== 'function') {
+    throw new Error('Handle failed localization must be a function');
+  }
+  settings.handleFailedLocalization = fn;
+};
+
 export const translate = (key, replacements = {}, options = {}) => {
   const locale = options.locale || settings.locale;
   let translation = '';
@@ -100,7 +108,7 @@ export const translate = (key, replacements = {}, options = {}) => {
   } catch (err) {
     if (options.returnNullOnError) return null;
     if (options.returnKeyOnError) return key;
-    return settings.handleMissingTranslation(key, replacements);
+    return settings.handleMissingTranslation(key, replacements, options, err);
   }
   return replace(translation, replacements);
 };
@@ -129,15 +137,15 @@ export const localize = (value, options = {}) => {
         translate(options.dateFormat, {}, { locale, returnKeyOnError: true }),
         { locale: localeObject },
       );
-    } catch (e) {
-      return e.message;
+    } catch (err) {
+      return settings.handleFailedLocalization(value, options, err);
     }
   }
   if (typeof value === 'number') {
     try {
       return new Intl.NumberFormat(locale, options).format(value);
-    } catch (e) {
-      return e.message;
+    } catch (err) {
+      return settings.handleFailedLocalization(value, options, err);
     }
   }
   return value;
