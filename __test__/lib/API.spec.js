@@ -149,10 +149,15 @@ describe('API', () => {
         expect(result).toEqual('4 februari 2018');
       });
 
-      test('should not format when locale is not added', () => {
+      test('should return null when locale is not added', () => {
         setLocale('fr');
         const result = localizeFunction('2014-30-12', { parseFormat: 'yyyy-dd-MM', dateFormat: 'dates.short' });
-        expect(result).toEqual('Locale fr not added');
+        expect(result).toEqual(null);
+      });
+
+      test('should return null when localization failed', () => {
+        const result = localizeFunction('huh', { parseFormat: 'yyyy-dd-MM', dateFormat: 'dates.short' });
+        expect(result).toEqual(null);
       });
 
       test('should support parseFormat', () => {
