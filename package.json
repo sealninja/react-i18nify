@@ -50,12 +50,12 @@
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.15.7",
-    "@babel/core": "^7.15.8",
-    "@babel/plugin-proposal-class-properties": "^7.13.0",
-    "@babel/preset-env": "^7.15.8",
-    "@babel/preset-react": "^7.12.13",
-    "@babel/register": "^7.15.3",
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/plugin-proposal-class-properties": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@babel/preset-react": "^7.16.0",
+    "@babel/register": "^7.16.0",
     "@types/react": "^17.0.33",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.5",
     "babel-eslint": "^10.1.0",
