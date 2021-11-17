@@ -43,10 +43,10 @@
   "runkitExampleFilename": "example/example.js",
   "browserslist": "> 0.5%, last 2 versions, Firefox ESR, not dead",
   "peerDependencies": {
+    "date-fns": "^2.25.0",
     "react": "^16.8.0 || ^17.x"
   },
   "dependencies": {
-    "date-fns": "^2.25.0",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
