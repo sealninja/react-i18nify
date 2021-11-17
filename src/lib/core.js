@@ -28,13 +28,13 @@ export const settings = {
     return this.getLocale ? this.getLocale() : this.localeKey;
   },
 
+  set locale(locale) {
+    this.localeKey = locale;
+  },
+
   getLocaleObject(locale) {
     const l = locale || this.locale;
     return this.availableLocales[l] || this.availableLocales[l.split('-')[0]];
-  },
-
-  set locale(locale) {
-    this.localeKey = locale;
   },
 };
 
@@ -123,7 +123,8 @@ export const localize = (value, options = {}) => {
         ? parse(
           value,
           translate(options.parseFormat, {}, { locale, returnKeyOnError: true }),
-          new Date(), { locale: localeObject },
+          new Date(),
+          { locale: localeObject },
         )
         : new Date(value);
       if (options.dateFormat === 'distance-to-now') {

@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { localize } from './core';
 import BaseComponent from './Base';
@@ -10,11 +9,7 @@ class Localize extends BaseComponent {
     } = this.props;
     const localization = localize(value, { ...options, dateFormat, parseFormat });
 
-    return (
-      <React.Fragment>
-        {localization}
-      </React.Fragment>
-    );
+    return localization;
   }
 }
 
