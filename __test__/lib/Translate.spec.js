@@ -5,13 +5,11 @@
 /* global describe, test, expect, beforeAll, beforeEach */
 
 import React from 'react';
-import { mount, configure } from 'enzyme';
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+import { renderToString } from 'react-dom/server';
 import { setLocale, setTranslations, Translate } from '../../src';
 
 describe('Translate.jsx', () => {
   beforeAll(() => {
-    configure({ adapter: new Adapter() });
     setTranslations({
       en: {
         application: {
@@ -36,63 +34,32 @@ describe('Translate.jsx', () => {
     });
 
     test('should handle translation', () => {
-      const component = mount(<Translate
-        value="application.title"
-      />);
-
-      expect(component.type()).toBe(Translate);
-      expect(component.text()).toBe('Awesome app with i18n!');
+      const component = <Translate value="application.title" />;
+      expect(renderToString(component)).toMatch('Awesome app with i18n!');
     });
 
     test('should handle NL translation', () => {
       setLocale('nl');
-      const component = mount(<Translate
-        value="application.title"
-      />);
-
-      expect(component.type()).toBe(Translate);
-      expect(component.text()).toBe('Toffe app met i18n!');
+      const component = <Translate value="application.title" />;
+      expect(renderToString(component)).toMatch('Toffe app met i18n!');
     });
 
     test('should handle locale switching', () => {
-      const component = mount(<Translate
-        value="application.title"
-      />);
-
-      expect(component.text()).toBe('Awesome app with i18n!');
+      const component = <Translate value="application.title" />;
+      expect(renderToString(component)).toMatch('Awesome app with i18n!');
       setLocale('nl');
-      component.update();
-      expect(component.text()).toBe('Toffe app met i18n!');
+      expect(renderToString(component)).toMatch('Toffe app met i18n!');
     });
 
     test('should handle dynamic placeholder', () => {
-      const component = mount(<Translate
-        value="application.hello"
-        name="Aad"
-      />);
-
-      expect(component.type()).toBe(Translate);
-      expect(component.text()).toBe('Hello, Aad!');
+      const component = <Translate value="application.hello" name="Aad" />;
+      expect(renderToString(component)).toMatch('Hello, Aad!');
     });
 
     test('should handle pluralization', () => {
-      const component = mount(<Translate
-        value="export"
-        count={0}
-      />);
-
-      expect(component.type()).toBe(Translate);
-      expect(component.text()).toBe('Nothing to export');
-
-      component.setProps({ count: 1 });
-
-      expect(component.type()).toBe(Translate);
-      expect(component.text()).toBe('Export 1 item');
-
-      component.setProps({ count: 4 });
-
-      expect(component.type()).toBe(Translate);
-      expect(component.text()).toBe('Export 4 items');
+      expect(renderToString(<Translate value="export" count={0} />)).toMatch('Nothing to export');
+      expect(renderToString(<Translate value="export" count={1} />)).toMatch('Export 1 item');
+      expect(renderToString(<Translate value="export" count={4} />)).toMatch('Export 4 items');
     });
   });
 });

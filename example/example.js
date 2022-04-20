@@ -1,5 +1,5 @@
 const React = require('react');
-const ReactDOM = require('react-dom/server');
+const ReactDOMServer = require('react-dom/server');
 const dateFnsNl = require('date-fns/locale/nl')
 
 let ReactI18nfiy = null;
@@ -86,4 +86,4 @@ function AwesomeComponent() {
   );
 }
 
-console.log(ReactDOM.renderToString(<AwesomeComponent />));
+console.log(ReactDOMServer.renderToString(<AwesomeComponent />));
