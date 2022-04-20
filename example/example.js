@@ -80,6 +80,7 @@ function AwesomeComponent() {
           }}
         />
       </p>
+      <p><Localize value="2015-09-03" dateFormat="distance-to-now" /></p>
       <I18n render={() => <input placeholder={translate('application.title')} />} />
     </React.Fragment>
   );

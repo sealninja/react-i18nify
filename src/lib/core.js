@@ -133,6 +133,18 @@ export const localize = (value, options = {}) => {
           { addSuffix: true, locale: localeObject },
         );
       }
+      if (options.dateFormat === 'distance-to-now-hours') {
+        return formatDistanceToNowStrict(
+          parsedDate,
+          { addSuffix: true, unit: 'hour', locale: localeObject },
+        );
+      }
+      if (options.dateFormat === 'distance-to-now-days') {
+        return formatDistanceToNowStrict(
+          parsedDate,
+          { addSuffix: true, unit: 'day', locale: localeObject },
+        );
+      }
       return format(
         parsedDate,
         translate(options.dateFormat, {}, { locale, returnKeyOnError: true }),

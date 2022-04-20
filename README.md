@@ -78,6 +78,8 @@ import { Translate, Localize } from 'react-i18nify';
   // => 7 april 2016
 <Localize value="2015-09-03" dateFormat="date.long" />
   // => 3 september 2015
+<Localize value="2015-09-03" dateFormat="distance-to-now" />
+  // => 7 jaar geleden
 <Localize value={10/3} options={{style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2}} />
   // => € 3,33
 ```

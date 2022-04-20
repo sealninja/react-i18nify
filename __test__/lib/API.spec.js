@@ -174,6 +174,16 @@ describe('API', () => {
         const result = localizeFunction(new Date(new Date().setFullYear(new Date().getFullYear() - 3)).getTime(), { locale: 'nl', dateFormat: 'distance-to-now' });
         expect(result).toEqual('3 jaar geleden');
       });
+
+      test('should support distance to now in hours', () => {
+        const result = localizeFunction(new Date(new Date().setHours(new Date().getHours() - 30)).getTime(), { locale: 'nl', dateFormat: 'distance-to-now-hours' });
+        expect(result).toEqual('30 uur geleden');
+      });
+
+      test('should support distance to now in days', () => {
+        const result = localizeFunction(new Date(new Date().setHours(new Date().getHours() - 30)).getTime(), { locale: 'nl', dateFormat: 'distance-to-now-days' });
+        expect(result).toEqual('1 dag geleden');
+      });
     });
   });
 });
