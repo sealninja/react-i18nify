@@ -57,7 +57,7 @@
     "@babel/preset-env": "^7.16.10",
     "@babel/preset-react": "^7.16.7",
     "@babel/register": "^7.17.7",
-    "@types/react": "^17.0.43",
+    "@types/react": "^18.0.5",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.7",
     "date-fns": "^2.28.0",
     "dtslint": "^4.2.1",
