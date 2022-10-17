@@ -1,6 +1,4 @@
-import parse from 'date-fns/parse';
-import format from 'date-fns/format';
-import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
+import { parse, format, formatDistanceToNowStrict } from 'date-fns';
 import { getLocale, getLocaleObject, handleFailedLocalization } from './settings';
 import translate from './translate';
 
