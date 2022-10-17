@@ -1,6 +1,7 @@
-export { default as Translate } from './lib/Translate';
-export { default as Localize } from './lib/Localize';
-export { default as I18n } from './lib/I18n';
+export { forceComponentsUpdate } from './components/Base';
+export { default as Translate } from './components/Translate';
+export { default as Localize } from './components/Localize';
+export { default as I18n } from './components/I18n';
 export {
   addLocale,
   addLocales,
@@ -12,10 +13,9 @@ export {
   setTranslationsGetter,
   setHandleMissingTranslation,
   setHandleFailedLocalization,
-  translate,
-  localize,
-  translate as t,
-  localize as l,
-  forceComponentsUpdate,
-} from './lib/core';
+} from './lib/settings';
+export { default as translate } from './lib/translate';
+export { default as t } from './lib/translate';
+export { default as localize } from './lib/localize';
+export { default as l } from './lib/localize';
 export { replace as translateReplace } from './lib/utils';

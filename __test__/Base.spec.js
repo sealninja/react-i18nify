@@ -1,6 +1,6 @@
 /* global describe, test, expect */
 
-import Base from '../../src/lib/Base';
+import Base from '../src/components/Base';
 
 describe('Base.jsx', () => {
   test('should export <Base/> component', () => {

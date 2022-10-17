@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { translate } from './core';
+import translate from '../lib/translate';
 import BaseComponent from './Base';
 
 class Translate extends BaseComponent {

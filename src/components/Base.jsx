@@ -15,3 +15,7 @@ export default class Base extends React.Component {
     Base.instances.splice(Base.instances.indexOf(this), 1);
   }
 }
+
+export const forceComponentsUpdate = () => {
+  Base.rerenderAll();
+};

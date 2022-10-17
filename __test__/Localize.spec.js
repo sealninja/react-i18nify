@@ -9,7 +9,7 @@ import {
   setLocale,
   setTranslations,
   Localize,
-} from '../../src';
+} from '../src';
 
 describe('Localize.jsx', () => {
   beforeAll(() => {
