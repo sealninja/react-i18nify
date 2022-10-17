@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { setLocale, setTranslations, Translate } from '../../src';
+import { setLocale, setTranslations, Translate } from '../src';
 
 describe('Translate.jsx', () => {
   beforeAll(() => {

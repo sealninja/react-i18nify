@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { localize } from './core';
+import localize from '../lib/localize';
 import BaseComponent from './Base';
 
 class Localize extends BaseComponent {

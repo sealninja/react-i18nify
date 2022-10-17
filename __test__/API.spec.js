@@ -1,10 +1,12 @@
 /* global describe, test, expect, beforeEach, beforeAll */
 
 import nl from 'date-fns/locale/nl';
+import it from 'date-fns/locale/it';
 import zh from 'date-fns/locale/zh-CN';
 import en from 'date-fns/locale/en-US';
 
 import {
+  addLocale,
   addLocales,
   getLocale,
   getTranslations,
@@ -17,11 +19,26 @@ import {
   localize,
   t,
   l,
-} from '../../src';
+} from '../src';
+import { getLocaleObject } from '../src/lib/settings';
 
 describe('API', () => {
   beforeAll(() => {
     addLocales({ nl, zh, en });
+  });
+
+  describe('addLocale', () => {
+    test('adds the it locale', () => {
+      addLocale('it', it);
+      expect(getLocaleObject('it')).toEqual(it);
+    });
+  });
+
+  describe('addLocales', () => {
+    test('adds the it locale', () => {
+      addLocales({ it });
+      expect(getLocaleObject('it')).toEqual(it);
+    });
   });
 
   describe('setLocale', () => {
