@@ -1,7 +1,7 @@
 import parse from 'date-fns/parse';
 import format from 'date-fns/format';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
-import { getLocale, getLocaleObject, getHandleFailedLocalization } from './settings';
+import { getLocale, getLocaleObject, handleFailedLocalization } from './settings';
 import translate from './translate';
 
 export default (value, options = {}) => {
@@ -42,14 +42,14 @@ export default (value, options = {}) => {
         { locale: localeObject },
       );
     } catch (err) {
-      return getHandleFailedLocalization()(value, options, err);
+      return handleFailedLocalization(value, options, err);
     }
   }
   if (typeof value === 'number') {
     try {
       return new Intl.NumberFormat(locale, options).format(value);
     } catch (err) {
-      return getHandleFailedLocalization()(value, options, err);
+      return handleFailedLocalization(value, options, err);
     }
   }
   return value;

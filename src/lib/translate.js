@@ -1,5 +1,5 @@
 import { fetchTranslation, replace } from './utils';
-import { getLocale, getTranslations, getHandleMissingTranslation } from './settings';
+import { getLocale, getTranslations, handleMissingTranslation } from './settings';
 
 export default (key, replacements = {}, options = {}) => {
   const locale = options.locale || getLocale();
@@ -12,7 +12,7 @@ export default (key, replacements = {}, options = {}) => {
   } catch (err) {
     if (options.returnNullOnError) return null;
     if (options.returnKeyOnError) return key;
-    return getHandleMissingTranslation()(key, replacements, options, err);
+    return handleMissingTranslation(key, replacements, options, err);
   }
   return replace(translation, replacements);
 };

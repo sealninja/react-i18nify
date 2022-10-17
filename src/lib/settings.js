@@ -27,8 +27,8 @@ export const getLocaleObject = (locale) => {
   return settings.availableLocales[l] || settings.availableLocales[l.split('-')[0]];
 };
 
-export const getHandleMissingTranslation = () => settings.handleMissingTranslation;
-export const getHandleFailedLocalization = () => settings.handleFailedLocalization;
+export const handleMissingTranslation = (...args) => settings.handleMissingTranslation(...args);
+export const handleFailedLocalization = (...args) => settings.handleFailedLocalization(...args);
 
 export const addLocale = (name, locale) => {
   settings.availableLocales[name] = locale;
