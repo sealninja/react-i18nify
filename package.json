@@ -2,7 +2,8 @@
   "name": "react-i18nify",
   "version": "4.6.1",
   "description": "Simple i18n translation and localization components and helpers for React.",
-  "main": "./build/index.js",
+  "main": "./cjs/index.js",
+  "module": "./es/index.js",
   "types": "./types/index.d.ts",
   "scripts": {
     "test": "jest --verbose",
@@ -10,7 +11,7 @@
     "lint": "eslint src/**/*.jsx src/**/*.js __test__/**/*.js",
     "lint:fix": "npm run lint -- --fix",
     "dtslint": "dtslint types",
-    "build": "rimraf build && npx browserslist --update-db && babel src -d build",
+    "build": "rimraf cjs es && npx browserslist --update-db && NODE_ENV=cjs babel src -d cjs && NODE_ENV=es babel src -d es",
     "prepare": "npm run build"
   },
   "files": [
@@ -41,7 +42,7 @@
     "redux"
   ],
   "runkitExampleFilename": "example/example.js",
-  "browserslist": "> 0.5%, last 2 versions, Firefox ESR, not dead",
+  "browserslist": "> 0.5%, last 2 versions, not op_mini all, not dead",
   "peerDependencies": {
     "date-fns": "^2.25.0",
     "react": "^16.8.0 || ^17.x || ^18.x"
@@ -53,7 +54,6 @@
     "@babel/cli": "^7.19.3",
     "@babel/core": "^7.19.3",
     "@babel/eslint-parser": "^7.19.1",
-    "@babel/plugin-proposal-class-properties": "^7.18.6",
     "@babel/preset-env": "^7.19.3",
     "@babel/preset-react": "^7.18.6",
     "@babel/register": "^7.18.9",
