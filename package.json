@@ -15,7 +15,8 @@
     "prepare": "npm run build"
   },
   "files": [
-    "build",
+    "cjs",
+    "es",
     "src",
     "example",
     "types/index.d.ts"
