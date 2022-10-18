@@ -1,8 +1,6 @@
 import React from "react";
 import {
   I18n,
-  addLocale,
-  addLocales,
   getLocale,
   setLocale,
   setLocaleGetter,
@@ -18,17 +16,8 @@ import {
   t,
   Translate,
 } from "react-i18nify";
-import enUS from "date-fns/esm/locale/en-US";
 
 <I18n />;
-
-addLocale("en", enUS); // $ExpectType void
-addLocale(1234, enUS); // $ExpectError
-addLocale("en", "foo"); // $ExpectError
-
-addLocales({ en: enUS }); // $ExpectType void
-addLocales("foo"); // $ExpectError
-addLocales({ en: "foo" }); // $ExpectError
 
 getLocale(); // $ExpectType string | undefined
 

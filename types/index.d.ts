@@ -1,13 +1,10 @@
 // TypeScript Version: 3.7
-import { Locale } from "date-fns";
 import React = require("react");
 
-export class I18n extends React.Component {}
+export class I18n extends React.Component { }
 
 // Localization
 export type LocaleGetter = () => string;
-export function addLocale(name: string, locale: Locale): void;
-export function addLocales(localeObject: Record<string, Locale>): void;
 export function getLocale(): string | undefined;
 export function setLocale(locale: string, rerenderComponents?: boolean): void;
 export function setLocaleGetter(fn: LocaleGetter): void;
@@ -40,7 +37,7 @@ export type LocalizeNumberProps = {
 } & LocalizeNumberOptions;
 export class Localize extends React.Component<
   LocalizeDateProps | LocalizeNumberProps
-> {}
+> { }
 
 // Translations
 export type Translations = Record<string, any>;
@@ -82,7 +79,7 @@ export function t(
 export type TranslateProps = {
   value: string;
 } & Replacements;
-export class Translate extends React.Component<TranslateProps> {}
+export class Translate extends React.Component<TranslateProps> { }
 
 // Utility
 export function forceComponentsUpdate(): void;

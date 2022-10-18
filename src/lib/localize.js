@@ -1,43 +1,38 @@
-import { parse, format, formatDistanceToNowStrict } from 'date-fns';
-import { getLocale, getLocaleObject, handleFailedLocalization } from './settings';
+import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+import advancedFormat from 'dayjs/plugin/advancedFormat';
+import relativeTime from 'dayjs/plugin/relativeTime';
+
+import { getLocale, handleFailedLocalization } from './settings';
 import translate from './translate';
+
+dayjs.extend(customParseFormat);
+dayjs.extend(advancedFormat);
+dayjs.extend(relativeTime);
 
 export default (value, options = {}) => {
   const locale = options.locale || getLocale();
+
   if (options.dateFormat) {
     try {
-      const localeObject = getLocaleObject(locale);
-      if (!localeObject) throw new Error(`Locale ${locale} not added`);
+      if (dayjs.locale() !== locale) dayjs.locale(locale);
+      if (dayjs.locale() !== locale) throw new Error('Invalid locale');
+
       const parsedDate = options.parseFormat
-        ? parse(
+        ? dayjs(
           value,
           translate(options.parseFormat, {}, { locale, returnKeyOnError: true }),
-          new Date(),
-          { locale: localeObject },
+          locale,
         )
-        : new Date(value);
+        : dayjs(value);
+
+      if (!parsedDate.isValid()) throw new Error('Invalid date');
+
       if (options.dateFormat === 'distance-to-now') {
-        return formatDistanceToNowStrict(
-          parsedDate,
-          { addSuffix: true, locale: localeObject },
-        );
+        return parsedDate.fromNow();
       }
-      if (options.dateFormat === 'distance-to-now-hours') {
-        return formatDistanceToNowStrict(
-          parsedDate,
-          { addSuffix: true, unit: 'hour', locale: localeObject },
-        );
-      }
-      if (options.dateFormat === 'distance-to-now-days') {
-        return formatDistanceToNowStrict(
-          parsedDate,
-          { addSuffix: true, unit: 'day', locale: localeObject },
-        );
-      }
-      return format(
-        parsedDate,
+      return parsedDate.format(
         translate(options.dateFormat, {}, { locale, returnKeyOnError: true }),
-        { locale: localeObject },
       );
     } catch (err) {
       return handleFailedLocalization(value, options, err);

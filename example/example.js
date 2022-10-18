@@ -1,6 +1,7 @@
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
-const dateFnsNl = require('date-fns/locale/nl')
+require('dayjs/locale/nl')
+require('dayjs/locale/en')
 
 let ReactI18nfiy = null;
 

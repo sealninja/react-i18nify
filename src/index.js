@@ -3,8 +3,6 @@ export { default as Translate } from './components/Translate';
 export { default as Localize } from './components/Localize';
 export { default as I18n } from './components/I18n';
 export {
-  addLocale,
-  addLocales,
   getLocale,
   setLocale,
   setLocaleGetter,

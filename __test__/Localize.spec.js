@@ -1,11 +1,10 @@
 /* global describe, test, expect, beforeAll, beforeEach */
 
 import React from 'react';
-import nl from 'date-fns/locale/nl';
-import en from 'date-fns/locale/en-US';
+import 'dayjs/locale/nl';
+import 'dayjs/locale/en';
 import { renderToString } from 'react-dom/server';
 import {
-  addLocales,
   setLocale,
   setTranslations,
   Localize,
@@ -15,13 +14,12 @@ describe('Localize.jsx', () => {
   beforeAll(() => {
     setTranslations({
       en: {
-        date: 'MMMM do, yyyy',
+        date: 'MMMM Do, YYYY',
       },
       nl: {
-        date: 'd MMMM yyyy',
+        date: 'D MMMM YYYY',
       },
     });
-    addLocales({ nl, en });
   });
 
   describe('<Localize/> component', () => {
@@ -29,25 +27,25 @@ describe('Localize.jsx', () => {
       setLocale('en');
     });
     test('should handle date localization', () => {
-      const component = <Localize value="2016-07-04" parseFormat="yyyy-MM-dd" dateFormat="date" />;
+      const component = <Localize value="2016-07-04" parseFormat="YYYY-MM-DD" dateFormat="date" />;
       expect(renderToString(component)).toMatch('July 4th, 2016');
     });
 
     test('should handle NL date localization', () => {
       setLocale('nl');
-      const component = <Localize value="2016-07-04" parseFormat="yyyy-MM-dd" dateFormat="date" />;
+      const component = <Localize value="2016-07-04" parseFormat="YYYY-MM-DD" dateFormat="date" />;
       expect(renderToString(component)).toMatch('4 juli 2016');
     });
 
     test('should handle locale switching', () => {
-      const component = <Localize value="2016-07-04" parseFormat="yyyy-MM-dd" dateFormat="date" />;
+      const component = <Localize value="2016-07-04" parseFormat="YYYY-MM-DD" dateFormat="date" />;
       expect(renderToString(component)).toMatch('July 4th, 2016');
       setLocale('nl');
       expect(renderToString(component)).toMatch('4 juli 2016');
     });
 
     test('should handle date localization with parseFormat', () => {
-      const component = <Localize value="2016-04-07" parseFormat="yyyy-dd-MM" dateFormat="date" />;
+      const component = <Localize value="2016-04-07" parseFormat="YYYY-DD-MM" dateFormat="date" />;
       expect(renderToString(component)).toMatch('July 4th, 2016');
     });
 

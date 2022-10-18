@@ -1,8 +1,6 @@
 /* global describe, test, expect */
 
 import {
-  addLocale,
-  addLocales,
   getLocale,
   setLocale,
   setLocaleGetter,
@@ -23,8 +21,6 @@ import {
 
 describe('index.js', () => {
   const exportedFunctions = [
-    addLocale,
-    addLocales,
     getLocale,
     setLocale,
     setLocaleGetter,
