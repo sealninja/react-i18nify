@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
+import localizedFormat from 'dayjs/plugin/localizedFormat';
 import relativeTime from 'dayjs/plugin/relativeTime';
 
 import { getLocale, handleFailedLocalization } from './settings';
@@ -8,6 +9,7 @@ import translate from './translate';
 
 dayjs.extend(customParseFormat);
 dayjs.extend(advancedFormat);
+dayjs.extend(localizedFormat);
 dayjs.extend(relativeTime);
 
 export default (value, options = {}) => {
