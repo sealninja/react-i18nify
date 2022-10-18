@@ -1,7 +1,7 @@
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
-require('dayjs/locale/nl')
-require('dayjs/locale/en')
+require('dayjs/locale/nl');
+require('dayjs/locale/en');
 
 let ReactI18nfiy = null;
 
@@ -12,7 +12,7 @@ try {
 }
 
 const {
-  addLocales, setTranslations, setLocale, setHandleMissingTranslation, setHandleFailedLocalization, translate, localize, Translate, Localize, I18n,
+  setTranslations, setLocale, setHandleMissingTranslation, setHandleFailedLocalization, translate, localize, Translate, Localize, I18n,
 } = ReactI18nfiy;
 
 setTranslations({
@@ -42,7 +42,6 @@ setTranslations({
   },
 });
 
-addLocales({ nl: dateFnsNl });
 setLocale('nl');
 
 console.log(translate('application.title'));
