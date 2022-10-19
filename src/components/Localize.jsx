@@ -4,9 +4,7 @@ import BaseComponent from './Base';
 
 class Localize extends BaseComponent {
   render() {
-    const {
-      value, dateFormat, parseFormat, options = {},
-    } = this.props;
+    const { value, dateFormat, parseFormat, options = {} } = this.props;
     const localization = localize(value, { ...options, dateFormat, parseFormat });
 
     return localization;
@@ -14,10 +12,7 @@ class Localize extends BaseComponent {
 }
 
 Localize.propTypes = {
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.object]).isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.object]).isRequired,
   dateFormat: PropTypes.string,
   parseFormat: PropTypes.string,
   options: PropTypes.object,

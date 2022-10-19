@@ -2,9 +2,7 @@
 
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import {
-  setLocale, setTranslations, t, I18n,
-} from '../src';
+import { setLocale, setTranslations, t, I18n } from '../src';
 
 describe('I18n.jsx', () => {
   beforeAll(() => {
@@ -36,7 +34,7 @@ describe('I18n.jsx', () => {
     });
 
     test('should handle locale switching for children', () => {
-      const component = <I18n render={() => (<span>{t('application.title')}</span>)} />;
+      const component = <I18n render={() => <span>{t('application.title')}</span>} />;
 
       expect(renderToString(component)).toEqual('<span>Awesome app with i18n!</span>');
       setLocale('nl');

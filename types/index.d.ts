@@ -1,7 +1,7 @@
 // TypeScript Version: 3.7
-import React = require("react");
+import React = require('react');
 
-export class I18n extends React.Component { }
+export class I18n extends React.Component {}
 
 // Localization
 export type LocaleGetter = () => string;
@@ -15,18 +15,9 @@ export interface LocalizeDateOptions {
   dateFormat?: string;
 }
 export type LocalizeNumberOptions = Intl.NumberFormatOptions;
-export function localize(
-  value: string | number,
-  options?: LocalizeDateOptions
-): string;
-export function localize(
-  value: number,
-  options?: LocalizeNumberOptions
-): string;
-export function l(
-  value: string | number,
-  options?: LocalizeDateOptions
-): string;
+export function localize(value: string | number, options?: LocalizeDateOptions): string;
+export function localize(value: number, options?: LocalizeNumberOptions): string;
+export function l(value: string | number, options?: LocalizeDateOptions): string;
 export function l(value: number, options?: LocalizeNumberOptions): string;
 
 export type LocalizeDateProps = {
@@ -35,9 +26,7 @@ export type LocalizeDateProps = {
 export type LocalizeNumberProps = {
   value: number;
 } & LocalizeNumberOptions;
-export class Localize extends React.Component<
-  LocalizeDateProps | LocalizeNumberProps
-> { }
+export class Localize extends React.Component<LocalizeDateProps | LocalizeNumberProps> {}
 
 // Translations
 export type Translations = Record<string, any>;
@@ -47,16 +36,10 @@ export type Replacements = Record<string, string | number>;
 
 export type TranslationsGetter = () => Translations;
 export function getTranslations(): Translations | undefined;
-export function setTranslations(
-  transations: Translations,
-  rerenderComponents?: boolean
-): void;
+export function setTranslations(transations: Translations, rerenderComponents?: boolean): void;
 export function setTranslationsGetter(fn: TranslationsGetter): void;
 
-export type ReplacementsGetter = (
-  key: string,
-  replacements: Replacements
-) => string;
+export type ReplacementsGetter = (key: string, replacements: Replacements) => string;
 export function setHandleMissingTranslation(fn: ReplacementsGetter): void;
 
 export interface TranslateOptions {
@@ -65,21 +48,13 @@ export interface TranslateOptions {
   returnKeyOnError?: boolean;
 }
 
-export function translate(
-  key: string,
-  replacements?: Replacements,
-  options?: TranslateOptions
-): string;
-export function t(
-  key: string,
-  replacements?: Replacements,
-  options?: TranslateOptions
-): string;
+export function translate(key: string, replacements?: Replacements, options?: TranslateOptions): string;
+export function t(key: string, replacements?: Replacements, options?: TranslateOptions): string;
 
 export type TranslateProps = {
   value: string;
 } & Replacements;
-export class Translate extends React.Component<TranslateProps> { }
+export class Translate extends React.Component<TranslateProps> {}
 
 // Utility
 export function forceComponentsUpdate(): void;

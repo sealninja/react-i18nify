@@ -27,11 +27,7 @@ export const fetchTranslation = (translations, key, count = null) => {
     throw new Error('not found');
   }
   if (_index > -1) {
-    return fetchTranslation(
-      translations[key.substring(0, _index)],
-      key.substr(_index + 1),
-      count,
-    );
+    return fetchTranslation(translations[key.substring(0, _index)], key.substr(_index + 1), count);
   }
   if (count !== null) {
     if (translations[`${key}_${count}`]) {

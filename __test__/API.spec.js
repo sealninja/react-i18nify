@@ -5,19 +5,7 @@ import 'dayjs/locale/it';
 import 'dayjs/locale/zh';
 import 'dayjs/locale/en';
 
-import {
-  getLocale,
-  getTranslations,
-  setLocale,
-  setTranslations,
-  setLocaleGetter,
-  setTranslationsGetter,
-  setHandleMissingTranslation,
-  translate,
-  localize,
-  t,
-  l,
-} from '../src';
+import { getLocale, getTranslations, setLocale, setTranslations, setLocaleGetter, setTranslationsGetter, setHandleMissingTranslation, translate, localize, t, l } from '../src';
 
 describe('API', () => {
   describe('setLocale', () => {

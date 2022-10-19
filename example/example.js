@@ -11,9 +11,7 @@ try {
   ReactI18nfiy = require('../build/index.js');
 }
 
-const {
-  setTranslations, setLocale, setHandleMissingTranslation, setHandleFailedLocalization, translate, localize, Translate, Localize, I18n,
-} = ReactI18nfiy;
+const { setTranslations, setLocale, setHandleMissingTranslation, setHandleFailedLocalization, translate, localize, Translate, Localize, I18n } = ReactI18nfiy;
 
 setTranslations({
   en: {
@@ -64,23 +62,40 @@ console.log(localize('huh', { dateFormat: 'date.long' }));
 function AwesomeComponent() {
   return (
     <React.Fragment>
-      <h1><Translate value="application.title" /></h1>
-      <div><Translate value="application.hello" name="Aad" /></div>
+      <h1>
+        <Translate value="application.title" />
+      </h1>
+      <div>
+        <Translate value="application.hello" name="Aad" />
+      </div>
       <ul>
-        <li><Translate value="export" count={1} /></li>
-        <li><Translate value="export" count={2} /></li>
+        <li>
+          <Translate value="export" count={1} />
+        </li>
+        <li>
+          <Translate value="export" count={2} />
+        </li>
       </ul>
-      <p><Localize value="07-2016-04" dateFormat="date.long" parseFormat="dd-yyyy-MM" /></p>
-      <p><Localize value="2015-09-03" dateFormat="date.long" /></p>
+      <p>
+        <Localize value="07-2016-04" dateFormat="date.long" parseFormat="dd-yyyy-MM" />
+      </p>
+      <p>
+        <Localize value="2015-09-03" dateFormat="date.long" />
+      </p>
       <p>
         <Localize
           value={10 / 3}
           options={{
-            style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2,
+            style: 'currency',
+            currency: 'EUR',
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
           }}
         />
       </p>
-      <p><Localize value="2015-09-03" dateFormat="distance-to-now" /></p>
+      <p>
+        <Localize value="2015-09-03" dateFormat="distance-to-now" />
+      </p>
       <I18n render={() => <input placeholder={translate('application.title')} />} />
     </React.Fragment>
   );

@@ -4,11 +4,7 @@ import React from 'react';
 import 'dayjs/locale/nl';
 import 'dayjs/locale/en';
 import { renderToString } from 'react-dom/server';
-import {
-  setLocale,
-  setTranslations,
-  Localize,
-} from '../src';
+import { setLocale, setTranslations, Localize } from '../src';
 
 describe('Localize.jsx', () => {
   beforeAll(() => {

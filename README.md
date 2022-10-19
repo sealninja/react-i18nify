@@ -92,22 +92,22 @@ If for some reason, you cannot use the components, you can use the `translate` a
 import { translate, localize } from 'react-i18nify';
 
 translate('application.title');
-  // => Toffe app met i18n!
-translate('application.hello', {name: 'Aad'});
-  // => Hallo, Aad!'
-translate('export', {count: 0});
-  // => Niks te exporteren
+// => Toffe app met i18n!
+translate('application.hello', { name: 'Aad' });
+// => Hallo, Aad!'
+translate('export', { count: 0 });
+// => Niks te exporteren
 translate('application.unknown_translation');
-  // => unknown_translation
-translate('application', {name: 'Aad'});
-  // => {hello: 'Hallo, Aad!', title: 'Toffe app met i18n!'}
+// => unknown_translation
+translate('application', { name: 'Aad' });
+// => {hello: 'Hallo, Aad!', title: 'Toffe app met i18n!'}
 
 localize(1385856000000, { dateFormat: 'date.long' });
-  // => 1 december 2013
+// => 1 december 2013
 localize(Math.PI, { maximumFractionDigits: 2 });
-  // => 3,14
+// => 3,14
 localize('huh', { dateFormat: 'date.long' });
-  // => null
+// => null
 ```
 
 If you want these helpers to be re-rendered automatically when the locale or translations change, you have to wrap them in a `<I18n>` component using its `render` prop:
@@ -115,7 +115,7 @@ If you want these helpers to be re-rendered automatically when the locale or tra
 ```javascript
 import { I18n, translate } from 'react-i18nify';
 
-<I18n render={() => <input placeholder={translate("application.title")} />} />
+<I18n render={() => <input placeholder={translate('application.title')} />} />;
 ```
 
 ## Date localization
@@ -134,11 +134,11 @@ import 'dayjs/locale/it';
 
 React translate component, with the following props:
 
-* `value` (string)
+- `value` (string)
 
 The translation key to translate.
 
-* Other props
+- Other props
 
 All other provided props will be used as replacements for the translation.
 
@@ -146,21 +146,21 @@ All other provided props will be used as replacements for the translation.
 
 React localize component, with the following props:
 
-* `value` (number|string|object)
+- `value` (number|string|object)
 
 The number or date to localize.
 
-* `dateFormat` (string)
+- `dateFormat` (string)
 
 The translation key for providing the format string. Only needed for localizing dates.
 For the full list of formatting tokens which can be used in the format string, see the [day.js documentation](https://day.js.org/docs/en/display/format).
 
-* `parseFormat` (string)
+- `parseFormat` (string)
 
 An optional formatting string for parsing the value when localizing dates.
 For the full list of formatting tokens which can be used in the parsing string, see the [day.js documentation](https://day.js.org/docs/en/parse/string-format).
 
-* `options` (object)
+- `options` (object)
 
 When localizing numbers, the localize component supports all options as provided by the Javascript built-in `Intl.NumberFormat` object.
 For the full list of options, see https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat.
@@ -169,7 +169,7 @@ For the full list of options, see https://developer.mozilla.org/en/docs/Web/Java
 
 React I18n wrapper component, with the following prop:
 
-* `render` (func)
+- `render` (func)
 
 The return value of the provide function will be rendered and automatically re-render when the locale or translations change.
 
@@ -230,9 +230,8 @@ import { setHandleMissingTranslation, translate } from 'react-i18nify';
 setHandleMissingTranslation((key, replacements, options, err) => `Missing translation: ${key}`);
 
 translate('application.unknown_translation');
-  // => Missing translation: application.unknown_translation
+// => Missing translation: application.unknown_translation
 ```
-
 
 ### `setHandleFailedLocalization(fn)`
 
@@ -246,7 +245,7 @@ import { setHandleFailedLocalization, localize } from 'react-i18nify';
 setHandleFailedLocalization((value, options, err) => `Failed localization: ${value}`);
 
 localize('huh', { dateFormat: 'date.long' });
-  // => Failed localization: huh
+// => Failed localization: huh
 ```
 
 ### `translate(key, replacements = {})`

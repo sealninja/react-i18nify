@@ -24,8 +24,7 @@ export const setLocale = (locale, rerenderComponents = true) => {
 export const handleMissingTranslation = (...args) => settings.handleMissingTranslation(...args);
 export const handleFailedLocalization = (...args) => settings.handleFailedLocalization(...args);
 
-export const getTranslations = () => (settings.getTranslations
-  ? settings.getTranslations() : settings.translationsObject);
+export const getTranslations = () => (settings.getTranslations ? settings.getTranslations() : settings.translationsObject);
 
 export const setTranslations = (translations, rerenderComponents = true) => {
   settings.translationsObject = translations;
