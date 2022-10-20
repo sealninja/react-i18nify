@@ -13,7 +13,8 @@ dayjs.extend(localizedFormat);
 dayjs.extend(relativeTime);
 
 export default (value, options = {}) => {
-  const locale = options.locale || getLocale();
+  let locale = options.locale || getLocale();
+  if (locale === 'no') locale = 'nb'; // Bokmål as default Norwegian
 
   if (options.dateFormat) {
     try {
