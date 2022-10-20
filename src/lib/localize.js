@@ -13,15 +13,17 @@ dayjs.extend(localizedFormat);
 dayjs.extend(relativeTime);
 
 export default (value, options = {}) => {
-  let locale = options.locale || getLocale();
-  if (locale === 'no') locale = 'nb'; // Bokmål as default Norwegian
+  const locale = options.locale || getLocale();
 
   if (options.dateFormat) {
     try {
-      if (dayjs.locale() !== locale) dayjs.locale(locale);
-      if (dayjs.locale() !== locale) throw new Error('Invalid locale');
+      let dayJsLocale = locale;
+      if (locale === 'no') dayJsLocale = 'nb'; // Bokmål as default Norwegian
 
-      const parsedDate = options.parseFormat ? dayjs(value, translate(options.parseFormat, {}, { locale, returnKeyOnError: true }), locale) : dayjs(value);
+      if (dayjs.locale() !== dayJsLocale) dayjs.locale(dayJsLocale);
+      if (dayjs.locale() !== dayJsLocale) throw new Error('Invalid locale');
+
+      const parsedDate = options.parseFormat ? dayjs(value, translate(options.parseFormat, {}, { locale, returnKeyOnError: true }), dayJsLocale) : dayjs(value);
 
       if (!parsedDate.isValid()) throw new Error('Invalid date');
 
