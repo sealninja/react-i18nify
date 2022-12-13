@@ -1,9 +1,15 @@
 /* global describe, test, expect, beforeEach */
 
+import dayjs from 'dayjs';
 import 'dayjs/locale/nl';
 import 'dayjs/locale/it';
 import 'dayjs/locale/zh';
 import 'dayjs/locale/en';
+import utc from 'dayjs/plugin/utc.js';
+import timezonePlugin from 'dayjs/plugin/timezone.js';
+
+dayjs.extend(utc);
+dayjs.extend(timezonePlugin);
 
 import { getLocale, getTranslations, setLocale, setTranslations, setLocaleGetter, setTranslationsGetter, setHandleMissingTranslation, translate, localize, t, l } from '../src';
 
@@ -162,6 +168,11 @@ describe('API', () => {
       test('should support distance to now in days', () => {
         const result = localizeFunction(new Date(new Date().setHours(new Date().getHours() - 30)).getTime(), { locale: 'nl', dateFormat: 'distance-to-now' });
         expect(result).toEqual('een dag geleden');
+      });
+
+      test('should support dayjs with custom timezone', () => {
+        const result = localizeFunction(dayjs.utc('2022-07-01T03:00:00.000Z').tz('America/Chihuahua'), { locale: 'nl', dateFormat: 'DD MMM YYYY, HH:mm Z' });
+        expect(result).toEqual('30 jun 2022, 21:00 -06:00');
       });
     });
   });
