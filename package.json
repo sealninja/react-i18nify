@@ -47,10 +47,10 @@
   "runkitExampleFilename": "example/example.js",
   "browserslist": "> 0.5%, last 2 versions, not op_mini all, not dead",
   "peerDependencies": {
-    "react": "^16.8.0 || ^17.x || ^18.x"
+    "react": "^16.8.0 || ^17.x || ^18.x",
+    "dayjs": "^1.11.6"
   },
   "dependencies": {
-    "dayjs": "1.11.7",
     "prop-types": "15.8.0"
   },
   "devDependencies": {
@@ -61,6 +61,7 @@
     "@babel/preset-react": "7.18.6",
     "@babel/register": "7.18.9",
     "@types/react": "18.0.26",
+    "dayjs": "1.11.7",
     "dtslint": "4.2.1",
     "eslint": "8.29.0",
     "eslint-config-airbnb": "19.0.4",

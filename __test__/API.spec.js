@@ -5,13 +5,12 @@ import 'dayjs/locale/nl';
 import 'dayjs/locale/it';
 import 'dayjs/locale/zh';
 import 'dayjs/locale/en';
-import utc from 'dayjs/plugin/utc.js';
-import timezonePlugin from 'dayjs/plugin/timezone.js';
+import utc from 'dayjs/plugin/utc';
+import timezonePlugin from 'dayjs/plugin/timezone';
+import { getLocale, getTranslations, setLocale, setTranslations, setLocaleGetter, setTranslationsGetter, setHandleMissingTranslation, translate, localize, t, l } from '../src';
 
 dayjs.extend(utc);
 dayjs.extend(timezonePlugin);
-
-import { getLocale, getTranslations, setLocale, setTranslations, setLocaleGetter, setTranslationsGetter, setHandleMissingTranslation, translate, localize, t, l } from '../src';
 
 describe('API', () => {
   describe('setLocale', () => {
