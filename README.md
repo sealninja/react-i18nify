@@ -7,6 +7,18 @@ Simple i18n translation and localization components and helpers for React.
 
 A working example of this package can be found [here at RunKit](https://runkit.com/npm/react-i18nify).
 
+## Migration guide
+
+### Upgrading to v6
+
+`react-i18nify` v6 uses `dayjs` for date localization instead of `date-fns`, to make `react-i18nify` smaller and simpler to use. Migrating to this version requires the following changes to your project:
+
+- Replace locale imports. E.g., `import nl from 'date-fns/locale/nl';` needs to be replaced with `import 'dayjs/locale/nl';`
+- Remove calls to `addLocale` and `addLocales`, these are not needed anymore.
+- Update date formatting strings. For example, `MM-dd-yyyy` is now `MM-DD-YYYY`. See for more information the [day.js documentation](https://day.js.org/docs/en/display/format).
+
+The v5 documentation can still be found [here](https://github.com/sealninja/react-i18nify/blob/v5/README.md).
+
 ## Installation
 
 Install by using npm:
@@ -92,22 +104,22 @@ If for some reason, you cannot use the components, you can use the `translate` a
 import { translate, localize } from 'react-i18nify';
 
 translate('application.title');
-  // => Toffe app met i18n!
-translate('application.hello', {name: 'Aad'});
-  // => Hallo, Aad!'
-translate('export', {count: 0});
-  // => Niks te exporteren
+// => Toffe app met i18n!
+translate('application.hello', { name: 'Aad' });
+// => Hallo, Aad!'
+translate('export', { count: 0 });
+// => Niks te exporteren
 translate('application.unknown_translation');
-  // => unknown_translation
-translate('application', {name: 'Aad'});
-  // => {hello: 'Hallo, Aad!', title: 'Toffe app met i18n!'}
+// => unknown_translation
+translate('application', { name: 'Aad' });
+// => {hello: 'Hallo, Aad!', title: 'Toffe app met i18n!'}
 
 localize(1385856000000, { dateFormat: 'date.long' });
-  // => 1 december 2013
+// => 1 december 2013
 localize(Math.PI, { maximumFractionDigits: 2 });
-  // => 3,14
+// => 3,14
 localize('huh', { dateFormat: 'date.long' });
-  // => null
+// => null
 ```
 
 If you want these helpers to be re-rendered automatically when the locale or translations change, you have to wrap them in a `<I18n>` component using its `render` prop:
@@ -115,26 +127,17 @@ If you want these helpers to be re-rendered automatically when the locale or tra
 ```javascript
 import { I18n, translate } from 'react-i18nify';
 
-<I18n render={() => <input placeholder={translate("application.title")} />} />
+<I18n render={() => <input placeholder={translate('application.title')} />} />;
 ```
 
 ## Date localization
 
-`react-i18nify` uses [date-fns](https://github.com/date-fns/date-fns) internally to handle date localization. In order to reduce the base bundle size, `date-fns` locale objects needed for date localization are not included by default. If you need date localization, you can add them manually using `addLocale` or `addLocales`. For a list of available locales, refer to the [date-fns list](https://github.com/date-fns/date-fns/tree/master/src/locale).
+`react-i18nify` uses [day.js](https://github.com/iamkun/dayjs/) internally to handle date localization. To reduce the base bundle size, `day.js` localizations are not loaded by default. If you need date localization, you can manually import them. For a list of available locales, refer to the [day.js list of locales](https://github.com/iamkun/dayjs/tree/dev/src/locale).
 
 ```javascript
-import { addLocale, addLocales, setLocale } from 'react-i18nify';
-import en from 'date-fns/locale/en-US';
-import nl from 'date-fns/locale/nl';
-import it from 'date-fns/locale/it';
-
-// Add a single locale
-addLocale('nl', nl);
-setLocale('nl');
-
-// Add multiple locales
-addLocales({ nl, it, en });
-setLocale('it');
+import 'dayjs/locale/en';
+import 'dayjs/locale/nl';
+import 'dayjs/locale/it';
 ```
 
 ## API Reference
@@ -143,11 +146,11 @@ setLocale('it');
 
 React translate component, with the following props:
 
-* `value` (string)
+- `value` (string)
 
 The translation key to translate.
 
-* Other props
+- Other props
 
 All other provided props will be used as replacements for the translation.
 
@@ -155,21 +158,21 @@ All other provided props will be used as replacements for the translation.
 
 React localize component, with the following props:
 
-* `value` (number|string|object)
+- `value` (number|string|object)
 
 The number or date to localize.
 
-* `dateFormat` (string)
+- `dateFormat` (string)
 
 The translation key for providing the format string. Only needed for localizing dates.
-For the full list of formatting tokens which can be used in the format string, see the [date-fns documentation](https://date-fns.org/v2.0.1/docs/format).
+For the full list of formatting tokens which can be used in the format string, see the [day.js documentation](https://day.js.org/docs/en/display/format).
 
-* `parseFormat` (string)
+- `parseFormat` (string)
 
 An optional formatting string for parsing the value when localizing dates.
-For the full list of formatting tokens which can be used in the parsing string, see the [date-fns documentation](https://date-fns.org/v2.0.1/docs/parse).
+For the full list of formatting tokens which can be used in the parsing string, see the [day.js documentation](https://day.js.org/docs/en/parse/string-format).
 
-* `options` (object)
+- `options` (object)
 
 When localizing numbers, the localize component supports all options as provided by the Javascript built-in `Intl.NumberFormat` object.
 For the full list of options, see https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat.
@@ -178,34 +181,9 @@ For the full list of options, see https://developer.mozilla.org/en/docs/Web/Java
 
 React I18n wrapper component, with the following prop:
 
-* `render` (func)
+- `render` (func)
 
 The return value of the provide function will be rendered and automatically re-render when the locale or translations change.
-
-### `addLocale(name, locale)`
-
-Add a [date-fns locale](https://github.com/date-fns/date-fns/tree/master/src/locale) to the available locales for date localization.
-
-```javascript
-import { addLocale, setLocale } from 'react-i18nify';
-import nl from 'date-fns/locale/nl';
-
-addLocale('nl', nl);
-setLocale('nl');
-```
-
-### `addLocales(localesObject)`
-
-Add multiple [date-fns locales](https://github.com/date-fns/date-fns/tree/master/src/locale) to the available locales for date localization at once.
-
-```javascript
-import { addLocales, setLocale } from 'react-i18nify';
-import nl from 'date-fns/locale/nl';
-import it from 'date-fns/locale/it';
-
-addLocales({ nl, it });
-setLocale('it');
-```
 
 ### `setLocale(locale, rerenderComponents = true)`
 
@@ -264,9 +242,8 @@ import { setHandleMissingTranslation, translate } from 'react-i18nify';
 setHandleMissingTranslation((key, replacements, options, err) => `Missing translation: ${key}`);
 
 translate('application.unknown_translation');
-  // => Missing translation: application.unknown_translation
+// => Missing translation: application.unknown_translation
 ```
-
 
 ### `setHandleFailedLocalization(fn)`
 
@@ -280,7 +257,7 @@ import { setHandleFailedLocalization, localize } from 'react-i18nify';
 setHandleFailedLocalization((value, options, err) => `Failed localization: ${value}`);
 
 localize('huh', { dateFormat: 'date.long' });
-  // => Failed localization: huh
+// => Failed localization: huh
 ```
 
 ### `translate(key, replacements = {})`
@@ -291,11 +268,11 @@ Helper function to translate a `key`, given an optional set of `replacements`. S
 
 Helper function to localize a `value`, given a set of `options`. See the above Helpers section for examples.
 
-For localizing dates, the `date-fns` library is used.
+For localizing dates, the `day.js` library is used.
 A `dateFormat` option can be used for providing a translation key with the format string.
-For the full list of formatting tokens which can be used in the format string, see the [date-fns documentation](https://date-fns.org/v2.0.1/docs/format).
+For the full list of formatting tokens which can be used in the format string, see the [day.js documentation](https://day.js.org/docs/en/display/format).
 Moreover, `parseFormat` option can be used for providing a formatting string for parsing the value.
-For the full list of formatting tokens which can be used in the parsing string, see the [date-fns documentation](https://date-fns.org/v2.0.1/docs/parse).
+For the full list of formatting tokens which can be used in the parsing string, see the [day.js documentation](https://day.js.org/docs/en/parse/string-format).
 
 For number formatting, the localize helper supports all options as provided by the Javascript built-in `Intl.NumberFormat` object.
 For the full list of options, see https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat.

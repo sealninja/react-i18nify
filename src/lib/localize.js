@@ -1,44 +1,34 @@
-import { parse, format, formatDistanceToNowStrict } from 'date-fns';
-import { getLocale, getLocaleObject, handleFailedLocalization } from './settings';
+import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+import advancedFormat from 'dayjs/plugin/advancedFormat';
+import localizedFormat from 'dayjs/plugin/localizedFormat';
+import relativeTime from 'dayjs/plugin/relativeTime';
+
+import { getLocale, handleFailedLocalization } from './settings';
 import translate from './translate';
+
+dayjs.extend(customParseFormat);
+dayjs.extend(advancedFormat);
+dayjs.extend(localizedFormat);
+dayjs.extend(relativeTime);
 
 export default (value, options = {}) => {
   const locale = options.locale || getLocale();
+
   if (options.dateFormat) {
     try {
-      const localeObject = getLocaleObject(locale);
-      if (!localeObject) throw new Error(`Locale ${locale} not added`);
-      const parsedDate = options.parseFormat
-        ? parse(
-          value,
-          translate(options.parseFormat, {}, { locale, returnKeyOnError: true }),
-          new Date(),
-          { locale: localeObject },
-        )
-        : new Date(value);
+      let dayJsLocale = locale;
+      if (locale === 'no') dayJsLocale = 'nb'; // Bokmål as default Norwegian
+
+      const parsedDate = (options.parseFormat ? dayjs(value, translate(options.parseFormat, {}, { locale, returnKeyOnError: true }), dayJsLocale) : dayjs(value)).locale(dayJsLocale);
+      if (parsedDate.locale() !== dayJsLocale) throw new Error('Invalid locale');
+
+      if (!parsedDate.isValid()) throw new Error('Invalid date');
+
       if (options.dateFormat === 'distance-to-now') {
-        return formatDistanceToNowStrict(
-          parsedDate,
-          { addSuffix: true, locale: localeObject },
-        );
+        return parsedDate.fromNow();
       }
-      if (options.dateFormat === 'distance-to-now-hours') {
-        return formatDistanceToNowStrict(
-          parsedDate,
-          { addSuffix: true, unit: 'hour', locale: localeObject },
-        );
-      }
-      if (options.dateFormat === 'distance-to-now-days') {
-        return formatDistanceToNowStrict(
-          parsedDate,
-          { addSuffix: true, unit: 'day', locale: localeObject },
-        );
-      }
-      return format(
-        parsedDate,
-        translate(options.dateFormat, {}, { locale, returnKeyOnError: true }),
-        { locale: localeObject },
-      );
+      return parsedDate.format(translate(options.dateFormat, {}, { locale, returnKeyOnError: true }));
     } catch (err) {
       return handleFailedLocalization(value, options, err);
     }

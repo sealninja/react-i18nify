@@ -3,7 +3,6 @@
 import BaseComponent from '../components/Base';
 
 const settings = {
-  availableLocales: {},
   localeKey: 'en',
   translationsObject: {},
   getTranslations: null,
@@ -22,27 +21,10 @@ export const setLocale = (locale, rerenderComponents = true) => {
   }
 };
 
-export const getLocaleObject = (locale) => {
-  const l = locale || settings.locale;
-  return settings.availableLocales[l] || settings.availableLocales[l.split('-')[0]];
-};
-
 export const handleMissingTranslation = (...args) => settings.handleMissingTranslation(...args);
 export const handleFailedLocalization = (...args) => settings.handleFailedLocalization(...args);
 
-export const addLocale = (name, locale) => {
-  settings.availableLocales[name] = locale;
-};
-
-export const addLocales = (locales) => {
-  settings.availableLocales = {
-    ...settings.availableLocales,
-    ...locales,
-  };
-};
-
-export const getTranslations = () => (settings.getTranslations
-  ? settings.getTranslations() : settings.translationsObject);
+export const getTranslations = () => (settings.getTranslations ? settings.getTranslations() : settings.translationsObject);
 
 export const setTranslations = (translations, rerenderComponents = true) => {
   settings.translationsObject = translations;

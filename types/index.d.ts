@@ -1,13 +1,10 @@
 // TypeScript Version: 3.7
-import { Locale } from "date-fns";
-import React = require("react");
+import React = require('react');
 
 export class I18n extends React.Component {}
 
 // Localization
 export type LocaleGetter = () => string;
-export function addLocale(name: string, locale: Locale): void;
-export function addLocales(localeObject: Record<string, Locale>): void;
 export function getLocale(): string | undefined;
 export function setLocale(locale: string, rerenderComponents?: boolean): void;
 export function setLocaleGetter(fn: LocaleGetter): void;
@@ -18,18 +15,9 @@ export interface LocalizeDateOptions {
   dateFormat?: string;
 }
 export type LocalizeNumberOptions = Intl.NumberFormatOptions;
-export function localize(
-  value: string | number,
-  options?: LocalizeDateOptions
-): string;
-export function localize(
-  value: number,
-  options?: LocalizeNumberOptions
-): string;
-export function l(
-  value: string | number,
-  options?: LocalizeDateOptions
-): string;
+export function localize(value: string | number, options?: LocalizeDateOptions): string;
+export function localize(value: number, options?: LocalizeNumberOptions): string;
+export function l(value: string | number, options?: LocalizeDateOptions): string;
 export function l(value: number, options?: LocalizeNumberOptions): string;
 
 export type LocalizeDateProps = {
@@ -38,9 +26,7 @@ export type LocalizeDateProps = {
 export type LocalizeNumberProps = {
   value: number;
 } & LocalizeNumberOptions;
-export class Localize extends React.Component<
-  LocalizeDateProps | LocalizeNumberProps
-> {}
+export class Localize extends React.Component<LocalizeDateProps | LocalizeNumberProps> {}
 
 // Translations
 export type Translations = Record<string, any>;
@@ -50,16 +36,10 @@ export type Replacements = Record<string, string | number>;
 
 export type TranslationsGetter = () => Translations;
 export function getTranslations(): Translations | undefined;
-export function setTranslations(
-  transations: Translations,
-  rerenderComponents?: boolean
-): void;
+export function setTranslations(transations: Translations, rerenderComponents?: boolean): void;
 export function setTranslationsGetter(fn: TranslationsGetter): void;
 
-export type ReplacementsGetter = (
-  key: string,
-  replacements: Replacements
-) => string;
+export type ReplacementsGetter = (key: string, replacements: Replacements) => string;
 export function setHandleMissingTranslation(fn: ReplacementsGetter): void;
 
 export interface TranslateOptions {
@@ -68,16 +48,8 @@ export interface TranslateOptions {
   returnKeyOnError?: boolean;
 }
 
-export function translate(
-  key: string,
-  replacements?: Replacements,
-  options?: TranslateOptions
-): string;
-export function t(
-  key: string,
-  replacements?: Replacements,
-  options?: TranslateOptions
-): string;
+export function translate(key: string, replacements?: Replacements, options?: TranslateOptions): string;
+export function t(key: string, replacements?: Replacements, options?: TranslateOptions): string;
 
 export type TranslateProps = {
   value: string;

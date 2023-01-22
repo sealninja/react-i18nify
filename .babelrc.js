@@ -1,14 +1,11 @@
 module.exports = {
-  presets: ["@babel/preset-react", "@babel/preset-env"],
+  presets: ['@babel/preset-react', '@babel/preset-env'],
   env: {
     es: {
-      presets: [
-        "@babel/preset-react",
-        ["@babel/preset-env", { modules: false }],
-      ],
+      presets: ['@babel/preset-react', ['@babel/preset-env', { modules: false }]],
     },
     cjs: {
-      presets: ["@babel/preset-react", ["@babel/preset-env", {}]],
+      presets: ['@babel/preset-react', ['@babel/preset-env', {}]],
     },
   },
 };
