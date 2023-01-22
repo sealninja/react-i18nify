@@ -7,6 +7,17 @@ Simple i18n translation and localization components and helpers for React.
 
 A working example of this package can be found [here at RunKit](https://runkit.com/npm/react-i18nify).
 
+## Migration guide
+
+### Upgrading to v6
+
+`react-i18nify` v6 removes the use of `date-fns` for date formatting in favor of `dayjs`, for simplicity and smaller package sizes. Migrating to this version requires the following changes to your project:
+- Replace locale imports. E.g., `import nl from 'date-fns/locale/nl';` needs to be replaced with `import 'dayjs/locale/nl';`
+- Remove calls to `addLocale` and `addLocales`, these are not needed anymore.
+- Update date formatting strings. For example, `MM-dd-yyyy` is now `MM-DD-YYYY`. See for more information the [day.js documentation](https://day.js.org/docs/en/display/format). 
+
+The v5 documentation can still be found [here](https://github.com/sealninja/react-i18nify/blob/v5/README.md).
+
 ## Installation
 
 Install by using npm:
