@@ -47,8 +47,8 @@
   "runkitExampleFilename": "example/example.js",
   "browserslist": "> 0.5%, last 2 versions, not op_mini all, not dead",
   "peerDependencies": {
-    "react": "^16.8.0 || ^17.x || ^18.x",
-    "dayjs": "^1.11.6"
+    "dayjs": "^1.11.6",
+    "react": "^16.8.0 || ^17.x || ^18.x"
   },
   "dependencies": {
     "prop-types": "15.8.1"
