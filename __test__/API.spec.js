@@ -133,7 +133,7 @@ describe('API', () => {
 
     [localize, l].forEach((localizeFunction) => {
       test('should return null when locale invalid', () => {
-        setLocale('nl-argh');
+        setLocale('argh');
         const result = localizeFunction(1517774664107, { dateFormat: 'dates.long' });
         expect(result).toEqual(null);
       });
@@ -172,6 +172,17 @@ describe('API', () => {
       test('should support dayjs with custom timezone', () => {
         const result = localizeFunction(dayjs.utc('2022-07-01T03:00:00.000Z').tz('America/Chihuahua'), { locale: 'nl', dateFormat: 'DD MMM YYYY, HH:mm Z' });
         expect(result).toEqual('30 jun 2022, 21:00 -06:00');
+      });
+
+      test('should return date when locale can fall back', () => {
+        setLocale('nl-be');
+        const result = localizeFunction(1517774664107, { dateFormat: 'LL' });
+        expect(result).toEqual('4 februari 2018');
+      });
+
+      test('should return date when provided locale can fall back', () => {
+        const result = localizeFunction(1517774664107, { locale: 'zh-tw', dateFormat: 'LL' });
+        expect(result).toEqual('2018年2月4日');
       });
     });
   });

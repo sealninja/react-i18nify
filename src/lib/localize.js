@@ -21,7 +21,7 @@ export default (value, options = {}) => {
       if (locale === 'no') dayJsLocale = 'nb'; // Bokmål as default Norwegian
 
       const parsedDate = (options.parseFormat ? dayjs(value, translate(options.parseFormat, {}, { locale, returnKeyOnError: true }), dayJsLocale) : dayjs(value)).locale(dayJsLocale);
-      if (parsedDate.locale() !== dayJsLocale) throw new Error('Invalid locale');
+      if (!dayJsLocale.startsWith(parsedDate.locale())) throw new Error('Invalid locale');
 
       if (!parsedDate.isValid()) throw new Error('Invalid date');
 
