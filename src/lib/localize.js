@@ -17,7 +17,8 @@ export default (value, options = {}) => {
 
   if (options.dateFormat) {
     try {
-      let dayJsLocale = locale;
+      let dayJsLocale = locale.toLowerCase();
+
       if (locale === 'no') dayJsLocale = 'nb'; // Bokmål as default Norwegian
 
       const parsedDate = (options.parseFormat ? dayjs(value, translate(options.parseFormat, {}, { locale, returnKeyOnError: true }), dayJsLocale) : dayjs(value)).locale(dayJsLocale);

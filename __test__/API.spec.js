@@ -5,6 +5,7 @@ import 'dayjs/locale/nl';
 import 'dayjs/locale/it';
 import 'dayjs/locale/zh';
 import 'dayjs/locale/en';
+import 'dayjs/locale/en-gb';
 import utc from 'dayjs/plugin/utc';
 import timezonePlugin from 'dayjs/plugin/timezone';
 import { getLocale, getTranslations, setLocale, setTranslations, setLocaleGetter, setTranslationsGetter, setHandleMissingTranslation, translate, localize, t, l } from '../src';
@@ -183,6 +184,18 @@ describe('API', () => {
       test('should return date when provided locale can fall back', () => {
         const result = localizeFunction(1517774664107, { locale: 'zh-tw', dateFormat: 'LL' });
         expect(result).toEqual('2018年2月4日');
+      });
+
+      test('should return date for regional locale with region uppercase', () => {
+        setLocale('en-GB');
+        const result = localizeFunction(1517774664107, { dateFormat: 'LL' });
+        expect(result).toEqual('4 February 2018');
+      });
+
+      test('should return date for regional locale with region lowercase', () => {
+        setLocale('en-gb');
+        const result = localizeFunction(1517774664107, { dateFormat: 'LL' });
+        expect(result).toEqual('4 February 2018');
       });
     });
   });
