@@ -18,8 +18,7 @@ export default (value, options = {}) => {
   if (options.dateFormat) {
     try {
       let dayJsLocale = locale.toLowerCase();
-
-      if (locale === 'no') dayJsLocale = 'nb'; // Bokmål as default Norwegian
+      if (dayJsLocale === 'no') dayJsLocale = 'nb'; // Bokmål as default Norwegian
 
       const parsedDate = (options.parseFormat ? dayjs(value, translate(options.parseFormat, {}, { locale, returnKeyOnError: true }), dayJsLocale) : dayjs(value)).locale(dayJsLocale);
       if (!dayJsLocale.startsWith(parsedDate.locale())) throw new Error('Invalid locale');
@@ -36,7 +35,9 @@ export default (value, options = {}) => {
   }
   if (typeof value === 'number') {
     try {
-      return new Intl.NumberFormat(locale, options).format(value);
+      let intlLocale = locale;
+      if (intlLocale.toLowerCase() === 'ar') intlLocale = 'ar-EG'; // work-around for Chrome
+      return new Intl.NumberFormat(intlLocale, options).format(value);
     } catch (err) {
       return handleFailedLocalization(value, options, err);
     }
