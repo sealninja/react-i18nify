@@ -60,7 +60,7 @@
     "@babel/preset-env": "7.24.0",
     "@babel/preset-react": "7.23.3",
     "@babel/register": "7.23.7",
-    "@types/react": "18.2.56",
+    "@types/react": "18.2.64",
     "dayjs": "1.11.10",
     "dtslint": "4.2.1",
     "eslint": "8.57.0",
