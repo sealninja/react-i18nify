@@ -8,7 +8,7 @@ let ReactI18nfiy = null;
 try {
   ReactI18nfiy = require('react-i18nify');
 } catch (e) {
-  ReactI18nfiy = require('../build/index.js');
+  ReactI18nfiy = require('../cjs/index.js');
 }
 
 const { setTranslations, setLocale, setHandleMissingTranslation, setHandleFailedLocalization, translate, localize, Translate, Localize, I18n } = ReactI18nfiy;
