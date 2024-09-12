@@ -45,8 +45,6 @@ export default [
       'no-underscore-dangle': 'off',
       'react/forbid-prop-types': 'off',
       'react/jsx-fragments': 'off',
-      'react/jsx-filename-extension': 'off',
-      // 'import/extensions': ['error', 'ignorePackages'],
       'import/no-named-as-default': 'off',
       'import/no-named-as-default-member': 'off',
     },
