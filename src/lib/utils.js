@@ -1,10 +1,39 @@
 import React from 'react';
 
+const RTL_CHAR_RANGES = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\u0590-\u05FF\u0660-\u0669]/;
+const isRTL = (text) => RTL_CHAR_RANGES.test(text);
+
+const reorderForRTL = (value) => {
+  if (typeof value !== 'string') return value;
+
+  // Handle common patterns
+  if (value.endsWith('%')) {
+    return '%' + value.slice(0, -1);
+  }
+
+  const currencyMatch = value.match(/^([^\d\s]+)\s?([\d.,٠-٩٫]+)/); // support Arabic numbers
+  if (currencyMatch) {
+    return `${currencyMatch[2]} ${currencyMatch[1]}`; // "٣٣٠٫٠٠ $"
+  }
+
+  return value;
+};
+
 export const replace = (translation, replacements) => {
   if (typeof translation === 'string') {
     let result = translation;
-    Object.keys(replacements).forEach((replacement) => {
-      result = result.split(`%{${replacement}}`).join(replacements[replacement] ?? '');
+
+    // Determine if translation contains RTL text
+    const translationIsRTL = isRTL(translation);
+
+    Object.keys(replacements).forEach((key) => {
+      let value = replacements[key] ?? '';
+
+      // Reorder the value if in RTL context
+      if (translationIsRTL) {
+        value = reorderForRTL(value.toString());
+      }
+      result = result.split(`%{${key}}`).join(value);
     });
     return result;
   }
