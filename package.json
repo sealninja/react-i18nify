@@ -78,6 +78,6 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "rimraf": "6.0.1",
-    "typescript": "5.7.3"
+    "typescript": "5.8.3"
   }
 }
