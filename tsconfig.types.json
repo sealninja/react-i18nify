@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": false,
+    "forceConsistentCasingInFileNames": true,
+    "types": ["react"],
+    "moduleResolution": "bundler",
+    "lib": ["dom", "esnext"],
+    "target": "ESNext"
+  },
+  "include": ["types/**/*.d.ts"]
+}
