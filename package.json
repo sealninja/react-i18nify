@@ -63,7 +63,7 @@
     "@eslint/compat": "1.2.9",
     "@eslint/eslintrc": "3.3.1",
     "@eslint/js": "9.27.0",
-    "@types/react": "19.1.4",
+    "@types/react": "19.1.5",
     "dayjs": "1.11.13",
     "eslint": "9.27.0",
     "eslint-config-airbnb": "19.0.4",
