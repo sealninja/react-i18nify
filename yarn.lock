@@ -1448,10 +1448,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.8.tgz#50d680c8a8a78fe30abe6906453b21ad8ab0ad7b"
   integrity sha512-YofkM6fGv4gDJq78g4j0mMuGMkZVxZDgtU0JRdx6FgiJDG+0fY0GKVolOV8WqVmEhLCXkQRjwDdKyPxJp/uucg==
 
-"@types/react@19.1.5":
-  version "19.1.5"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-19.1.5.tgz#9feb3bdeb506d0c79d8533b6ebdcacdbcb4756db"
-  integrity sha512-piErsCVVbpMMT2r7wbawdZsq4xMvIAhQuac2gedQHysu1TZYEigE6pnFfgZT+/jQnrRuF5r+SHzuehFjfRjr4g==
+"@types/react@19.1.6":
+  version "19.1.6"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-19.1.6.tgz#dee39f3e1e9a7d693f156a5840570b6d57f325ea"
+  integrity sha512-JeG0rEWak0N6Itr6QUx+X60uQmN+5t3j9r/OVDtWzFXKaj6kD1BwJzOksD0FF6iWxZlbE1kB0q9vtnU2ekqa1Q==
   dependencies:
     csstype "^3.0.2"
 
