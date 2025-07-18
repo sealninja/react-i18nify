@@ -48,14 +48,14 @@ describe('Translate.jsx', () => {
     });
 
     test('should handle dynamic placeholder', () => {
-      const component = <Translate value="application.hello" name="Aad" />;
+      const component = <Translate name="Aad" value="application.hello" />;
       expect(renderToString(component)).toMatch('Hello, Aad!');
     });
 
     test('should handle pluralization', () => {
-      expect(renderToString(<Translate value="export" count={0} />)).toMatch('Nothing to export');
-      expect(renderToString(<Translate value="export" count={1} />)).toMatch('Export 1 item');
-      expect(renderToString(<Translate value="export" count={4} />)).toMatch('Export 4 items');
+      expect(renderToString(<Translate count={0} value="export" />)).toMatch('Nothing to export');
+      expect(renderToString(<Translate count={1} value="export" />)).toMatch('Export 1 item');
+      expect(renderToString(<Translate count={4} value="export" />)).toMatch('Export 4 items');
     });
   });
 });

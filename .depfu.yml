@@ -1,0 +1,11 @@
+update_strategy: grouped
+grouped_update_schedule: weekly
+grouped_update_start_date: '2023-11-27'
+grouped_update_time: '6:00'
+grouped_out_of_spec: include
+reasonably_up_to_date: true
+pull_request_limit: 10
+automerge_dev_strategy: minor
+automerge_method: squash
+engine_update_strategy: minor
+auto_review_team_assign: developers
