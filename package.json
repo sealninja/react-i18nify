@@ -75,8 +75,8 @@
     "eslint-plugin-react-hooks": "5.2.0",
     "jest": "30.0.5",
     "prettier": "3.6.2",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
     "rimraf": "6.0.1",
     "typescript": "5.8.3"
   }
