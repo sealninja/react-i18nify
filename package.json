@@ -13,7 +13,7 @@
     "typecheck": "tsc --project tsconfig.types.json --noEmit",
     "build": "rimraf cjs es && npx update-browserslist-db@latest && NODE_ENV=cjs babel src -d cjs && NODE_ENV=es babel src -d es",
     "prepare": "npm run build",
-    "prettier": "prettier --write --loglevel error \"**/*.+(js|jsx|json|yml|yaml|css|ts|tsx|md|mdx|html)\"",
+    "prettier": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|ts|tsx|md|mdx|html)\"",
     "prettier:check": "prettier --check \"**/*.+(js|jsx|json|yml|yaml|css|ts|tsx|md|mdx|html)\""
   },
   "files": [

@@ -6,7 +6,7 @@ import eslintConfigs from '@dr.pogodin/eslint-configs';
 
 export default defineConfig([
   {
-    ignores: ['**/node_modules', '**/parsed', '**/cjs', '**/es', '**/.yarn', '**/example', '**/*.tsx'],
+    ignores: ['**/node_modules', '**/cjs', '**/es', '**/.yarn', '**/example', '**/*.tsx'],
   },
   {
     extends: [eslintConfigs.configs.javascript, prettierConfig, eslintConfigs.configs.react],
