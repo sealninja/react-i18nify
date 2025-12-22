@@ -4,46 +4,47 @@ import { defineConfig } from 'eslint/config';
 import prettierConfig from 'eslint-plugin-prettier/recommended';
 import eslintConfigs from '@dr.pogodin/eslint-configs';
 
-export default defineConfig([{
-  // ignores: ['build/'],
-  languageOptions: {
-    globals: {
-      fetch: 'readonly',
-      JSX: true,
+export default defineConfig([
+  {
+    ignores: ['**/node_modules', '**/parsed', '**/cjs', '**/es', '**/.yarn', '**/example', '**/*.tsx'],
+  },
+  {
+    extends: [eslintConfigs.configs.javascript, prettierConfig, eslintConfigs.configs.react],
+    plugins: {
+      prettier,
     },
-    parser: babelParser,
-    parserOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-      ecmaFeatures: { jsx: true },
-      requireConfigFile: false,
-      babelOptions: { presets: ['@babel/preset-react'] },
+    languageOptions: {
+      globals: {
+        fetch: 'readonly',
+        JSX: true,
+      },
+      parser: babelParser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+        ecmaFeatures: { jsx: true },
+        requireConfigFile: false,
+        babelOptions: { presets: ['@babel/preset-react'] },
+      },
+    },
+    settings: {
+      'import/resolver': {
+        node: {},
+        exports: {},
+      },
+      react: { version: 'detect' },
+    },
+    rules: {
+      eqeqeq: ['error', 'always', { null: 'ignore' }],
+      'no-eq-null': 'off',
+      'no-underscore-dangle': 'off',
+      'no-useless-assignment': 'off',
+      'sort-keys': 'off',
+      camelcase: ['error', { properties: 'never', ignoreDestructuring: false }],
+      'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.config.*', '**/__test__/**/*'] }],
+      'import/no-unassigned-import': 'off',
+      'no-unused-vars': ['error', { caughtErrors: 'none', ignoreRestSiblings: true, varsIgnorePattern: '^React$' }],
+      'react/jsx-filename-extension': 'off',
     },
   },
-  settings: {
-    'import/resolver': {
-      node: {},
-      exports: {},
-    },
-    react: { version: 'detect' },
-  },
-  plugins: {
-    prettier,
-  },
-  extends: [
-    prettierConfig,
-    eslintConfigs.configs.javascript,
-    eslintConfigs.configs.react,
-  ],
-  rules: {
-    // "import/no-commonjs": "off",
-    // "import/no-unassigned-import": "off",
-    "sort-keys": "off",
-    'import/no-unassigned-import': 'off',
-    'no-unused-vars': ['error', { caughtErrors: 'none', ignoreRestSiblings: true, varsIgnorePattern: '^React$' }],
-    // "@stylistic/object-curly-newline": "off",
-    // "@stylistic/max-len": "off",
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": true, "peerDependencies": true}],
-    "react/jsx-filename-extension": "off",
-  }
-}]);
+]);

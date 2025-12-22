@@ -22,6 +22,11 @@ describe('Localize.jsx', () => {
     beforeEach(() => {
       setLocale('en');
     });
+
+    test('should export <Localize/> component', () => {
+      expect(Localize).toBeDefined();
+    });
+
     test('should handle date localization', () => {
       const component = <Localize dateFormat="date" parseFormat="YYYY-MM-DD" value="2016-07-04" />;
       expect(renderToString(component)).toMatch('July 4th, 2016');

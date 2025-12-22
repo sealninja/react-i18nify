@@ -29,6 +29,10 @@ describe('Translate.jsx', () => {
       setLocale('en');
     });
 
+    test('should export <Translate/> component', () => {
+      expect(Translate).toBeDefined();
+    });
+
     test('should handle translation', () => {
       const component = <Translate value="application.title" />;
       expect(renderToString(component)).toMatch('Awesome app with i18n!');
