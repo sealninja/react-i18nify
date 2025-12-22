@@ -49,6 +49,12 @@ export interface TranslateOptions {
 }
 
 export function translate(key: string, replacements?: Replacements, options?: TranslateOptions): string;
+
+export function translateReplace(
+  translation: string | React.ReactElement | Translations,
+  replacements: Replacements
+): string | React.ReactElement | Translations | null;
+
 export function t(key: string, replacements?: Replacements, options?: TranslateOptions): string;
 
 export type TranslateProps = {
