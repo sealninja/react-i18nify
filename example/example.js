@@ -20,7 +20,7 @@ setTranslations({
       hello: 'Hello, %{name}!',
     },
     date: {
-      long: 'MMMM do, yyyy',
+      long: 'MMMM do, YYYY',
     },
     export: 'Export %{count} items',
     export_0: 'Nothing to export',
@@ -32,7 +32,7 @@ setTranslations({
       hello: 'Hallo, %{name}!',
     },
     date: {
-      long: 'd MMMM yyyy',
+      long: 'D MMMM YYYY',
     },
     export: 'Exporteer %{count} dingen',
     export_0: 'Niks te exporteren',
