@@ -22,39 +22,44 @@ describe('Localize.jsx', () => {
     beforeEach(() => {
       setLocale('en');
     });
+
+    test('should export <Localize/> component', () => {
+      expect(Localize).toBeDefined();
+    });
+
     test('should handle date localization', () => {
-      const component = <Localize value="2016-07-04" parseFormat="YYYY-MM-DD" dateFormat="date" />;
+      const component = <Localize dateFormat="date" parseFormat="YYYY-MM-DD" value="2016-07-04" />;
       expect(renderToString(component)).toMatch('July 4th, 2016');
     });
 
     test('should handle NL date localization', () => {
       setLocale('nl');
-      const component = <Localize value="2016-07-04" parseFormat="YYYY-MM-DD" dateFormat="date" />;
+      const component = <Localize dateFormat="date" parseFormat="YYYY-MM-DD" value="2016-07-04" />;
       expect(renderToString(component)).toMatch('4 juli 2016');
     });
 
     test('should handle locale switching', () => {
-      const component = <Localize value="2016-07-04" parseFormat="YYYY-MM-DD" dateFormat="date" />;
+      const component = <Localize dateFormat="date" parseFormat="YYYY-MM-DD" value="2016-07-04" />;
       expect(renderToString(component)).toMatch('July 4th, 2016');
       setLocale('nl');
       expect(renderToString(component)).toMatch('4 juli 2016');
     });
 
     test('should handle date localization with parseFormat', () => {
-      const component = <Localize value="2016-04-07" parseFormat="YYYY-DD-MM" dateFormat="date" />;
+      const component = <Localize dateFormat="date" parseFormat="YYYY-DD-MM" value="2016-04-07" />;
       expect(renderToString(component)).toMatch('July 4th, 2016');
     });
 
     test('should handle number localization', () => {
       const component = (
         <Localize
-          value={10 / 3}
           options={{
             style: 'currency',
             currency: 'USD',
             minimumFractionDigits: 2,
             maximumFractionDigits: 2,
           }}
+          value={10 / 3}
         />
       );
       expect(renderToString(component)).toMatch('$3.33');

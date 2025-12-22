@@ -25,6 +25,10 @@ describe('I18n.jsx', () => {
       setLocale('en');
     });
 
+    test('should export <I18n/> component', () => {
+      expect(I18n).toBeDefined();
+    });
+
     test('should handle locale switching for attributes', () => {
       const component = <I18n render={() => <input placeholder={t('application.title')} />} />;
 
