@@ -6304,7 +6304,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:15.8.1, prop-types@npm:^15.8.1":
+"prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -6360,7 +6360,6 @@ __metadata:
     eslint-plugin-prettier: "npm:5.5.4"
     jest: "npm:30.2.0"
     prettier: "npm:3.7.4"
-    prop-types: "npm:15.8.1"
     react: "npm:19.2.3"
     react-dom: "npm:19.2.3"
     rimraf: "npm:6.1.2"

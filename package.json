@@ -50,9 +50,6 @@
     "dayjs": "^1.11.6",
     "react": "^16.8.0 || ^17.x || ^18.x || ^19.x"
   },
-  "dependencies": {
-    "prop-types": "15.8.1"
-  },
   "devDependencies": {
     "@babel/cli": "7.28.3",
     "@babel/core": "7.28.5",
