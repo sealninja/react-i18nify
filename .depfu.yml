@@ -1,4 +1,5 @@
 update_strategy: grouped
+update_out_of_spec: true
 grouped_update_schedule: weekly
 grouped_update_start_date: '2023-11-27'
 grouped_update_time: '6:00'
