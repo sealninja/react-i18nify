@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { setLocale, setTranslations, t, I18n } from '../src';
+
+import { I18n, setLocale, setTranslations, t } from '../src';
 
 describe('I18n.jsx', () => {
   beforeAll(() => {

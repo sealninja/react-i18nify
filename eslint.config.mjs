@@ -1,7 +1,7 @@
-import babelParser from '@babel/eslint-parser';
-import prettier from 'eslint-plugin-prettier';
 import { defineConfig } from 'eslint/config';
+import prettier from 'eslint-plugin-prettier';
 import prettierConfig from 'eslint-plugin-prettier/recommended';
+import babelParser from '@babel/eslint-parser';
 import eslintConfigs from '@dr.pogodin/eslint-configs';
 
 export default defineConfig([
@@ -10,41 +10,41 @@ export default defineConfig([
   },
   {
     extends: [eslintConfigs.configs.javascript, prettierConfig, eslintConfigs.configs.react],
-    plugins: {
-      prettier,
-    },
     languageOptions: {
       globals: {
-        fetch: 'readonly',
         JSX: true,
+        fetch: 'readonly',
       },
       parser: babelParser,
       parserOptions: {
-        ecmaVersion: 'latest',
-        sourceType: 'module',
-        ecmaFeatures: { jsx: true },
-        requireConfigFile: false,
         babelOptions: { presets: ['@babel/preset-react'] },
+        ecmaFeatures: { jsx: true },
+        ecmaVersion: 'latest',
+        requireConfigFile: false,
+        sourceType: 'module',
       },
+    },
+    plugins: {
+      prettier,
+    },
+    rules: {
+      camelcase: ['error', { ignoreDestructuring: false, properties: 'never' }],
+      eqeqeq: ['error', 'always', { null: 'ignore' }],
+      'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.config.*', '**/__test__/**/*'] }],
+      'import/no-unassigned-import': 'off',
+      'no-eq-null': 'off',
+      'no-underscore-dangle': 'off',
+      'no-unused-vars': ['error', { caughtErrors: 'none', ignoreRestSiblings: true, varsIgnorePattern: '^React$' }],
+      'no-useless-assignment': 'off',
+      'react/jsx-filename-extension': 'off',
+      'sort-keys': 'off',
     },
     settings: {
       'import/resolver': {
-        node: {},
         exports: {},
+        node: {},
       },
       react: { version: 'detect' },
-    },
-    rules: {
-      eqeqeq: ['error', 'always', { null: 'ignore' }],
-      'no-eq-null': 'off',
-      'no-underscore-dangle': 'off',
-      'no-useless-assignment': 'off',
-      'sort-keys': 'off',
-      camelcase: ['error', { properties: 'never', ignoreDestructuring: false }],
-      'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.config.*', '**/__test__/**/*'] }],
-      'import/no-unassigned-import': 'off',
-      'no-unused-vars': ['error', { caughtErrors: 'none', ignoreRestSiblings: true, varsIgnorePattern: '^React$' }],
-      'react/jsx-filename-extension': 'off',
     },
   },
 ]);

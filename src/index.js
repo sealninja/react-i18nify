@@ -1,10 +1,10 @@
 export { forceComponentsUpdate } from './components/Base.js';
-export { default as Translate } from './components/Translate.js';
-export { default as Localize } from './components/Localize.js';
 export { default as I18n } from './components/I18n.js';
-export { getLocale, setLocale, setLocaleGetter, getTranslations, setTranslations, setTranslationsGetter, setHandleMissingTranslation, setHandleFailedLocalization } from './lib/settings';
-export { default as translate } from './lib/translate';
-export { default as t } from './lib/translate';
+export { default as Localize } from './components/Localize.js';
+export { default as Translate } from './components/Translate.js';
 export { default as localize } from './lib/localize';
 export { default as l } from './lib/localize';
+export { getLocale, getTranslations, setHandleFailedLocalization, setHandleMissingTranslation, setLocale, setLocaleGetter, setTranslations, setTranslationsGetter } from './lib/settings';
+export { default as translate } from './lib/translate';
+export { default as t } from './lib/translate';
 export { replace as translateReplace } from './lib/utils';

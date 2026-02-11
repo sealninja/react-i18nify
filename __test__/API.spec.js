@@ -6,9 +6,10 @@ import 'dayjs/locale/it';
 import 'dayjs/locale/zh';
 import 'dayjs/locale/en';
 import 'dayjs/locale/en-gb';
-import utc from 'dayjs/plugin/utc';
 import timezonePlugin from 'dayjs/plugin/timezone';
-import { getLocale, getTranslations, setLocale, setTranslations, setLocaleGetter, setTranslationsGetter, setHandleMissingTranslation, translate, localize, t, l } from '../src';
+import utc from 'dayjs/plugin/utc';
+
+import { getLocale, getTranslations, l, localize, setHandleMissingTranslation, setLocale, setLocaleGetter, setTranslations, setTranslationsGetter, t, translate } from '../src';
 
 dayjs.extend(utc);
 dayjs.extend(timezonePlugin);
@@ -65,14 +66,14 @@ describe('API', () => {
       setTranslations({
         en: {
           application: {
-            hello: 'Hello, %{name}!',
             empty: '',
+            hello: 'Hello, %{name}!',
           },
         },
         nl: {
           application: {
-            hello: 'Hallo, %{name}!',
             empty: '',
+            hello: 'Hallo, %{name}!',
           },
         },
       });
@@ -96,10 +97,10 @@ describe('API', () => {
 
       test('should handle nested dynamic placeholder', () => {
         const result1 = translateFunction('application', { name: 'Aad' });
-        expect(result1).toEqual({ hello: 'Hello, Aad!', empty: '' });
+        expect(result1).toEqual({ empty: '', hello: 'Hello, Aad!' });
 
         const result2 = translateFunction('application', { name: 'Piet' });
-        expect(result2).toEqual({ hello: 'Hello, Piet!', empty: '' });
+        expect(result2).toEqual({ empty: '', hello: 'Hello, Piet!' });
       });
 
       test('should handle empty translation', () => {
@@ -119,8 +120,8 @@ describe('API', () => {
       setTranslations({
         en: {
           dates: {
-            short: 'MM-DD-YYYY',
             long: 'MMMM Do, YYYY',
+            short: 'MM-DD-YYYY',
           },
         },
         nl: {
@@ -141,37 +142,37 @@ describe('API', () => {
 
       test('should return null when locale not loaded', () => {
         setLocale('fr');
-        const result = localizeFunction('2014-30-12', { parseFormat: 'YYYY-DD-MM', dateFormat: 'dates.short' });
+        const result = localizeFunction('2014-30-12', { dateFormat: 'dates.short', parseFormat: 'YYYY-DD-MM' });
         expect(result).toEqual(null);
       });
 
       test('should return null when localization failed', () => {
-        const result = localizeFunction('huh', { parseFormat: 'YYYY-DD-MM', dateFormat: 'dates.short' });
+        const result = localizeFunction('huh', { dateFormat: 'dates.short', parseFormat: 'YYYY-DD-MM' });
         expect(result).toEqual(null);
       });
 
       test('should support parseFormat', () => {
-        const result = localizeFunction('2014-30-12', { parseFormat: 'YYYY-DD-MM', dateFormat: 'dates.short' });
+        const result = localizeFunction('2014-30-12', { dateFormat: 'dates.short', parseFormat: 'YYYY-DD-MM' });
         expect(result).toEqual('12-30-2014');
       });
 
       test('should support providing locale', () => {
-        const result = localizeFunction(1517774664107, { locale: 'nl', dateFormat: 'dates.long' });
+        const result = localizeFunction(1517774664107, { dateFormat: 'dates.long', locale: 'nl' });
         expect(result).toEqual('4 februari 2018');
       });
 
       test('should support distance to now', () => {
-        const result = localizeFunction(new Date(new Date().setFullYear(new Date().getFullYear() - 3)).getTime(), { locale: 'nl', dateFormat: 'distance-to-now' });
+        const result = localizeFunction(new Date(new Date().setFullYear(new Date().getFullYear() - 3)).getTime(), { dateFormat: 'distance-to-now', locale: 'nl' });
         expect(result).toEqual('3 jaar geleden');
       });
 
       test('should support distance to now in days', () => {
-        const result = localizeFunction(new Date(new Date().setHours(new Date().getHours() - 30)).getTime(), { locale: 'nl', dateFormat: 'distance-to-now' });
+        const result = localizeFunction(new Date(new Date().setHours(new Date().getHours() - 30)).getTime(), { dateFormat: 'distance-to-now', locale: 'nl' });
         expect(result).toEqual('een dag geleden');
       });
 
       test('should support dayjs with custom timezone', () => {
-        const result = localizeFunction(dayjs.utc('2022-07-01T03:00:00.000Z').tz('America/Chihuahua'), { locale: 'nl', dateFormat: 'DD MMM YYYY, HH:mm Z' });
+        const result = localizeFunction(dayjs.utc('2022-07-01T03:00:00.000Z').tz('America/Chihuahua'), { dateFormat: 'DD MMM YYYY, HH:mm Z', locale: 'nl' });
         expect(result).toEqual('30 jun 2022, 21:00 -06:00');
       });
 
@@ -182,7 +183,7 @@ describe('API', () => {
       });
 
       test('should return date when provided locale can fall back', () => {
-        const result = localizeFunction(1517774664107, { locale: 'zh-tw', dateFormat: 'LL' });
+        const result = localizeFunction(1517774664107, { dateFormat: 'LL', locale: 'zh-tw' });
         expect(result).toEqual('2018年2月4日');
       });
 
