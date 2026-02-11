@@ -1,22 +1,22 @@
 /* global describe, test, expect */
 
 import {
+  I18n,
+  Localize,
+  Translate,
+  forceComponentsUpdate,
   getLocale,
+  getTranslations,
+  l,
+  localize,
+  setHandleFailedLocalization,
+  setHandleMissingTranslation,
   setLocale,
   setLocaleGetter,
-  getTranslations,
   setTranslations,
   setTranslationsGetter,
-  setHandleMissingTranslation,
-  setHandleFailedLocalization,
-  translate,
-  localize,
   t,
-  l,
-  forceComponentsUpdate,
-  Translate,
-  Localize,
-  I18n,
+  translate,
 } from '../src';
 
 describe('index.js', () => {

@@ -3,12 +3,12 @@
 import BaseComponent from '../components/Base';
 
 const settings = {
+  getLocale: null,
+  getTranslations: null,
+  handleFailedLocalization: () => null,
+  handleMissingTranslation: (text) => text.split('.').pop(),
   localeKey: 'en',
   translationsObject: {},
-  getTranslations: null,
-  getLocale: null,
-  handleMissingTranslation: (text) => text.split('.').pop(),
-  handleFailedLocalization: () => null,
 };
 
 export const getLocale = () => (settings.getLocale ? settings.getLocale() : settings.localeKey);

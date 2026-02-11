@@ -1,5 +1,5 @@
-import { fetchTranslation, replace } from './utils';
 import { getLocale, getTranslations, handleMissingTranslation } from './settings';
+import { fetchTranslation, replace } from './utils';
 
 export default (key, replacements = {}, options = {}) => {
   const locale = options.locale || getLocale();

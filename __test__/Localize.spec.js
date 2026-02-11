@@ -4,7 +4,8 @@ import React from 'react';
 import 'dayjs/locale/nl';
 import 'dayjs/locale/en';
 import { renderToString } from 'react-dom/server';
-import { setLocale, setTranslations, Localize } from '../src';
+
+import { Localize, setLocale, setTranslations } from '../src';
 
 describe('Localize.jsx', () => {
   beforeAll(() => {
@@ -54,10 +55,10 @@ describe('Localize.jsx', () => {
       const component = (
         <Localize
           options={{
-            style: 'currency',
             currency: 'USD',
-            minimumFractionDigits: 2,
             maximumFractionDigits: 2,
+            minimumFractionDigits: 2,
+            style: 'currency',
           }}
           value={10 / 3}
         />

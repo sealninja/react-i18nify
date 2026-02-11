@@ -2,15 +2,16 @@
 
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { setLocale, setTranslations, Translate } from '../src';
+
+import { Translate, setLocale, setTranslations } from '../src';
 
 describe('Translate.jsx', () => {
   beforeAll(() => {
     setTranslations({
       en: {
         application: {
-          title: 'Awesome app with i18n!',
           hello: 'Hello, %{name}!',
+          title: 'Awesome app with i18n!',
         },
         export: 'Export %{count} items',
         export_0: 'Nothing to export',
