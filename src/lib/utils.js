@@ -27,6 +27,8 @@ export const replace = (translation, replacements) => {
 
           result = `${before}${replacements[replacement](middle)}${after}`;
         }
+
+        return;
       }
 
       result = result.split(`%{${replacement}}`).join(replacements[replacement] ?? '');
