@@ -58,7 +58,7 @@
     "@babel/preset-react": "7.28.5",
     "@babel/register": "7.29.3",
     "@dr.pogodin/eslint-configs": "0.2.12",
-    "@types/react": "19.2.14",
+    "@types/react": "19.2.15",
     "dayjs": "1.11.20",
     "eslint": "9.39.2",
     "eslint-config-prettier": "10.1.8",
