@@ -52,15 +52,15 @@
     "react": "^16.8.0 || ^17.x || ^18.x || ^19.x"
   },
   "devDependencies": {
-    "@babel/cli": "7.28.6",
+    "@babel/cli": "7.29.7",
     "@babel/core": "7.28.5",
     "@babel/eslint-parser": "^7.28.0",
     "@babel/preset-env": "7.29.2",
     "@babel/preset-react": "7.28.5",
-    "@babel/register": "7.29.3",
+    "@babel/register": "7.29.7",
     "@dr.pogodin/eslint-configs": "0.2.12",
     "@types/react": "19.2.15",
-    "dayjs": "1.11.20",
+    "dayjs": "1.11.21",
     "eslint": "9.39.2",
     "eslint-config-prettier": "10.1.8",
     "eslint-import-resolver-typescript": "4.4.4",
