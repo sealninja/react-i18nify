@@ -41,7 +41,6 @@ export default defineConfig([
     },
     settings: {
       'import/resolver': {
-        exports: {},
         node: {},
       },
       react: { version: 'detect' },
