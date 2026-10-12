@@ -5,9 +5,9 @@ __metadata:
   version: 10
   cacheKey: 10c0
 
-"@babel/cli@npm:8.0.5":
-  version: 8.0.5
-  resolution: "@babel/cli@npm:8.0.5"
+"@babel/cli@npm:8.0.6":
+  version: 8.0.6
+  resolution: "@babel/cli@npm:8.0.6"
   dependencies:
     "@jridgewell/trace-mapping": "npm:^0.3.31"
     chokidar: "npm:^5.0.0"
@@ -19,7 +19,7 @@ __metadata:
     "@babel/core": ^8.0.0
   bin:
     babel: ./bin/babel.js
-  checksum: 10c0/c123d94f5d0f30f198ae75b4d05a39e6b1d67ae71ce903498620cf5f0f5fe9c4af21ee6ce23c443f4f1b985db6b80d42ffb83ed553c03dc896570f0b90ec099a
+  checksum: 10c0/2c6af23de382e07d031f06d07d8c496093bf31ef916592c8bb54d0881df52053e65fce7bbb0cd572beec29083b8609c97dac7300308e6ebbdb0a1a01fcc25fa9
   languageName: node
   linkType: hard
 
@@ -1519,9 +1519,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/register@npm:8.0.5":
-  version: 8.0.5
-  resolution: "@babel/register@npm:8.0.5"
+"@babel/register@npm:8.0.6":
+  version: 8.0.6
+  resolution: "@babel/register@npm:8.0.6"
   dependencies:
     "@cspotcode/source-map-support": "npm:^0.8.1"
     cacache: "npm:20.0.3"
@@ -1530,7 +1530,7 @@ __metadata:
     pirates: "npm:^4.0.6"
   peerDependencies:
     "@babel/core": ^8.0.0
-  checksum: 10c0/22e90733e546db9813c1b65d017ecd42e71ab50f1fdc6aff3db3ab9b74ec4c696c1b5f6e64b7c411917dbba1cb4e365e5445cb88b9dab85cea2e725457782c86
+  checksum: 10c0/c99adf91eafcb126757aed96b6e96057b17827ecabf3bf3d36c569b4e88313139ef6b550f6f63e9d4628eb618a1cb246fa1e8f14e0a4bb9b4db578858fa4ba82
   languageName: node
   linkType: hard
 
@@ -4371,9 +4371,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:10.10.0":
-  version: 10.10.0
-  resolution: "eslint@npm:10.10.0"
+"eslint@npm:10.11.0":
+  version: 10.11.0
+  resolution: "eslint@npm:10.11.0"
   dependencies:
     "@eslint-community/eslint-utils": "npm:^4.8.0"
     "@eslint-community/regexpp": "npm:^4.12.2"
@@ -4412,7 +4412,7 @@ __metadata:
       optional: true
   bin:
     eslint: bin/eslint.js
-  checksum: 10c0/ba583145305f088585f91c5dab6825492ec657614558e4610cffc94174cf800f456e39ec3cafd3eed73e04bd9a05794067ae33b553f1323e3e7c1157242409d2
+  checksum: 10c0/c767f45f21d1921b41d70e30b1c8fa7ec4e65c0f43a8d80cc4990ca3d923127fa7b9b3416b8f5be6e877d9286f97d3c51a04ed341bc6aa73c0dba0f463e1f861
   languageName: node
   linkType: hard
 
@@ -6732,16 +6732,16 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "react-i18nify@workspace:."
   dependencies:
-    "@babel/cli": "npm:8.0.5"
+    "@babel/cli": "npm:8.0.6"
     "@babel/core": "npm:8.0.6"
     "@babel/eslint-parser": "npm:^8.0.5"
     "@babel/preset-env": "npm:8.0.5"
     "@babel/preset-react": "npm:8.0.1"
-    "@babel/register": "npm:8.0.5"
+    "@babel/register": "npm:8.0.6"
     "@dr.pogodin/eslint-configs": "npm:0.3.7"
     "@types/react": "npm:19.3.0"
     dayjs: "npm:1.11.23"
-    eslint: "npm:10.10.0"
+    eslint: "npm:10.11.0"
     eslint-config-prettier: "npm:10.1.8"
     eslint-import-resolver-typescript: "npm:4.4.5"
     eslint-plugin-import: "npm:2.32.0"
