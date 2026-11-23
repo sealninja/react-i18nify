@@ -1519,9 +1519,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/register@npm:8.0.6":
-  version: 8.0.6
-  resolution: "@babel/register@npm:8.0.6"
+"@babel/register@npm:8.1.2":
+  version: 8.1.2
+  resolution: "@babel/register@npm:8.1.2"
   dependencies:
     "@cspotcode/source-map-support": "npm:^0.8.1"
     cacache: "npm:20.0.3"
@@ -1530,7 +1530,7 @@ __metadata:
     pirates: "npm:^4.0.6"
   peerDependencies:
     "@babel/core": ^8.0.0
-  checksum: 10c0/c99adf91eafcb126757aed96b6e96057b17827ecabf3bf3d36c569b4e88313139ef6b550f6f63e9d4628eb618a1cb246fa1e8f14e0a4bb9b4db578858fa4ba82
+  checksum: 10c0/7081e0ea336ca58c4a4e7d3bdd2470838b59d1ecba133f250c9c020b29385f8ae73e2d1749d70fd5e0269973a5605b26069ecd760235ffd78accaa18f14a1d34
   languageName: node
   linkType: hard
 
@@ -6645,12 +6645,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:3.9.10":
-  version: 3.9.10
-  resolution: "prettier@npm:3.9.10"
+"prettier@npm:3.10.1":
+  version: 3.10.1
+  resolution: "prettier@npm:3.10.1"
   bin:
     prettier: bin/prettier.cjs
-  checksum: 10c0/0b3531593aa6fb36ac6baf629cb058bda472c59a6938774f931fe55283a07c62e6f56e621b043a82d8a3e21fc284c08c34f9e539fc70072635f79b7bae1a1067
+  checksum: 10c0/e8c03ea575a30e15afa75a3700e94609050502980d7c906374aea4cf623eef4dce0816100126207e675cc1ed54b7dfce60f02dbee8d61ec27dc69ce5df6c3723
   languageName: node
   linkType: hard
 
@@ -6737,7 +6737,7 @@ __metadata:
     "@babel/eslint-parser": "npm:^8.0.5"
     "@babel/preset-env": "npm:8.0.7"
     "@babel/preset-react": "npm:8.0.1"
-    "@babel/register": "npm:8.0.6"
+    "@babel/register": "npm:8.1.2"
     "@dr.pogodin/eslint-configs": "npm:0.3.9"
     "@types/react": "npm:19.3.0"
     dayjs: "npm:1.11.23"
@@ -6747,7 +6747,7 @@ __metadata:
     eslint-plugin-import: "npm:2.32.0"
     eslint-plugin-prettier: "npm:5.5.7"
     jest: "npm:30.5.2"
-    prettier: "npm:3.9.10"
+    prettier: "npm:3.10.1"
     react: "npm:19.3.1"
     react-dom: "npm:19.3.1"
     rimraf: "npm:6.1.4"
